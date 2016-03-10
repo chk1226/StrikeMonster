@@ -1,0 +1,87 @@
+{
+  "HeroInfoList": [
+    {
+    	"pos_x": -190,
+    	"pos_y": -90,
+      	"Name": "Wotan",
+      	"ImgSrc": "Portrait_SwordMantis",
+      	"Hp": 1000,
+      	"Attack": 500,
+      	"Speed": 10000
+    },
+    {
+    	"pos_x": -75,
+    	"pos_y": -225,
+      	"Name": "Kyle",
+      	"ImgSrc": "Portrait_Lana",
+		"Hp": 1500,
+      	"Attack": 650,
+    	"Speed": 10000
+    }
+  ],
+
+  "WaveInfoList": [
+  	{
+  		"EnemyList" :[
+  			{
+  				"EnemyType": 0,
+		    	"pos_x": 140,
+		    	"pos_y": 330,
+		      	"ImgSrc": "ms_016",
+		      	"Hp": 10000,
+		      	"EnemySkill": [
+		      		{
+		      			"SkillName":"BarrageSkill",
+		      			"Damage": 1,
+		      			"CDTime": 1,
+		      			"CDLocPosX": -45,
+		      			"CDLocPosY": 45,
+		      			"AutoDestory": true,
+		      			"Speed": 8,
+		      			"LineNumber": 20,
+		      			"WaveNumber": 3,
+		      			"IntervalTime": 0.5,
+		      			"LifeTime": 2,
+		      			"NormalColorR": 1.0,
+		      			"NormalColorG": 0.0,
+		      			"NormalColorB": 0.0,
+
+		      		}
+
+		      	]
+  			},
+  			{
+  				"EnemyType": 0,
+		    	"pos_x": -140,
+		    	"pos_y": 330,
+		      	"ImgSrc": "ms_038",
+		      	"Hp": 10000,
+		      	"EnemySkill": [
+		      		{
+		      			"SkillName":"RaySkill",
+		      			"Damage": 1,
+		      			"CDTime": 1,
+		      			"CDLocPosX": -45,
+		      			"CDLocPosY": 45,
+		      			"WaveNumber": 3,
+		      			"IntervalTime": 0.5,
+		      			"LifeTime": 2,
+		      			"NormalColorR": 1.0,
+		      			"NormalColorG": 0.0,
+		      			"NormalColorB": 0.0,
+		      		}
+
+		      	]
+  			}
+  			
+
+  		]
+  	}
+
+  ]
+
+
+
+
+
+}
