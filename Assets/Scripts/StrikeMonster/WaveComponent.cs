@@ -8,9 +8,7 @@ namespace StrikeMonster
     public class WaveComponent : MonoBehaviour {
 
         public GameObject EnemyLayer;
-        public List<EnemyComponent> CurrentEnemy = new List<EnemyComponent>();
         public int CurrentWaveIndex;
-        public float EnemyAttackIntervalTime = 0.8f;
 
         [SerializeField]
         public GameObject MonsterPrefab;
@@ -20,6 +18,30 @@ namespace StrikeMonster
         private List<WaveInfo> m_AllWave;
 
 
+        public List<EnemyComponent> CurrentEnemy
+        {
+            get{
+                return m_CurrentEnemy;
+            }
+        }
+
+        public List<EnemyComponent> m_CurrentEnemy = new List<EnemyComponent>();
+        
+
+        private float enemyAttackIntervalTime = 0.8f;
+        private static WaveComponent m_WaveComponent;
+        public static WaveComponent Instance
+        {
+            get{
+                return m_WaveComponent;
+            }
+        }
+
+
+        void Awake()
+        {
+            m_WaveComponent = this;
+        }
 
     	// Use this for initialization
     	void Start () {
@@ -64,7 +86,7 @@ namespace StrikeMonster
                         enemy_instance.transform.localScale = Vector3.one;
                         
                         enemy_cmp.Initialize(enemyInfo);
-                        CurrentEnemy.Add(enemy_cmp);
+                        m_CurrentEnemy.Add(enemy_cmp);
                         
                     }
                     else
@@ -90,7 +112,7 @@ namespace StrikeMonster
             {
                 if(enemy.LaunchEnemySkill())
                 {
-                    yield return new WaitForSeconds(EnemyAttackIntervalTime);
+                    yield return new WaitForSeconds(enemyAttackIntervalTime);
                 }
             }
 

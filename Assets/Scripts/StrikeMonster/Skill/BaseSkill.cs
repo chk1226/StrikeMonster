@@ -15,6 +15,7 @@ namespace StrikeMonster
         protected int waveNumber = 3;
 //        protected bool enableEmission = false;
         protected float intervalTime = 0.5f;
+        protected float hitIntervalTime = 0.2f;
         protected Color normalColor;
         [SerializeField]
         protected ParticleSystem emitter;

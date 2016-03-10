@@ -16,7 +16,15 @@
       	"ImgSrc": "Portrait_Lana",
 		"Hp": 1500,
       	"Attack": 650,
-    	"Speed": 10000
+    	"Speed": 10000,
+    	"FriendlySkill":{
+    		"SkillName":"RaySkill",
+		    "Damage": 100,
+		    "LifeTime": 1,
+		    "NormalColorR": 1.0,
+		    "NormalColorG": 0.0,
+		    "NormalColorB": 0.0,
+    	}
     }
   ],
 
@@ -33,7 +41,7 @@
 		      		{
 		      			"SkillName":"BarrageSkill",
 		      			"Damage": 1,
-		      			"CDTime": 1,
+		      			"CDTime": 2,
 		      			"CDLocPosX": -45,
 		      			"CDLocPosY": 45,
 		      			"AutoDestory": true,
@@ -52,20 +60,18 @@
   			},
   			{
   				"EnemyType": 0,
-		    	"pos_x": -140,
+		    	"pos_x": -200,
 		    	"pos_y": 330,
 		      	"ImgSrc": "ms_038",
 		      	"Hp": 10000,
 		      	"EnemySkill": [
 		      		{
 		      			"SkillName":"RaySkill",
-		      			"Damage": 1,
+		      			"Damage": 100,
 		      			"CDTime": 1,
 		      			"CDLocPosX": -45,
 		      			"CDLocPosY": 45,
-		      			"WaveNumber": 3,
-		      			"IntervalTime": 0.5,
-		      			"LifeTime": 2,
+		      			"LifeTime": 1,
 		      			"NormalColorR": 1.0,
 		      			"NormalColorG": 0.0,
 		      			"NormalColorB": 0.0,

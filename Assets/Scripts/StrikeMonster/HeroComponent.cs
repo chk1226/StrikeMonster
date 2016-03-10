@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace StrikeMonster
 {
@@ -8,21 +9,45 @@ namespace StrikeMonster
         public string Name;
         public Rigidbody2D Rigidbody_2D;
         public CircleCollider2D CircleCollider_2D;
+        public bool CanFriendlySkill;
 
-
-//        [SerializeField]
+        private BaseSkill m_friendlySkill;
         private float m_Speed;
 
-
-        public override void Initialize (UnitInfo baseInfo)
+       public override void Initialize (UnitInfo baseInfo)
         {
             var heroInfo = baseInfo as HeroInfo;
             if (heroInfo != null)
             {
+                base.Initialize (baseInfo);
+
+                // base attribute
                 m_Speed = heroInfo.Speed;
                 Name = heroInfo.Name;
+                this.gameObject.name = Name;
 
-                base.Initialize (baseInfo);
+                // friendly skill
+                if(heroInfo.FriendlySkill != null)
+                {
+                    var prefab = Instantiate(Resources.Load<GameObject>(SKILL_PATH + heroInfo.FriendlySkill.SkillName));
+                    if(prefab)
+                    {
+                        prefab.transform.SetParent(SkillGroup.transform);
+                        prefab.transform.localPosition = Vector3.zero;
+                        prefab.transform.localScale = Vector3.one;
+                        
+                        var skillCmp = prefab.GetComponent<BaseSkill>();
+                        if(skillCmp)
+                        {
+                            skillCmp.Config(heroInfo.FriendlySkill);
+                            skillCmp.CDProperty.DisableCDText();
+                            m_friendlySkill = skillCmp;                        
+                        }
+                        
+                    }
+
+                }
+
             }
 
         }
@@ -43,7 +68,6 @@ namespace StrikeMonster
                 Rigidbody_2D.AddForce(f* m_Speed);
             }
         }
-
 
         public override void OnHurt(float damage)
         {
@@ -78,8 +102,48 @@ namespace StrikeMonster
 
         void OnTriggerEnter2D(Collider2D coll)
         {
-            Debug.Log("[OnTriggerEnter2D] Trigger!" + coll.gameObject.name);
+            if (TeamComponent.Instance.CurrentHero != this && CanFriendlySkill)
+            {
+
+                if(WaveComponent.Instance.CurrentEnemy.Count == 0)
+                {
+                    m_friendlySkill.Targets = null;
+                }
+                else
+                {
+                    var enemy_list = new List<UnitComponent>();
+                    
+                    foreach(var e in WaveComponent.Instance.CurrentEnemy)
+                    {
+                        enemy_list.Add( e as UnitComponent );
+                    }
+
+                    m_friendlySkill.Targets = enemy_list;
+                    if(m_friendlySkill.DoFire())
+                    {
+                        CanFriendlySkill = false;
+                    }
+                }
+
+
+            }
+
+//            Debug.Log("[OnTriggerEnter2D] Trigger!" + coll.gameObject.name);
             
+        }
+
+        public bool FriendlySkillsIsReady()
+        {
+            if (m_friendlySkill)
+            {
+                return m_friendlySkill.State == BaseSkill.SkillState.Ready;
+
+            } else
+            {
+                return true;
+            }
+
+
         }
 
 

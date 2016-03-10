@@ -47,6 +47,7 @@ namespace StrikeMonster
 		{
             public string Name;
             public float Speed;
+            public PrototypeSkill FriendlySkill;
 		}
 
         public class PrototypeSkill

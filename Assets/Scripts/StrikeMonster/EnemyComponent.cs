@@ -7,11 +7,9 @@ namespace StrikeMonster
     public class EnemyComponent : UnitComponent {
 
         public EnemyType Type;
-        public GameObject SkillGroup;
         public HpPropertyComponent HPProperty;
 
         private List<BaseSkill> skills = new List<BaseSkill>();
-        private const string SKILL_PATH = "Prefabs/Skill/";
 
         public override void Initialize (UnitInfo baseInfo)
         {

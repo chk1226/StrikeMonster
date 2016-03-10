@@ -7,6 +7,7 @@ namespace StrikeMonster
 
         public UnityEngine.UI.Image Icon;
         public UnityEngine.UI.Text HurtValue;
+        public GameObject SkillGroup;
         
         private float totalHurtValue = 0;
 
@@ -27,8 +28,8 @@ namespace StrikeMonster
         }
 
 
-        private const string HEAD_ICON_PATH = "Sprites/";
-
+        protected const string HEAD_ICON_PATH = "Sprites/";
+        protected const string SKILL_PATH = "Prefabs/Skill/";
 
         public virtual void Initialize(UnitInfo baseInfo)
         {
@@ -58,7 +59,7 @@ namespace StrikeMonster
                 }
                 else
                 {
-                    intervalHurtTextTime += Time.deltaTime;
+                    intervalHurtTextTime += GamePlaySettings.Instance.GetDeltaTime();
                     if(intervalHurtTextTime >= 1.5f)
                     {
                         HurtValue.enabled = false;

@@ -82,7 +82,7 @@ namespace StrikeMonster
                             
                             CollisionBehavior(target);
                             
-//                            Debug.Log("Hit " + target.name);
+//                            Debug.Log("Hit " + particles[i].position.ToString());
                         }
                     }
                     
