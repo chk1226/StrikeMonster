@@ -46,6 +46,22 @@ namespace StrikeMonster
             }
         }
 
+        public bool IsBossWave
+        {
+            get{
+                var fsmValue = FsmVariables.GlobalVariables.GetFsmBool("IsBossWave");
+                if(fsmValue == null)
+                {
+                    Debug.LogWarning("IsBossWave bool value is null");
+                    return false;
+                }
+                else
+                {
+                    return fsmValue.Value;
+                }
+            }
+        }
+
 
 //		public bool IsSetupWave = false;
 		public bool IsGamePaused = false;

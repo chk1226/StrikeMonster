@@ -111,17 +111,21 @@ namespace StrikeMonster
                 }
                 else
                 {
-                    var enemy_list = new List<UnitComponent>();
-                    
-                    foreach(var e in WaveComponent.Instance.CurrentEnemy)
+                    if(m_friendlySkill != null)
                     {
-                        enemy_list.Add( e as UnitComponent );
-                    }
+                        var enemy_list = new List<UnitComponent>();
+                        
+                        foreach(var e in WaveComponent.Instance.CurrentEnemy)
+                        {
+                            enemy_list.Add( e as UnitComponent );
+                        }
+                        
+                        m_friendlySkill.Targets = enemy_list;
+                        if(m_friendlySkill.DoFire())
+                        {
+                            CanFriendlySkill = false;
+                        }
 
-                    m_friendlySkill.Targets = enemy_list;
-                    if(m_friendlySkill.DoFire())
-                    {
-                        CanFriendlySkill = false;
                     }
                 }
 

@@ -10,10 +10,8 @@ namespace StrikeMonster
         public GameObject EnemyLayer;
         public int CurrentWaveIndex;
 
-        [SerializeField]
         public GameObject MonsterPrefab;
-//        [SerializeField]
-        private GameObject m_BossPrefab;
+        public GameObject BossPrefab;
 //        [SerializeField]
         private List<WaveInfo> m_AllWave;
 
@@ -25,7 +23,7 @@ namespace StrikeMonster
             }
         }
 
-        public List<EnemyComponent> m_CurrentEnemy = new List<EnemyComponent>();
+        private List<EnemyComponent> m_CurrentEnemy = new List<EnemyComponent>();
         
 
         private float enemyAttackIntervalTime = 0.8f;
@@ -57,16 +55,21 @@ namespace StrikeMonster
         {
             m_AllWave = PrototypeSystem.Instance.CastWaveInfoList();
             CurrentWaveIndex = 0;
-            if (m_AllWave.Count > 0)
-            {
-                InitializeCurrentEnemy(m_AllWave[CurrentWaveIndex].EnemyInfo);
-            }
 
       
             
         }
 
-        public void InitializeCurrentEnemy(List<UnitInfo> enemyInfoList)
+        public void InitializeCurrentEnemy()
+        {
+            if (m_AllWave.Count > 0)
+            {
+                InitializeEnemy(m_AllWave[CurrentWaveIndex].EnemyInfo);
+            }
+
+        }
+
+        public void InitializeEnemy(List<UnitInfo> enemyInfoList)
         {
             if (enemyInfoList == null)
             {
@@ -75,7 +78,19 @@ namespace StrikeMonster
 
             foreach(var enemyInfo in enemyInfoList)
             {
-                var enemy_instance = Instantiate(MonsterPrefab) as GameObject;
+
+                var enemy = enemyInfo as EnemyInfo;
+                GameObject enemy_instance = null;
+                switch(enemy.Type)
+                {
+                    case EnemyType.Boss:
+                        enemy_instance = Instantiate(BossPrefab) as GameObject;
+                        break;
+                    case EnemyType.Normal:
+                        enemy_instance = Instantiate(MonsterPrefab) as GameObject;
+                        break;
+                }
+               
                 if (enemy_instance)
                 {
                     var enemy_cmp = enemy_instance.GetComponent<EnemyComponent>();
@@ -193,6 +208,20 @@ namespace StrikeMonster
             {
                 return false;
             }
+        }
+
+
+        public bool IsBossWave()
+        {
+            foreach(var enemy in CurrentEnemy)
+            {
+                if(enemy.Type == EnemyType.Boss)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
 
