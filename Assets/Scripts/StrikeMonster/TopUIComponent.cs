@@ -21,16 +21,29 @@ namespace StrikeMonster
 
 
 
-        public void EnableBossHp(IndicatorPropertyComponent ipc)
+
+
+
+        public void EnableBossHp()
         {
-            BossHp.SetActive(true);
-            var bar = BossHp.GetComponentInChildren<IndicatorBarComponent>();
 
-            if (ipc)
+            var boss = WaveComponent.Instance.Boss;
+
+
+            if (boss)
             {
-                ipc.IndicatorComponent = bar;
-            }
+                BossHp.SetActive(true);
+                var bar = BossHp.GetComponentInChildren<IndicatorBarComponent>();
 
+                var hpProperty = boss.GetComponent<HpPropertyComponent>();
+                if (hpProperty)
+                {
+                    hpProperty.IndicatorComponent = bar;
+                    bar.UpdateBar(hpProperty.Ratio);
+                }
+
+            }
+           
         }
 
 

@@ -34,6 +34,20 @@ namespace StrikeMonster
                 return m_WaveComponent;
             }
         }
+        public EnemyComponent Boss
+        {
+            get{
+                foreach(var enemy in CurrentEnemy)
+                {
+                    if(enemy.Type == EnemyType.Boss)
+                    {
+                        return enemy;
+                    }
+                }
+
+                return null;
+            }
+        }
 
 
         void Awake()
@@ -210,18 +224,11 @@ namespace StrikeMonster
             }
         }
 
-
         public bool IsBossWave()
         {
-            foreach(var enemy in CurrentEnemy)
-            {
-                if(enemy.Type == EnemyType.Boss)
-                {
-                    return true;
-                }
-            }
+            var boss = Boss;
 
-            return false;
+            return (boss) ? true : false;
         }
 
 
