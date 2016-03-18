@@ -11,6 +11,13 @@ namespace StrikeMonster
 		public static GamePlaySettings Instance = null;
 
 
+        public enum SortingLayer
+        {
+            BattleLayer,
+            EffectLayer,
+            UILayer
+        }
+
         readonly public float ThresholdVelocity = 0.3f;
         public PlayMakerFSM GameFlowFSM;
 
