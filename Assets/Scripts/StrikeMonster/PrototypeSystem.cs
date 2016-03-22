@@ -56,7 +56,7 @@ namespace StrikeMonster
             public int CDTime;
             public float CDLocPosX;
             public float CDLocPosY;
-            public bool AutoDestory;
+//            public bool AutoDestory;
             public float Speed;
             public int LineNumber;
             public int WaveNumber;

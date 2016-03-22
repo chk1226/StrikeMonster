@@ -13,8 +13,10 @@ namespace StrikeMonster
 
         public enum SortingLayer
         {
+            BackgroundLayer,
+            BackEffectLayer,
             BattleLayer,
-            EffectLayer,
+            FrontEffectLayer,
             UILayer
         }
 

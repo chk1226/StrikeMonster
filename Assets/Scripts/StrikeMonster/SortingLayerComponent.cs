@@ -50,6 +50,7 @@ namespace StrikeMonster
                     if(!m_Canvas)
                     {
                         m_Canvas = gameObject.AddComponent<Canvas>();
+                        m_Canvas.overrideSorting = true;
                     }
 
                 }

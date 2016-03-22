@@ -13,7 +13,6 @@ namespace StrikeMonster
         protected float emitterParticleSize = 1;
         protected int lineNumber = 8; 
         protected int waveNumber = 3;
-//        protected bool enableEmission = false;
         protected float intervalTime = 0.5f;
         protected float hitIntervalTime = 0.2f;
         protected Color normalColor;
@@ -21,7 +20,6 @@ namespace StrikeMonster
         protected ParticleSystem emitter;
         [SerializeField]
         protected List<ParticleSystem> rayEmitter;
-        protected bool autoDistory = false; // when collision happen, particle will auto distroy
 
         protected List<UnitComponent> m_targets;
         public List<UnitComponent> Targets
@@ -50,7 +48,6 @@ namespace StrikeMonster
 
         public virtual void Config(SkillInfo skillInfo)
         {
-            autoDistory = skillInfo.AutoDestory;
             speed = skillInfo.Speed;
             lineNumber = skillInfo.LineNumber;
             waveNumber = skillInfo.WaveNumber;
@@ -58,7 +55,6 @@ namespace StrikeMonster
             normalColor = skillInfo.NormalColor;
             damage = skillInfo.Damage;
             intervalTime = skillInfo.IntervalTime;
-//            enableEmission = skillInfo.EnableEmission;
 
             if(CDProperty)
             {

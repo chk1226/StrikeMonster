@@ -11,7 +11,7 @@ namespace StrikeMonster
         public string SkillName;
         public int CDTime;
         public Vector2 CDLocPos;
-        public bool AutoDestory;
+//        public bool AutoDestory;
         public float Speed;
         public int LineNumber;
         public int WaveNumber;
@@ -25,7 +25,7 @@ namespace StrikeMonster
         {
             SkillName = skill.SkillName;
             CDTime = skill.CDTime;
-            AutoDestory = skill.AutoDestory;
+//            AutoDestory = skill.AutoDestory;
             Speed = skill.Speed;
             LineNumber = skill.LineNumber;
             WaveNumber = skill.WaveNumber;

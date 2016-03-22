@@ -46,6 +46,7 @@ namespace StrikeMonster
         {
             if (emitter && emitter.particleCount == 0)
             {
+                
                 base.RecoveryReady();
             }
         }
@@ -91,7 +92,7 @@ namespace StrikeMonster
             }
             
             
-            if (isDirty && autoDistory)
+            if (isDirty)
             {
                 emitter.SetParticles(particles, particles.Length);
             }

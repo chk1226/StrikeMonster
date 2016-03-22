@@ -8,8 +8,8 @@ namespace StrikeMonster
 
     public class RaySkill : BaseSkill {
 
-
         public float[] hitTime;
+        private bool waitFire = false;
 
         public override void Config(SkillInfo skillInfo)
         {
@@ -46,6 +46,9 @@ namespace StrikeMonster
 
         IEnumerator EnableEmission()
         {
+
+            waitFire = true;
+
             foreach(var ray in rayEmitter)
             {
 
@@ -56,13 +59,15 @@ namespace StrikeMonster
 
             yield return new WaitForSeconds(lifeTime);
             
-
+            
             foreach(var ray in rayEmitter)
             {
                 
                 ray.enableEmission = false;
                 
             }
+
+            waitFire = false;
         }
 
 
@@ -74,6 +79,12 @@ namespace StrikeMonster
 
         protected override void RecoveryReady()
         {
+
+            if (waitFire)
+            {
+                return;
+            }
+
             foreach(var ray in rayEmitter)
             {
                 if(ray.particleCount != 0)
@@ -92,7 +103,7 @@ namespace StrikeMonster
             {
                 return;
             }
-//
+
             for(int i = 0; i < rayEmitter.Count; i++)
             {
 
