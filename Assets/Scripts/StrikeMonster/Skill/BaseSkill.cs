@@ -66,8 +66,6 @@ namespace StrikeMonster
 
         void Awake()
         {
-//            emitter = GetComponent<ParticleSystem>();
-            
         }
 
 
@@ -103,6 +101,10 @@ namespace StrikeMonster
 
 
         private int currentWaveNumber;
+        protected int CurrentWaveNumber
+        {
+            get{ return currentWaveNumber; }
+        }
         private float countTime = 0;
         public bool DoFire(){
 
@@ -121,12 +123,7 @@ namespace StrikeMonster
             return false;
         }
 
-
-//        protected virtual Vector2 GetFireDirection(int lineNumber)
-//        {
-//            return Vector2.one;
-//        }
-
+       
         protected void EveryWave()
         {
 
@@ -161,20 +158,6 @@ namespace StrikeMonster
         {
             State = SkillState.Ready;
         }
-
-        protected void Fire (Vector3 _direction)
-        {
-            Fire(_direction, speed, lifeTime, normalColor);
-        }
-
-        private void Fire ( Vector3 _direction, float _speed, float _lifeTime, Color _color)
-        {
-            if (emitter)
-            {
-                emitter.Emit(transform.position, _direction.normalized * _speed, emitterParticleSize, _lifeTime, _color);
-            }
-        }
-
 
         protected virtual void DectionParticleCollision2D(){
         }

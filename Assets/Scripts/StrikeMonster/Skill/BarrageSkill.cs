@@ -82,8 +82,7 @@ namespace StrikeMonster
                             
                             
                             CollisionBehavior(target);
-                            
-//                            Debug.Log("Hit " + particles[i].position.ToString());
+
                         }
                     }
                     
@@ -98,16 +97,16 @@ namespace StrikeMonster
             }
         }
 
-//		Color ColorBasic ( float _a )
-//		{
-//			float x = Mathf.Cos( _a );
-//			float y = Mathf.Cos( _a + Mathf.PI/2);
-//			float z = x * y ;
-//			float r = x * 0.5f + 0.5f;
-//			float g = y * 0.5f + 0.5f;
-//			float b = z * 0.5f + 0.5f;
-//			return new Color( r, g, b );
-//		}
+        private void Fire (Vector3 _direction)
+        {
+            if (emitter)
+            {
+                emitter.Emit(transform.position, _direction.normalized * speed, emitterParticleSize, lifeTime, normalColor);
+            }
+        }
+        
+
+
 	}
 
 
