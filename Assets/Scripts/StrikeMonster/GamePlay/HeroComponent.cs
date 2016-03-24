@@ -109,7 +109,7 @@ namespace StrikeMonster
                 {
                     m_friendlySkill.Targets = null;
                 }
-                else
+                else if(coll.GetComponent<HeroComponent>())
                 {
                     if(m_friendlySkill != null)
                     {
@@ -132,7 +132,7 @@ namespace StrikeMonster
 
             }
 
-//            Debug.Log("[OnTriggerEnter2D] Trigger!" + coll.gameObject.name);
+            Debug.Log("[OnTriggerEnter2D] Trigger!" + coll.gameObject.name);
             
         }
 
@@ -149,7 +149,6 @@ namespace StrikeMonster
 
 
         }
-
 
     }
 

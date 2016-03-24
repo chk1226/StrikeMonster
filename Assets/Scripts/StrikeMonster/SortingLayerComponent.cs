@@ -33,7 +33,7 @@ namespace StrikeMonster
 		}
 
 		//--------------------------------------------------------------------------------
-		protected void SetLayer()
+		public void SetLayer()
 		{
 			Renderer[] renderer_list = gameObject.GetComponentsInChildren<Renderer>();
 			for (int i = 0; i < renderer_list.Length; ++i)
