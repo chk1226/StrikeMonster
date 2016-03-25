@@ -8,7 +8,7 @@ namespace StrikeMonster
 
     public class RaySkill : BaseSkill {
 
-        public float[] hitTime;
+        private float[] hitTime;
         private bool waitFire = false;
 
         public override void Config(SkillInfo skillInfo)

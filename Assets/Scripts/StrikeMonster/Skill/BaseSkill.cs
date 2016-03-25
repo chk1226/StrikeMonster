@@ -80,9 +80,13 @@ namespace StrikeMonster
                 SwitchEndFire();
             }
 
-            OnFixedUpdate();
+            if(State != SkillState.Ready)
+            {
+                OnFixedUpdate();
+                
+                DectionParticleCollision2D();
 
-            DectionParticleCollision2D();
+            }
 
             if (State == SkillState.EndFire)
             {
