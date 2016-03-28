@@ -56,7 +56,6 @@ namespace StrikeMonster
             public int CDTime;
             public float CDLocPosX;
             public float CDLocPosY;
-//            public bool AutoDestory;
             public float Speed;
             public int LineNumber;
             public int WaveNumber;
@@ -66,7 +65,9 @@ namespace StrikeMonster
             public float NormalColorG;
             public float NormalColorB;
             public float Damage;
-//            public bool EnableEmission;
+            public float RotationDeg;
+            public float Size;
+
 
         }
 
@@ -88,6 +89,13 @@ namespace StrikeMonster
 			public List<PrototypeHeroInfo> HeroInfoList;
             public List<PrototypeWaveInfo> WaveInfoList;
 
+
+            public PrototypeConfig()
+            {
+                this.HeroInfoList = new List<PrototypeHeroInfo>();
+                this.WaveInfoList = new List<PrototypeWaveInfo>();
+            }
+
 		}
 
 		public PrototypeConfig Config;
@@ -95,7 +103,11 @@ namespace StrikeMonster
 		//--------------------------------------------------------------------------------
 		private bool Initialize()
 		{
-			Deserialize("Config/Config");
+            m_Instance.Config = new PrototypeConfig();
+
+            Deserialize("Config/Hero");
+            Deserialize("Config/Level_1");
+            
 			
 			return true;
 		}
@@ -108,7 +120,16 @@ namespace StrikeMonster
 				TextAsset text = Resources.Load<TextAsset>(fileName);
 				if (null != text)
 				{
-					m_Instance.Config = Newtonsoft.Json.JsonConvert.DeserializeObject<PrototypeConfig>(text.text);
+                    PrototypeConfig reg = Newtonsoft.Json.JsonConvert.DeserializeObject<PrototypeConfig>(text.text);
+
+                    if(fileName.Contains("Hero"))
+                    {
+                        m_Instance.Config.HeroInfoList = reg.HeroInfoList;
+                    }
+                    else
+                    {
+                        m_Instance.Config.WaveInfoList = reg.WaveInfoList;
+                    }
 					return true;
 				}
 			}

@@ -1,0 +1,151 @@
+{
+  "WaveInfoList": [
+  	{
+  		"EnemyList" :[
+  			{
+  				"EnemyType": 1,
+		    	"pos_x": 61,
+		    	"pos_y": 200,
+	      	"ImgSrc": "ms_637",
+	      	"Hp": 1500000,
+	      	"EnemySkill": [
+	      		{
+                "SkillName":"HomingSkill",
+                "CDTime": 1,
+                "CDLocPosX": -145,
+                "CDLocPosY": -148,
+                "WaveNumber": 1,
+                "NormalColorR": 1.0,
+                "NormalColorG": 0.0,
+                "NormalColorB": 0.0,
+                "Damage": 1,
+                "LineNumber": 5,
+                "WaveNumber": 4,
+                "IntervalTime": 0.5,
+                "LifeTime": 5,
+	      		}
+
+	      	]
+  			},
+        {
+          "EnemyType": 0,
+            "pos_x": 41,
+            "pos_y": -74,
+              "ImgSrc": "ms_016",
+              "Hp": 10000,
+              "EnemySkill": [
+              {
+                "SkillName":"BarrageSkill",
+                "Damage": 1,
+                "CDTime": 2,
+                "CDLocPosX": -45,
+                "CDLocPosY": 45,
+                "Speed": 8,
+                "LineNumber": 20,
+                "WaveNumber": 3,
+                "IntervalTime": 0.5,
+                "LifeTime": 2,
+                "NormalColorR": 1.0,
+                "NormalColorG": 0.0,
+                "NormalColorB": 0.0,
+
+              }
+
+            ]
+        },
+  			
+
+  		]
+  	}
+
+  ],
+
+
+
+	"RegEnemyList" :[
+		{
+			"EnemyType": 0,
+	    	"pos_x": 140,
+	    	"pos_y": 330,
+	      	"ImgSrc": "ms_016",
+	      	"Hp": 10000,
+	      	"EnemySkill": [
+      		{
+      			"SkillName":"BarrageSkill",
+      			"Damage": 1,
+      			"CDTime": 2,
+      			"CDLocPosX": -45,
+      			"CDLocPosY": 45,
+      			"Speed": 8,
+      			"LineNumber": 20,
+      			"WaveNumber": 3,
+      			"IntervalTime": 0.5,
+      			"LifeTime": 2,
+      			"NormalColorR": 1.0,
+      			"NormalColorG": 0.0,
+      			"NormalColorB": 0.0,
+
+      		}
+
+      	]
+		},
+		{
+			"EnemyType": 0,
+	    	"pos_x": -200,
+	    	"pos_y": 330,
+	      	"ImgSrc": "ms_038",
+	      	"Hp": 10000,
+	      	"EnemySkill": [
+      		{
+      			"SkillName":"RaySkill",
+      			"Damage": 100,
+      			"CDTime": 1,
+      			"CDLocPosX": -45,
+      			"CDLocPosY": 45,
+      			"LifeTime": 1,
+      			"NormalColorR": 1.0,
+      			"NormalColorG": 0.0,
+      			"NormalColorB": 0.0,
+      		}
+
+      	]
+		},
+    {
+      "EnemyList" :[
+        {
+          "EnemyType": 1,
+          "pos_x": 0,
+          "pos_y": 200,
+            "ImgSrc": "ms_637",
+            "Hp": 1500000,
+            "EnemySkill": [
+              {
+                "SkillName":"DamageWallSkill",
+                "CDTime": 1,
+                "CDLocPosX": -145,
+                "CDLocPosY": -148,
+                "WaveNumber": 1,
+                "NormalColorR": 1.0,
+                "NormalColorG": 0.0,
+                "NormalColorB": 0.0,
+                "LifeTime": 1.5,
+                "Damage": 100,
+              },
+              {
+                "SkillName":"ExplosionSkill",
+                "Damage": 100000,
+                "LifeTime": 3,
+              }
+            ]
+        }
+      ]
+    }
+		
+
+	]
+
+
+
+
+
+}

@@ -11,7 +11,6 @@ namespace StrikeMonster
         public string SkillName;
         public int CDTime;
         public Vector2 CDLocPos;
-//        public bool AutoDestory;
         public float Speed;
         public int LineNumber;
         public int WaveNumber;
@@ -19,22 +18,24 @@ namespace StrikeMonster
         public float IntervalTime;
         public Color NormalColor;
         public float Damage;
-//        public bool EnableEmission;
+        public float Size;
+        public float RotationDeg;
 
         public SkillInfo(PrototypeSystem.PrototypeSkill skill)
         {
             SkillName = skill.SkillName;
             CDTime = skill.CDTime;
-//            AutoDestory = skill.AutoDestory;
             Speed = skill.Speed;
             LineNumber = skill.LineNumber;
             WaveNumber = skill.WaveNumber;
             IntervalTime = skill.IntervalTime;
             LifeTime = skill.LifeTime;
-//            EnableEmission = skill.EnableEmission;
             NormalColor = new Color(skill.NormalColorR, skill.NormalColorG, skill.NormalColorB);
             CDLocPos = new Vector2(skill.CDLocPosX, skill.CDLocPosY);
             Damage = skill.Damage;
+            Size = skill.Size;
+            RotationDeg = skill.RotationDeg;
+
         }
     }
 

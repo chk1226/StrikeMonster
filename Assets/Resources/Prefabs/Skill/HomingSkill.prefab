@@ -78,8 +78,8 @@ MonoBehaviour:
   State: 0
   CDProperty: {fileID: 11463460}
   MissilePrefab: {fileID: 130140, guid: f9e5be016af20471c9362fd9dfdd80d5, type: 2}
-  RotationSpeed: 5
-  SpeedValue: .200000003
+  RotationSpeed: 6
+  SpeedValue: .300000012
 --- !u!114 &11463460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,11 +157,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: SpeedValue
-      value: .200000003
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: RotationSpeed
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

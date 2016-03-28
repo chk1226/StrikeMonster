@@ -79,6 +79,7 @@ GameObject:
   - 224: {fileID: 22484048}
   - 222: {fileID: 22218654}
   - 114: {fileID: 11407254}
+  - 114: {fileID: 11470424}
   m_Layer: 5
   m_Name: cd
   m_TagString: Untagged
@@ -232,6 +233,20 @@ MonoBehaviour:
   m_TextIndicatorComponent: {fileID: 11407254}
   m_IsAnimate: 1
   m_IsRenderInvert: 0
+--- !u!114 &11470424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &11497870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -508,7 +523,7 @@ ParticleSystem:
     enabled: 0
     m_Type: 0
     rate:
-      scalar: 400
+      scalar: 350
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1561,7 +1576,7 @@ ParticleSystem:
     enabled: 0
     m_Type: 0
     rate:
-      scalar: 400
+      scalar: 350
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2614,7 +2629,7 @@ ParticleSystem:
     enabled: 0
     m_Type: 0
     rate:
-      scalar: 400
+      scalar: 350
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3667,7 +3682,7 @@ ParticleSystem:
     enabled: 0
     m_Type: 0
     rate:
-      scalar: 400
+      scalar: 350
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4467,7 +4482,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4479,7 +4494,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1859172451
+  m_SortingLayerID: 613350295
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MaxParticleSize: .5
@@ -4503,7 +4518,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4515,7 +4530,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1859172451
+  m_SortingLayerID: 613350295
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MaxParticleSize: .5
@@ -4539,7 +4554,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4551,7 +4566,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1859172451
+  m_SortingLayerID: 613350295
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MaxParticleSize: .5
@@ -4575,7 +4590,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -4587,7 +4602,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1859172451
+  m_SortingLayerID: 613350295
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MaxParticleSize: .5

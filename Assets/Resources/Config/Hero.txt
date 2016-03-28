@@ -1,0 +1,45 @@
+{
+  "HeroInfoList": [
+    {
+    	"pos_x": -190,
+    	"pos_y": -198,
+    	"Name": "SwordMantis",
+    	"ImgSrc": "Portrait_SwordMantis",
+    	"Hp": 1000,
+    	"Attack": 1,
+    	"Speed": 10000,
+      "FriendlySkill":{
+        "SkillName":"RaySkill",
+        "Damage": 100,
+        "LifeTime": 1,
+        "NormalColorR": 1.0,
+        "NormalColorG": 0.0,
+        "NormalColorB": 0.0,
+        "Size": 1
+      }
+    },
+    {
+    	"pos_x": -196,
+    	"pos_y": -40,
+      "Name": "Lana",
+      "ImgSrc": "Portrait_Lana",
+		  "Hp": 1500,
+      "Attack": 1,
+    	"Speed": 10000,
+    	"FriendlySkill":{
+        "SkillName":"RaySkill",
+        "Damage": 100,
+        "CDLocPosX": -45,
+        "CDLocPosY": 45,
+        "LifeTime": 1,
+        "NormalColorR": 1.0,
+        "NormalColorG": 0.0,
+        "NormalColorB": 0.0,
+        "RotationDeg": 45,
+        "Size": 2
+      }
+    }
+  ]
+
+
+}

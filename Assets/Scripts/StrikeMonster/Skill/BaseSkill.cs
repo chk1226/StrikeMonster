@@ -16,6 +16,8 @@ namespace StrikeMonster
         protected float intervalTime = 0.5f;
         protected float hitIntervalTime = 0.2f;
         protected Color normalColor;
+        protected float size;
+        protected float rotationDeg;
         [SerializeField]
         protected ParticleSystem emitter;
         [SerializeField]
@@ -55,6 +57,9 @@ namespace StrikeMonster
             normalColor = skillInfo.NormalColor;
             damage = skillInfo.Damage;
             intervalTime = skillInfo.IntervalTime;
+            size = skillInfo.Size;
+            rotationDeg = skillInfo.RotationDeg;
+
 
             if(CDProperty)
             {
