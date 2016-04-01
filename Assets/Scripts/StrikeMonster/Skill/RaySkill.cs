@@ -8,7 +8,7 @@ namespace StrikeMonster
 
     public class RaySkill : BaseSkill {
 
-        private List<float> hitTime;
+        private List<List<float>> hitTime;
         private bool waitFire = false;
 
         public override void Config(SkillInfo skillInfo)
@@ -18,7 +18,7 @@ namespace StrikeMonster
 
             if(rayEmitter != null && rayEmitter.Count != 0)
             {
-                hitTime = new List<float>();
+                hitTime = new List<List<float>>();
 
                 float angle = 360 / rayEmitter.Count;
                 Quaternion rotation = Quaternion.Euler(90, 0, 0);
@@ -42,13 +42,31 @@ namespace StrikeMonster
 
             if (Targets != null)
             {
-                for(int i = 0; i < Targets.Count; i++)
+                for(int i = 0; i < rayEmitter.Count; i++)
                 {
-                    hitTime.Add(0);
+                    hitTime.Add(new List<float>());
+                    for(int j = 0; j < Targets.Count; j++)
+                    {
+                        hitTime[i].Add(0);
+                    }
                 }
 
             }
            
+        }
+
+        private void SubHitTime(float f)
+        {
+            for (int i = 0; i < hitTime.Count; i++)
+            {
+                var list = hitTime[i];
+                for(int j = 0; j < list.Count; j++)
+                {
+                    list[j] -= f;
+                }
+
+
+            }
         }
 
 
@@ -112,7 +130,8 @@ namespace StrikeMonster
                 return;
             }
 
-            ParticleSystem.Particle[] particles = new ParticleSystem.Particle[rayEmitter[0].particleCount];
+            ParticleSystem.Particle[] particles = new ParticleSystem.Particle[rayEmitter[1].particleCount];
+            Vector3 pSize = Vector3.zero;
 
             for(int i = 0; i < rayEmitter.Count; i++)
             {
@@ -130,24 +149,31 @@ namespace StrikeMonster
                     {
                         var target = Targets[index];
                         var collider2D = target.gameObject.GetComponent<Collider2D>();
-                        if(collider2D != null)
+                        if(collider2D)
                         {
-                            var p_pos = particles[j].position;
-                            p_pos.z = 0;
+//                            var p_pos = particles[j].position;
+//                            p_pos.z = 0;
+//
+//                            var t_pos = collider2D.bounds.center;
+//                            t_pos.z = 0;
+//
+//                            var dis = Mathf.Pow(p_pos.x - t_pos.x, 2) + Mathf.Pow(p_pos.y - t_pos.y, 2);
 
-                            var t_pos = collider2D.bounds.center;
-                            t_pos.z = 0;
 
-                            var dis = Mathf.Pow(p_pos.x - t_pos.x, 2) + Mathf.Pow(p_pos.y - t_pos.y, 2);
+//                            if( dis <= Mathf.Pow(collider2D.bounds.extents.x + particles[j].size/2, 2))
 
-
-                            if( dis <= Mathf.Pow(collider2D.bounds.extents.x + particles[j].size/2, 2))
+                            pSize.x = particles[j].size;
+                            pSize.y = particles[j].size;
+                            var pPos = particles[j].position;
+                            pPos.z = 0;
+                            Bounds pBounds = new Bounds(pPos, pSize);
+                            if(IntersectsRectToRect(collider2D.bounds, pBounds))
                             {
 
-                                if(hitTime[index] <= 0)
+                                if(hitTime[i][index] <= 0)
                                 {
                                     CollisionBehavior(target);
-                                    hitTime[index] = hitIntervalTime;
+                                    hitTime[i][index] = hitIntervalTime;
                                     continue;
 
                                 }
@@ -164,11 +190,8 @@ namespace StrikeMonster
 
             }
 
+            SubHitTime(Time.fixedTime);
 
-            for(int i = 0; i < hitTime.Count; i++)
-            {
-                hitTime[i] -= Time.fixedTime;
-            }
 
 
         }

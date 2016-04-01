@@ -78,7 +78,7 @@ namespace StrikeMonster
                     if (targetCollider)
                     {
                         Vector2 centerPos = new Vector2(this.transform.position.x, this.transform.position.y);
-                        if (Intersects(centerPos, Radius, targetCollider.bounds))
+                        if (IntersectsCircleToRect(centerPos, Radius, targetCollider.bounds))
                         {
                             CollisionBehavior(Targets [i]);
 
@@ -109,26 +109,7 @@ namespace StrikeMonster
 
 
 
-        private bool Intersects(Vector2 circlePos, float circleRadius, Bounds rect)
-        {
-            Vector2 distance = new Vector2(Mathf.Abs(circlePos.x - rect.center.x), Mathf.Abs(circlePos.y - rect.center.y));
 
-            if (distance.x > (rect.extents.x + circleRadius))
-                return false;
-            if (distance.y > (rect.extents.y + circleRadius))
-                return false;
-
-
-            if (distance.x <= rect.extents.x)
-                return true;
-            if (distance.y <= rect.extents.y)
-                return true;
-
-            float cornerDistance = Mathf.Pow(distance.x - rect.extents.x, 2) + Mathf.Pow(distance.y - rect.extents.y, 2);
-
-            return cornerDistance <= Mathf.Pow(circleRadius, 2);
-
-        }
 
     }
 

@@ -35,7 +35,7 @@
         "NormalColorR": 1.0,
         "NormalColorG": 0.0,
         "NormalColorB": 0.0,
-        "RotationDeg": 45,
+        "RotationDeg": 0,
         "Size": 2
       }
     }

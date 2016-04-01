@@ -36,7 +36,7 @@
               "EnemySkill": [
               {
                 "SkillName":"BarrageSkill",
-                "Damage": 1,
+                "Damage": 1000,
                 "CDTime": 2,
                 "CDLocPosX": -45,
                 "CDLocPosY": 45,
