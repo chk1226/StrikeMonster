@@ -1,0 +1,118 @@
+
+SwordMantis.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: true
+  xy: 269, 32
+  size: 96, 89
+  orig: 96, 89
+  offset: 0, 0
+  index: -1
+Cape1
+  rotate: true
+  xy: 336, 132
+  size: 158, 108
+  orig: 158, 137
+  offset: 0, 29
+  index: -1
+Cape2
+  rotate: false
+  xy: 2, 278
+  size: 309, 232
+  orig: 313, 232
+  offset: 4, 0
+  index: -1
+FannyPack
+  rotate: true
+  xy: 463, 417
+  size: 93, 35
+  orig: 93, 35
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 446, 112
+  size: 55, 80
+  orig: 55, 80
+  offset: 0, 0
+  index: -1
+LForeArm
+  rotate: true
+  xy: 2, 14
+  size: 67, 113
+  orig: 67, 113
+  offset: 0, 0
+  index: -1
+LHand
+  rotate: false
+  xy: 2, 83
+  size: 263, 45
+  orig: 263, 45
+  offset: 0, 0
+  index: -1
+LShoulder1
+  rotate: true
+  xy: 446, 194
+  size: 82, 63
+  orig: 82, 63
+  offset: 0, 0
+  index: -1
+LShoulder2
+  rotate: false
+  xy: 446, 323
+  size: 64, 60
+  orig: 64, 60
+  offset: 0, 0
+  index: -1
+RCalf
+  rotate: true
+  xy: 117, 24
+  size: 57, 104
+  orig: 57, 104
+  offset: 0, 0
+  index: -1
+RFoot
+  rotate: true
+  xy: 446, 278
+  size: 43, 64
+  orig: 43, 64
+  offset: 0, 0
+  index: -1
+RHand
+  rotate: true
+  xy: 2, 130
+  size: 47, 309
+  orig: 49, 310
+  offset: 2, 1
+  index: -1
+RKnee
+  rotate: false
+  xy: 223, 31
+  size: 44, 50
+  orig: 44, 50
+  offset: 0, 0
+  index: -1
+RThigh
+  rotate: false
+  xy: 313, 385
+  size: 148, 125
+  orig: 148, 125
+  offset: 0, 0
+  index: -1
+RUpperArm
+  rotate: false
+  xy: 313, 292
+  size: 131, 91
+  orig: 132, 91
+  offset: 1, 0
+  index: -1
+Spark
+  rotate: false
+  xy: 2, 179
+  size: 332, 97
+  orig: 332, 97
+  offset: 0, 0
+  index: -1

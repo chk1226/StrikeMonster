@@ -1,0 +1,230 @@
+
+Lana.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BackHairA
+  rotate: false
+  xy: 20, 209
+  size: 102, 143
+  orig: 102, 143
+  offset: 0, 0
+  index: -1
+BackHairB
+  rotate: false
+  xy: 352, 167
+  size: 62, 112
+  orig: 62, 112
+  offset: 0, 0
+  index: -1
+Body
+  rotate: false
+  xy: 124, 231
+  size: 104, 121
+  orig: 104, 121
+  offset: 0, 0
+  index: -1
+Cape
+  rotate: true
+  xy: 441, 328
+  size: 141, 69
+  orig: 141, 69
+  offset: 0, 0
+  index: -1
+ClosedEye
+  rotate: true
+  xy: 495, 474
+  size: 36, 15
+  orig: 36, 15
+  offset: 0, 0
+  index: -1
+CoreG
+  rotate: true
+  xy: 124, 113
+  size: 116, 104
+  orig: 116, 104
+  offset: 0, 0
+  index: -1
+FannyPack
+  rotate: false
+  xy: 82, 23
+  size: 28, 43
+  orig: 28, 43
+  offset: 0, 0
+  index: -1
+FrontHairL
+  rotate: false
+  xy: 417, 2
+  size: 27, 74
+  orig: 27, 74
+  offset: 0, 0
+  index: -1
+FrontHairM
+  rotate: false
+  xy: 400, 284
+  size: 24, 54
+  orig: 24, 54
+  offset: 0, 0
+  index: -1
+FrontHairR
+  rotate: false
+  xy: 218, 32
+  size: 91, 24
+  orig: 91, 24
+  offset: 0, 0
+  index: -1
+Halo
+  rotate: false
+  xy: 426, 255
+  size: 71, 71
+  orig: 73, 73
+  offset: 1, 1
+  index: -1
+Head
+  rotate: false
+  xy: 416, 209
+  size: 50, 44
+  orig: 50, 44
+  offset: 0, 0
+  index: -1
+Hip
+  rotate: false
+  xy: 345, 78
+  size: 105, 87
+  orig: 105, 87
+  offset: 0, 0
+  index: -1
+LBreast
+  rotate: true
+  xy: 416, 184
+  size: 23, 47
+  orig: 23, 47
+  offset: 0, 0
+  index: -1
+LForeArm
+  rotate: true
+  xy: 468, 221
+  size: 32, 26
+  orig: 32, 26
+  offset: 0, 0
+  index: -1
+LHand
+  rotate: false
+  xy: 20, 2
+  size: 60, 64
+  orig: 60, 64
+  offset: 0, 0
+  index: -1
+LLeg
+  rotate: true
+  xy: 275, 471
+  size: 39, 218
+  orig: 39, 218
+  offset: 0, 0
+  index: -1
+LSkirtBack
+  rotate: true
+  xy: 328, 26
+  size: 50, 87
+  orig: 50, 87
+  offset: 0, 0
+  index: -1
+RArm
+  rotate: true
+  xy: 218, 58
+  size: 20, 108
+  orig: 20, 108
+  offset: 0, 0
+  index: -1
+RBreast
+  rotate: true
+  xy: 112, 25
+  size: 16, 35
+  orig: 16, 35
+  offset: 0, 0
+  index: -1
+RBreast2
+  rotate: true
+  xy: 499, 318
+  size: 8, 11
+  orig: 8, 11
+  offset: 0, 0
+  index: -1
+RLeg
+  rotate: true
+  xy: 275, 394
+  size: 75, 164
+  orig: 75, 164
+  offset: 0, 0
+  index: -1
+RShoulder
+  rotate: true
+  xy: 149, 21
+  size: 20, 27
+  orig: 20, 27
+  offset: 0, 0
+  index: -1
+RThumb
+  rotate: false
+  xy: 218, 93
+  size: 10, 18
+  orig: 10, 18
+  offset: 0, 0
+  index: -1
+Skirt
+  rotate: false
+  xy: 2, 354
+  size: 271, 156
+  orig: 271, 156
+  offset: 0, 0
+  index: -1
+SkirtBack
+  rotate: false
+  xy: 275, 340
+  size: 159, 52
+  orig: 159, 52
+  offset: 0, 0
+  index: -1
+Staff
+  rotate: true
+  xy: 2, 27
+  size: 325, 16
+  orig: 332, 16
+  offset: 7, 0
+  index: -1
+StaffTop
+  rotate: true
+  xy: 230, 80
+  size: 97, 113
+  orig: 97, 113
+  offset: 0, 0
+  index: -1
+WingA
+  rotate: true
+  xy: 230, 281
+  size: 57, 168
+  orig: 60, 169
+  offset: 0, 1
+  index: -1
+WingB
+  rotate: false
+  xy: 118, 43
+  size: 98, 68
+  orig: 98, 68
+  offset: 0, 0
+  index: -1
+WingC
+  rotate: false
+  xy: 20, 68
+  size: 96, 139
+  orig: 104, 139
+  offset: 0, 0
+  index: -1
+WingD
+  rotate: false
+  xy: 230, 179
+  size: 120, 100
+  orig: 120, 100
+  offset: 0, 0
+  index: -1
