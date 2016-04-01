@@ -97,15 +97,16 @@
 	      	"Hp": 10000,
 	      	"EnemySkill": [
       		{
-      			"SkillName":"RaySkill",
-      			"Damage": 100,
-      			"CDTime": 1,
-      			"CDLocPosX": -45,
-      			"CDLocPosY": 45,
-      			"LifeTime": 1,
-      			"NormalColorR": 1.0,
-      			"NormalColorG": 0.0,
-      			"NormalColorB": 0.0,
+            "SkillName":"RaySkill",
+            "Damage": 100,
+            "CDLocPosX": -45,
+            "CDLocPosY": 45,
+            "LifeTime": 1,
+            "NormalColorR": 1.0,
+            "NormalColorG": 0.0,
+            "NormalColorB": 0.0,
+            "RotationDeg": 0,
+            "Size": 2
       		}
 
       	]
@@ -135,7 +136,20 @@
                 "SkillName":"ExplosionSkill",
                 "Damage": 100000,
                 "LifeTime": 3,
+              },
+              {
+                "SkillName":"RaySkill",
+                "Damage": 100,
+                "CDLocPosX": -45,
+                "CDLocPosY": 45,
+                "LifeTime": 1,
+                "NormalColorR": 1.0,
+                "NormalColorG": 0.0,
+                "NormalColorB": 0.0,
+                "RotationDeg": 0,
+                "Size": 2
               }
+
             ]
         }
       ]

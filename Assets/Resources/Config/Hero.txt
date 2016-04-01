@@ -27,16 +27,17 @@
       "Attack": 1,
     	"Speed": 10000,
     	"FriendlySkill":{
-        "SkillName":"RaySkill",
-        "Damage": 100,
-        "CDLocPosX": -45,
-        "CDLocPosY": 45,
-        "LifeTime": 1,
-        "NormalColorR": 1.0,
-        "NormalColorG": 0.0,
-        "NormalColorB": 0.0,
-        "RotationDeg": 0,
-        "Size": 2
+          "SkillName":"DirectionRaySkill",
+          "Damage": 100,
+          "CDLocPosX": -45,
+          "CDLocPosY": 45,
+          "LifeTime": 0.36,
+          "IntervalTime": 0.4,
+          "NormalColorR": 1.0,
+          "NormalColorG": 0.0,
+          "NormalColorB": 0.0,
+          "WaveNumber": 5,
+          "Size": 1
       }
     }
   ]

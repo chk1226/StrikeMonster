@@ -112,13 +112,15 @@ namespace StrikeMonster
                 return;
             }
 
-            foreach(var ray in rayEmitter)
+            for(int i = 0; i < rayEmitter.Count; i++)
             {
+                var ray = rayEmitter[i];
                 if(ray.particleCount != 0)
                 {
                     return;
                 }
             }
+
 
             base.RecoveryReady();
         }
@@ -151,17 +153,6 @@ namespace StrikeMonster
                         var collider2D = target.gameObject.GetComponent<Collider2D>();
                         if(collider2D)
                         {
-//                            var p_pos = particles[j].position;
-//                            p_pos.z = 0;
-//
-//                            var t_pos = collider2D.bounds.center;
-//                            t_pos.z = 0;
-//
-//                            var dis = Mathf.Pow(p_pos.x - t_pos.x, 2) + Mathf.Pow(p_pos.y - t_pos.y, 2);
-
-
-//                            if( dis <= Mathf.Pow(collider2D.bounds.extents.x + particles[j].size/2, 2))
-
                             pSize.x = particles[j].size;
                             pSize.y = particles[j].size;
                             var pPos = particles[j].position;
