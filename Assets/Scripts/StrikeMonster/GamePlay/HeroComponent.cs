@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace StrikeMonster
 {
-    public class HeroComponent : UnitComponent {
+    public class HeroComponent : UnitComponent, IRestFriendlySkill {
 
         public string Name;
         public Rigidbody2D Rigidbody_2D;
@@ -126,7 +126,7 @@ namespace StrikeMonster
                         {
                             enemy_list.Add( e as UnitComponent );
                         }
-                        
+
                         m_friendlySkill.Targets = enemy_list;
                         if(m_friendlySkill.DoFire())
                         {

@@ -8,13 +8,10 @@ namespace StrikeMonster
     public class BottomUIComponent : MonoBehaviour {
 
         public List<GameObject> HeroSlotList;
+        public UnityEngine.UI.Text OurTurnCounterText;
 
+        private string m_OurTurnCounterFormat = string.Empty;
 
-
-    	// Use this for initialization
-    	void Start () {
-    	
-    	}
     	
     	// Update is called once per frame
     	void Update () {
@@ -24,9 +21,13 @@ namespace StrikeMonster
         public void Initialize()
         {
             InitializeHeroSlot();
+            if(OurTurnCounterText)
+            {
+                m_OurTurnCounterFormat = OurTurnCounterText.text;
+            }
         }
         
-        public void InitializeHeroSlot()
+        private void InitializeHeroSlot()
         {
             if (HeroSlotList == null)
             {
@@ -38,6 +39,19 @@ namespace StrikeMonster
             {
                 return;
             }
+
+
+            for(int i = 0; i < HeroSlotList.Count; i ++)
+            {
+                var cd = HeroSlotList[i].GetComponent<CDPropertyComponent>();
+                if(cd)
+                {
+                    cd.EnableCDText(false);
+                }
+                
+            }
+
+
 
             for (int i = 0; i < TeamComponent.Instance.Team.Count; i ++)
             {
@@ -59,21 +73,20 @@ namespace StrikeMonster
                     else
                     {
                         cd.EnableCDText(false);
-                        cd.enabled = false;
                     }
                 }
             }
 
         }
 
-//        public void UpdateSlot()
-//        {
-//            for (int i = 0; i < HeroSlotList.Count; i ++)
-//            {
-//                var cdText = HeroSlotList[i].GetComponent<UnityEngine.UI.Text>();
-//                var hero = TeamComponent.Instance.Team[i] as HeroComponent;
-//            }
-//        }
+        public void UpdateOurActiveCounter()
+        {
+            if(m_OurTurnCounterFormat != string.Empty)
+            {
+                OurTurnCounterText.text = string.Format(m_OurTurnCounterFormat, GameFlowComponent.Instance.OurTurnCounter);
+
+            }
+        }
 
 
     }

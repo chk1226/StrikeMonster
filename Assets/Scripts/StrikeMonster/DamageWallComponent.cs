@@ -4,7 +4,7 @@ using System.Collections;
 namespace StrikeMonster
 {
 
-    public class DamageWallComponent : MonoBehaviour {
+    public class DamageWallComponent : MonoBehaviour, IReduceCD {
 
         private int m_turn;
         private float m_damage;
@@ -56,24 +56,22 @@ namespace StrikeMonster
             }
         }
 
-
-        public void ReduceTurn()
+        public void ReduceCD ()
         {
             if (m_turn > 0)
             {
                 m_turn -= 1;
-
+                
             } 
             else
             {
-//                GetComponentsInChildren<>
-
+                
                 foreach(Transform child in this.transform)
                 {
                     Destroy(child.gameObject);
                 }
-
-
+                
+                
                 Destroy(this);
             }
         }

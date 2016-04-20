@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace StrikeMonster
 {
-    public class CDPropertyComponent : IndicatorPropertyComponent {
+    public class CDPropertyComponent : IndicatorPropertyComponent, IReduceCD {
 
         protected override string TextOutput()
         {

@@ -63,10 +63,10 @@ namespace StrikeMonster
 
         public void DamageWallReduceTurn()
         {
-            LeftWall.BroadcastMessage("ReduceTurn", SendMessageOptions.DontRequireReceiver);
-            RightWall.BroadcastMessage("ReduceTurn", SendMessageOptions.DontRequireReceiver);
-            TopWall.BroadcastMessage("ReduceTurn", SendMessageOptions.DontRequireReceiver);
-            BottomWall.BroadcastMessage("ReduceTurn", SendMessageOptions.DontRequireReceiver);
+            LeftWall.BroadcastMessage(InterfaceMehodName.ReduceCD, SendMessageOptions.DontRequireReceiver);
+            RightWall.BroadcastMessage(InterfaceMehodName.ReduceCD, SendMessageOptions.DontRequireReceiver);
+            TopWall.BroadcastMessage(InterfaceMehodName.ReduceCD, SendMessageOptions.DontRequireReceiver);
+            BottomWall.BroadcastMessage(InterfaceMehodName.ReduceCD, SendMessageOptions.DontRequireReceiver);
             
         }
 

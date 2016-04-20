@@ -11,6 +11,7 @@ namespace StrikeMonster
 //        public TopUIComponent TopUI;
         public PlayMakerFSM GameFlowFSM;
 
+        public int OurTurnCounter = 0;
 
         public readonly string DoneEvent = "Done";
         public readonly string WaitHeroBattleEndEvent = "WaitHeroBattleEnd";
@@ -55,7 +56,7 @@ namespace StrikeMonster
 
         public void HandleEnemyRoundStart()
         {
-            WaveComponent.Instance.EnemyLayer.BroadcastMessage("ReduceCD", SendMessageOptions.DontRequireReceiver);
+            WaveComponent.Instance.EnemyLayer.BroadcastMessage(InterfaceMehodName.ReduceCD, SendMessageOptions.DontRequireReceiver);
         }
 
 
@@ -100,9 +101,23 @@ namespace StrikeMonster
 
         public void HandlePlayerRoundStart()
         {
+            OurTurnCounter++;
+            BottomUI.UpdateOurActiveCounter();
+
             TeamComponent.Instance.HandleHerosTrigger(true);
-            TeamComponent.Instance.HeroLayer.BroadcastMessage("RestFriendlySkill", SendMessageOptions.DontRequireReceiver);
+            TeamComponent.Instance.HeroLayer.BroadcastMessage(InterfaceMehodName.RestFriendlySkill, SendMessageOptions.DontRequireReceiver);
+
             Wall.DamageWallReduceTurn();
+
+            if(OurTurnCounter > 1)
+            {
+                // reduce hero action skill cd
+                for (int i = 0; i < BottomUI.HeroSlotList.Count; i ++)
+                {
+                    BottomUI.HeroSlotList[i].SendMessage(InterfaceMehodName.ReduceCD, SendMessageOptions.DontRequireReceiver);
+                }
+
+            }
         }
 
 
