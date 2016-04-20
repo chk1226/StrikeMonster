@@ -159,14 +159,6 @@ namespace StrikeMonster
         }
 
 
-        public void RestHerosFriendlySkill()
-        {
-            foreach(var hero_obj in m_Team)
-            {
-                var hero = hero_obj as HeroComponent;
-                hero.CanFriendlySkill = true;
-            }
-        }
 
         public bool HerosFriendlySkillsReady()
         {

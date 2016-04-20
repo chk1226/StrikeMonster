@@ -42,11 +42,38 @@ namespace StrikeMonster
             for (int i = 0; i < TeamComponent.Instance.Team.Count; i ++)
             {
                 var hero = TeamComponent.Instance.Team[i] as HeroComponent;
+
+                // set icon
                 var icon = HeroSlotList[i].GetComponent<UnityEngine.UI.Image>();
                 icon.sprite = hero.Icon.sprite;
+
+                // set active skill cd
+                var cd = HeroSlotList[i].GetComponent<CDPropertyComponent>();
+                if(cd)
+                {
+                    if(hero.MaxActiveSkillCD > 0)
+                    {
+                        cd.Initialize(hero.MaxActiveSkillCD, 0, hero.MaxActiveSkillCD);
+                        cd.EnableCDText(true);
+                    }
+                    else
+                    {
+                        cd.EnableCDText(false);
+                        cd.enabled = false;
+                    }
+                }
             }
 
         }
+
+//        public void UpdateSlot()
+//        {
+//            for (int i = 0; i < HeroSlotList.Count; i ++)
+//            {
+//                var cdText = HeroSlotList[i].GetComponent<UnityEngine.UI.Text>();
+//                var hero = TeamComponent.Instance.Team[i] as HeroComponent;
+//            }
+//        }
 
 
     }

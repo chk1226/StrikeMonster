@@ -65,11 +65,13 @@ namespace StrikeMonster
         public string Name;
         public float Speed; 
         public SkillInfo FriendlySkill;
+        public int ActiveSkillCD;
 
         public HeroInfo(PrototypeSystem.PrototypeHeroInfo heroInfo) : base(heroInfo)
         {
             Name = heroInfo.Name;
             Speed = heroInfo.Speed;
+            ActiveSkillCD = heroInfo.ActiveSkillCD;
 
             if (heroInfo.FriendlySkill != null)
             {

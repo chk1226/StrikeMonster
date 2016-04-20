@@ -21,7 +21,7 @@ namespace StrikeMonster
         }
 
         readonly public float ThresholdVelocity = 0.3f;
-        public PlayMakerFSM GameFlowFSM;
+//        public PlayMakerFSM GameFlowFSM;
 
         public bool IsPlayerRound
         {
@@ -69,7 +69,16 @@ namespace StrikeMonster
                     return fsmValue.Value;
                 }
             }
+
+            set{
+                var fsmValue = FsmVariables.GlobalVariables.GetFsmBool("IsBossWave");
+                if(fsmValue != null)
+                {
+                    fsmValue.Value = value;
+                }
+            }
         }
+
 
 
 //		public bool IsSetupWave = false;

@@ -103,14 +103,6 @@ namespace StrikeMonster
             return true;
         }
 
-        public void ReduceSkillsCD()
-        {
-            foreach(var skill in skills)
-            {
-                skill.CDProperty.ReduceCD();
-            }
-
-        }
 
 
 

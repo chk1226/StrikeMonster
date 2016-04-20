@@ -116,7 +116,10 @@ namespace StrikeMonster
         {
         }
 
+        public virtual void HandlRoundEnd()
+        {
 
+        }
 
     }
 

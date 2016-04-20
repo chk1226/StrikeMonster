@@ -16,7 +16,8 @@
         "NormalColorG": 0.0,
         "NormalColorB": 0.0,
         "Size": 1
-      }
+      },
+      "ActiveSkillCD": 3,
     },
     {
     	"pos_x": -196,
@@ -38,7 +39,9 @@
           "NormalColorB": 0.0,
           "WaveNumber": 5,
           "Size": 1
-      }
+      },
+      "ActiveSkillCD": 1,
+
     }
   ]
 

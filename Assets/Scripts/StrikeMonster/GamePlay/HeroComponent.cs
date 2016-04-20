@@ -14,6 +14,12 @@ namespace StrikeMonster
         private BaseSkill m_friendlySkill;
         private float m_Speed;
 
+        public int MaxActiveSkillCD
+        {
+            get;
+            set;
+        }
+
        public override void Initialize (UnitInfo baseInfo)
         {
             var heroInfo = baseInfo as HeroInfo;
@@ -24,6 +30,7 @@ namespace StrikeMonster
                 // base attribute
                 m_Speed = heroInfo.Speed;
                 Name = heroInfo.Name;
+                MaxActiveSkillCD = heroInfo.ActiveSkillCD;
                 this.gameObject.name = Name;
 
                 // friendly skill
@@ -40,7 +47,7 @@ namespace StrikeMonster
                         if(skillCmp)
                         {
                             skillCmp.Config(heroInfo.FriendlySkill);
-                            skillCmp.CDProperty.DisableCDText();
+                            skillCmp.CDProperty.EnableCDText(false);
                             m_friendlySkill = skillCmp;                        
                         }
                         
@@ -148,6 +155,11 @@ namespace StrikeMonster
             }
 
 
+        }
+
+        public void RestFriendlySkill()
+        {
+            CanFriendlySkill = true;
         }
 
     }

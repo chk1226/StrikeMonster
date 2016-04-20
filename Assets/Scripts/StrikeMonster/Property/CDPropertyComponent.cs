@@ -30,11 +30,11 @@ namespace StrikeMonster
             Value = m_MaxValue;
         }
 
-        public void DisableCDText()
+        public void EnableCDText(bool b)
         {
             if (m_TextIndicatorComponent)
             {
-                m_TextIndicatorComponent.gameObject.SetActive(false);
+                m_TextIndicatorComponent.gameObject.SetActive(b);
             }
         }
 

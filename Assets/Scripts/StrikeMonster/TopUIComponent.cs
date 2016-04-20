@@ -9,49 +9,33 @@ namespace StrikeMonster
         public GameObject BossHp;
 
 
-    	// Use this for initialization
-    	void Start () {
-    	
-    	}
-    	
-    	// Update is called once per frame
-    	void Update () {
-    	
-    	}
-
-
-
-
-
-
-        public void EnableBossHp()
+        public void EnableBossHp(bool value)
         {
-
-            var boss = WaveComponent.Instance.Boss;
-
-
-            if (boss)
+            if (value)
             {
-                BossHp.SetActive(true);
-                var bar = BossHp.GetComponentInChildren<IndicatorBarComponent>();
-
-                var hpProperty = boss.GetComponent<HpPropertyComponent>();
-                if (hpProperty)
+                var boss = WaveComponent.Instance.Boss;
+                if (boss)
                 {
-                    hpProperty.IndicatorComponent = bar;
-                    bar.UpdateBar(hpProperty.Ratio);
+                    BossHp.SetActive(true);
+                    var bar = BossHp.GetComponentInChildren<IndicatorBarComponent>();
+                    
+                    var hpProperty = boss.GetComponent<HpPropertyComponent>();
+                    if (hpProperty)
+                    {
+                        hpProperty.IndicatorComponent = bar;
+                        bar.UpdateBar(hpProperty.Ratio);
+                    }
+                    
                 }
 
+            } else
+            {
+                BossHp.SetActive(false);
             }
+
            
         }
-
-
-        public void DisableBossHp()
-        {
-            BossHp.SetActive(false);
-        }
-
+       
 
 
     }

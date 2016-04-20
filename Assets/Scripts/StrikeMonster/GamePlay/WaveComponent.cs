@@ -24,9 +24,7 @@ namespace StrikeMonster
         }
 
         private List<EnemyComponent> m_CurrentEnemy = new List<EnemyComponent>();
-        
 
-        private float enemyAttackIntervalTime = 0.8f;
         private static WaveComponent m_WaveComponent;
         public static WaveComponent Instance
         {
@@ -34,6 +32,7 @@ namespace StrikeMonster
                 return m_WaveComponent;
             }
         }
+
         public EnemyComponent Boss
         {
             get{
@@ -83,7 +82,7 @@ namespace StrikeMonster
 
         }
 
-        public void InitializeEnemy(List<UnitInfo> enemyInfoList)
+        private void InitializeEnemy(List<UnitInfo> enemyInfoList)
         {
             if (enemyInfoList == null)
             {
@@ -124,73 +123,12 @@ namespace StrikeMonster
                         Debug.LogWarning("[InitializeCurrentEnemy] No has EnemyComponent");
                         
                     }
-                    
-                    
-                    
+
                 }
             }
 
-
         }
 
-
-
-        IEnumerator LaunchEnemiesSkill()
-        {
-            foreach(var enemy in CurrentEnemy)
-            {
-                if(enemy.LaunchEnemySkill())
-                {
-                    yield return new WaitForSeconds(enemyAttackIntervalTime);
-                }
-            }
-
-            enemiesAttack = true;
-        }
-
-
-        private bool enemiesAttack;
-        private Coroutine enemiesSkillCoroutine = null;
-        public bool EnemiesAttack()
-        {
-            if(enemiesSkillCoroutine == null)
-            {
-                enemiesAttack = false;
-                enemiesSkillCoroutine = StartCoroutine(LaunchEnemiesSkill());
-            }
-
-            if(enemiesAttack)
-            {
-                enemiesSkillCoroutine = null;
-            }
-
-            return enemiesAttack;
-        }
-
-        public bool EnemiesSkillsIsReady()
-        {
-
-            foreach(var enemy in CurrentEnemy)
-            {
-                if(enemy.SkillsIsReady() == false)
-                {
-                    return false;
-                }
-            }
-
-
-            return true;
-
-        }
-
-
-        public void ReduceEnemiesCD()
-        {
-            foreach(var enemy in CurrentEnemy)
-            {
-                enemy.ReduceSkillsCD();
-            }
-        }
 
         public void HandleDeadEnemies()
         {
@@ -212,24 +150,7 @@ namespace StrikeMonster
             }
         }
 
-        public bool CheckEnemiesDead()
-        {
-            if (CurrentEnemy.Count == 0)
-            {
-                return true;
-            } 
-            else
-            {
-                return false;
-            }
-        }
 
-        public bool IsBossWave()
-        {
-            var boss = Boss;
-
-            return (boss) ? true : false;
-        }
 
 
     }

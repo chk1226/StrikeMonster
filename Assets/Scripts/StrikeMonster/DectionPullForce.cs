@@ -77,7 +77,7 @@ namespace StrikeMonster
                     DisableArrow();
 
 
-                    GamePlaySettings.Instance.GameFlowFSM.SendEvent("WaitHeroBattleEnd");
+                    GameFlowComponent.Instance.GameFlowFSM.SendEvent(GameFlowComponent.Instance.WaitHeroBattleEndEvent);
 				}
 			}
 				
