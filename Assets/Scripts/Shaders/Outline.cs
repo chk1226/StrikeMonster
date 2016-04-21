@@ -20,7 +20,7 @@ namespace MyShader
             }
         }
 
-        private static Material m_Material = null;
+        private Material m_Material = null;
         protected Material material
         {
             get
@@ -31,35 +31,52 @@ namespace MyShader
                     if ((shader = Shader.Find("Custom/Outline")) != null)
                     {
                         m_Material = new Material(shader);
-                        m_Material.hideFlags = HideFlags.None;
+                        m_Material.hideFlags = HideFlags.DontSave;
                     }
                 }
                 return m_Material;
             }
         }
         
-        public bool AlwaysUpdate = false;
-        
-        
-        
-        
-        // Use this for initialization
+//        public bool AlwaysUpdate = true;
+        [Range(0.001f, 0.0035f)]
+        public float TexOffset = 0.0025f;
+
+        public bool _enable = false;
+        public bool Enable
+        {
+            set{
+                _enable = value;
+                if (_enable)
+                {
+                    Image.type = UnityEngine.UI.Image.Type.Simple;
+                    if (material == null || !material.shader.isSupported)
+                    {
+                        gameObject.SetActive(false);
+                        return;
+                    } else
+                    {
+                        Image.material = material;
+                        Render();
+                    }
+                } else
+                {
+                    Image.material = null;
+                    Image.color = Color.white;
+                }   
+            }
+
+            get{ return _enable; }
+        }
+
+       // Use this for initialization
         void Start () {
-            Image.type = UnityEngine.UI.Image.Type.Simple;
-            if (material == null || !material.shader.isSupported)
-            {
-                gameObject.SetActive(false);
-                return;
-            }
-            else
-            {
-                Image.material = material;
-            }
+            Enable = true;
         }
         
         // Update is called once per frame
         void Update () {
-            if(AlwaysUpdate)
+            if(Enable)
             {
                 Render();
             }
@@ -68,16 +85,17 @@ namespace MyShader
 
         public void Render()
         {
-
+            material.SetColor("_Color", Image.color);
+            material.SetFloat("_TexOffset", TexOffset);
             material.SetTexture("_MainTex", Image.sprite.texture);
+
 
 #if UNITY_EDITOR
             UnityEditor.EditorUtility.SetDirty(gameObject);
 #endif
         }
             
-            
-            
+
             
     }
 

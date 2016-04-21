@@ -84,25 +84,7 @@ namespace StrikeMonster
 	
 		}
 		
-//		private bool IsInsideTouchZone(Vector2 touchPos)
-//		{
-//			
-//            if (m_rectTransform == null)
-//			{
-//				return false;
-//			}
-//			
-//			
-//            var center = Camera.main.WorldToScreenPoint(m_rectTransform.position);   
-//			
-//			float x = center.x - touchPos.x;
-//			float y = center.y - touchPos.y;
-//			float length = x * x + y * y;
-//			
-//            return length <= (m_rectTransform.offsetMax.x * m_rectTransform.offsetMax.x);
-//			
-//			
-//		}
+
 
         private void ShowArrow()
         {

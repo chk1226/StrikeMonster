@@ -2,11 +2,9 @@
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
-		_TexOffset ("TexOffset", Range(0.05,0.1)) = 0.5
-		_Threshold ("TexOffset", Range(0.0,0.3)) = 0.05
+		_TexOffset ("TexOffset", Range(0.001, 0.005)) = 0.0025
+		_Threshold ("Threshold", Range(0.0, 0.3)) = 0.05
 		
-//		_Glossiness ("Smoothness", Range(0,1)) = 0.5
-//		_Metallic ("Metallic", Range(0,1)) = 0.0
 	}
 	SubShader {
 		Tags { "Queue" = "Transparent" "RenderType"="Transparent" "IgnoreProjector" = "True" }
@@ -26,11 +24,6 @@
 			float _TexOffset;
 			float _Threshold;
 			
-			
-//			float2 _Center;
-//			float2 _Radius;
-//			float _BaseAlpha;
-
 			struct v2f {
 				float4 pos : SV_POSITION;
 				float2 st : TEXCOORD0;
@@ -46,6 +39,39 @@
 			}
 			
 			 	
+			 	
+			float3 AddColor(float2 st, int index)
+			{
+				float2 st_offset = float2(_TexOffset, _TexOffset);
+				float reduce = 0.5/index;
+				
+				if(tex2D(_MainTex, st + st_offset * index).a <= _Threshold || tex2D(_MainTex, st - st_offset * index).a <= _Threshold)
+				{
+					return  _Color.rgb * reduce;
+				}
+			
+				st_offset.x *= -1;
+				if(tex2D(_MainTex, st + st_offset * index).a <= _Threshold || tex2D(_MainTex, st - st_offset * index).a <= _Threshold)
+				{
+					return  _Color.rgb * reduce;
+				}			
+				
+				st_offset.x = _TexOffset;
+				st_offset.y = 0;
+				if(tex2D(_MainTex, st + st_offset * index).a <= _Threshold || tex2D(_MainTex, st - st_offset * index).a <= _Threshold)
+				{
+					return  _Color.rgb * reduce;
+				}
+				
+				st_offset.x = 0;
+				st_offset.y = _TexOffset;
+				if(tex2D(_MainTex, st + st_offset * index).a <= _Threshold || tex2D(_MainTex, st - st_offset * index).a <= _Threshold)
+				{
+					return  _Color.rgb * reduce;
+				}
+				
+				return float3(0, 0, 0);
+			}
 
 			fixed4 frag (v2f i) : SV_Target
 			{		
@@ -57,43 +83,17 @@
 					return texcol;
 				}
 
-				
-				for(int k = 0; k < 2 ; k++)
-				{
-				
-					float2 st_offset = float2(_TexOffset, _TexOffset);
-					float reduce = pow(0.5, k);
-				
-					if(tex2D(_MainTex, i.st + st_offset * k).a <= _Threshold)
-					{
-						add_color +=  _Color * reduce;
-						continue;
-					}
-				
-					if(tex2D(_MainTex, i.st - st_offset * k).a <= _Threshold)
-					{
-						add_color +=  _Color * reduce;
-						continue;
-					}
-				
-					st_offset.x *= -1;
-					if(tex2D(_MainTex, i.st + st_offset * k).a <= _Threshold)
-					{
-						add_color +=  _Color * reduce;
-						continue;
-					}
-										
-					if(tex2D(_MainTex, i.st - st_offset * k).a <= _Threshold)
-					{
-						add_color +=  _Color * reduce;
-						continue;
-					}
-				}
-				
+				add_color += AddColor(i.st, 1);
+				add_color += AddColor(i.st, 2);
+				add_color += AddColor(i.st, 3);
+				add_color += AddColor(i.st, 4);
+				add_color += AddColor(i.st, 5);
+				add_color += AddColor(i.st, 6);
+				add_color += AddColor(i.st, 7);
+				add_color += AddColor(i.st, 8);			
 				texcol.rgb += add_color;
 				
 				return texcol;
-//				return float4(0, 0, 0, 1);
 				
 			}
 			

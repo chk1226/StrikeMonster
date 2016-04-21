@@ -43,6 +43,10 @@ namespace StrikeMonster
         
         public UnityEngine.UI.Text TextIndicatorComponent
         {
+            get
+            {
+                return this.m_TextIndicatorComponent;
+            }
             set
             {
                 this.m_TextIndicatorComponent = value;
