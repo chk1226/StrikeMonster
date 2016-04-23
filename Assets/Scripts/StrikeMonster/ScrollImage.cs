@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 namespace StrikeMonster
 {
     [RequireComponent(typeof(Graphic))]
-    public class ScrollImage : BaseVertexEffect {
+#if UNITY_4_6 || UNITY_5_0 || UNITY_5_1
+	public class ScrollImage : BaseVertexEffect
+#else
+	public class ScrollImage : BaseMeshEffect {
+#endif
 
         public float ScrollSpeed;
         public Image BackgroundImage;
@@ -13,7 +18,27 @@ namespace StrikeMonster
         private float offset = 0;
 
 
-        public override void ModifyVertices(System.Collections.Generic.List<UIVertex> verts)
+#if UNITY_4_6 || UNITY_5_0 || UNITY_5_1
+		public override void ModifyVertices(List<UIVertex> verts)
+#else
+		public override void ModifyMesh(VertexHelper vh)
+		{
+			if (IsActive() == false)
+			{
+				return;
+			}
+
+			var vList = new List<UIVertex>();
+			vh.GetUIVertexStream(vList);
+
+			ModifyVertices(vList);
+
+			vh.Clear();
+			vh.AddUIVertexTriangleStream(vList);
+		}
+
+		public void ModifyVertices(List<UIVertex> verts)
+#endif
         {
 
             if (IsActive() == false || verts == null || verts.Count == 0)
