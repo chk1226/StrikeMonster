@@ -7,7 +7,7 @@ namespace StrikeMonster
 {
     [RequireComponent(typeof(Graphic))]
 #if UNITY_4_6 || UNITY_5_0 || UNITY_5_1
-	public class ScrollImage : BaseVertexEffect
+	public class ScrollImage : BaseVertexEffect{
 #else
 	public class ScrollImage : BaseMeshEffect {
 #endif
