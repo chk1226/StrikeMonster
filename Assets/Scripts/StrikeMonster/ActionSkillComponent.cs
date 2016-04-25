@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+//using UnityEngine.EventSystems;
 
 
 namespace StrikeMonster
@@ -16,58 +17,27 @@ namespace StrikeMonster
     	// Use this for initialization
     	void Start () {
             m_rectTransform = this.gameObject.GetComponent<RectTransform>();
+
+
     	}
     	
     	// Update is called once per frame
     	void Update () {
-    	
             if (HeroCD && HeroCD.Value <= 0 && 
                 HeroCD.TextIndicatorComponent && HeroCD.TextIndicatorComponent.IsActive())
             {
-                CanSkill = true;
-
-                //text
                 if (SkillReady)
                 {
                     SkillReady.gameObject.SetActive(true);
                 }
-
-                //button down
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if(IsInsideTouchZone(Input.mousePosition))
-                    {
-                        m_Touch = true;   
-                    }
-                    else
-                    {
-                        m_Touch = false;
-                    }
-                }
-                
-                // button up
-                if (Input.GetMouseButtonUp(0))
-                {
-                    if(m_Touch && IsInsideTouchZone(Input.mousePosition))
-                    {
-                        // TODO
-                        Debug.Log("Fire~~~~~~~");
-                        HeroCD.RecoveryCD();
-
-                    }
-                  
-                }
-
-
-
-            } 
-            else
+            } else
             {
                 if(SkillReady)
                 {
                     SkillReady.gameObject.SetActive(false);
                 }
             }
+
 
     	}
 
@@ -85,11 +55,32 @@ namespace StrikeMonster
             float y = center.y - touchPos.y;
             float length = x * x + y * y;
 
-            return length <= (m_rectTransform.offsetMax.x * m_rectTransform.offsetMax.x);
+            x = m_rectTransform.offsetMax.x - center.x;
+
+
+            return length <= (x * x);
           
           
         }
+       
 
+        public void OnPointerClick ()
+        {
+            if (SkillReady && SkillReady.IsActive())
+            {
+
+                if(IsInsideTouchZone(Input.mousePosition))
+                {
+                    // TODO
+                    HeroCD.RecoveryCD();
+                    Debug.Log(".....");
+                }
+                        
+
+            } 
+ 
+            
+        }
 
 
 //        IEnumerator AnimationOutlineColor()

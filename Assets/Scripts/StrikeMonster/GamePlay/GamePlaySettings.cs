@@ -17,7 +17,8 @@ namespace StrikeMonster
             BackEffectLayer,
             BattleLayer,
             FrontEffectLayer,
-            UILayer
+            UILayer,
+            TouchLayer
         }
 
         readonly public float ThresholdVelocity = 0.3f;
