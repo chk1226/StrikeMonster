@@ -15,6 +15,7 @@ namespace StrikeMonster
 
         public readonly string DoneEvent = "Done";
         public readonly string WaitHeroBattleEndEvent = "WaitHeroBattleEnd";
+        public readonly string CastActiveSkillEvent = "CastActiveSkill";
         public readonly string NextWaveEvent = "NextWave";
         public readonly string GameOverEvent = "GameOver";
         
@@ -112,10 +113,12 @@ namespace StrikeMonster
             if(OurTurnCounter > 1)
             {
                 // reduce hero action skill cd
-                for (int i = 0; i < BottomUI.HeroSlotList.Count; i ++)
-                {
-                    BottomUI.HeroSlotList[i].SendMessage(InterfaceMehodName.ReduceCD, SendMessageOptions.DontRequireReceiver);
-                }
+//                for (int i = 0; i < BottomUI.HeroSlotList.Count; i ++)
+//                {
+//                    BottomUI.HeroSlotList[i].SendMessage(InterfaceMehodName.ReduceCD, SendMessageOptions.DontRequireReceiver);
+//                }
+                TeamComponent.Instance.HeroLayer.BroadcastMessage(InterfaceMehodName.ReduceCD, SendMessageOptions.DontRequireReceiver);
+                
 
             }
         }
@@ -123,7 +126,7 @@ namespace StrikeMonster
 
         public void HandleWaitPlayerBattleEnd()
         {
-            if (TeamComponent.Instance.HerosIsStillness() && TeamComponent.Instance.HerosFriendlySkillsReady())
+            if (TeamComponent.Instance.HerosIsStillness() && TeamComponent.Instance.HerosFriendlySkillsReady() && TeamComponent.Instance.HerosActiveSkillsReady())
             {
                 GameFlowFSM.SendEvent(DoneEvent);
             }

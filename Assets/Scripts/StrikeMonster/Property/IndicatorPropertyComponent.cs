@@ -123,7 +123,7 @@ namespace StrikeMonster
         }
 
 		//--------------------------------------------------------------------------------
-		protected void UpdateIndicator()
+		public void UpdateIndicator()
 		{
 			if (null != m_IndicatorComponent)
 			{

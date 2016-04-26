@@ -313,7 +313,6 @@ GameObject:
   - 222: {fileID: 215674243}
   - 114: {fileID: 215674242}
   - 114: {fileID: 215674244}
-  - 114: {fileID: 215674245}
   - 114: {fileID: 215674247}
   m_Layer: 5
   m_Name: slot_1
@@ -386,25 +385,6 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
---- !u!114 &215674245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 215674240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e2f58dc1abcf44d69e933a05ed546dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CurrentValue: 0
-  m_MinValue: 0
-  m_MaxValue: 100
-  m_IndicatorComponent: {fileID: 0}
-  m_ShadowIndicatorComponent: {fileID: 0}
-  m_TextIndicatorComponent: {fileID: 1189317583}
-  m_IsAnimate: 1
-  m_IsRenderInvert: 0
 --- !u!114 &215674247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,100 +396,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82a789c00fc94599ba6e88281ef17cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeroCD: {fileID: 215674245}
   SkillReady: {fileID: 1675104116}
+  ActiveSkillCD: {fileID: 1189317583}
   CanSkill: 0
---- !u!1001 &226948017
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1080257001}
-    m_Modifications:
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 320.899994
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_Pivot.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_Pivot.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 162278, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a50d3c242dfbd4a60a27e0e69de3074d, type: 2}
-  m_IsPrefabParent: 0
---- !u!224 &226948018 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22438450, guid: a50d3c242dfbd4a60a27e0e69de3074d,
-    type: 2}
-  m_PrefabInternal: {fileID: 226948017}
+  Hero: {fileID: 0}
 --- !u!1 &248571644
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,56 +740,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 467314726}
---- !u!1001 &515426930
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1080257001}
-    m_Modifications:
-    - target: {fileID: 440420, guid: a077eae9b5efb4e87a4125cb7305536b, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 440420, guid: a077eae9b5efb4e87a4125cb7305536b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 440420, guid: a077eae9b5efb4e87a4125cb7305536b, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 440420, guid: a077eae9b5efb4e87a4125cb7305536b, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 440420, guid: a077eae9b5efb4e87a4125cb7305536b, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 440420, guid: a077eae9b5efb4e87a4125cb7305536b, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 440420, guid: a077eae9b5efb4e87a4125cb7305536b, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 440420, guid: a077eae9b5efb4e87a4125cb7305536b, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 117472, guid: a077eae9b5efb4e87a4125cb7305536b, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a077eae9b5efb4e87a4125cb7305536b, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &515426931 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 440420, guid: a077eae9b5efb4e87a4125cb7305536b, type: 2}
-  m_PrefabInternal: {fileID: 515426930}
 --- !u!1 &528938570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1876,7 +1716,6 @@ GameObject:
   - 222: {fileID: 814906789}
   - 114: {fileID: 814906788}
   - 114: {fileID: 814906787}
-  - 114: {fileID: 814906790}
   - 114: {fileID: 814906792}
   m_Layer: 5
   m_Name: slot_2
@@ -1949,25 +1788,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 814906785}
---- !u!114 &814906790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 814906785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e2f58dc1abcf44d69e933a05ed546dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CurrentValue: 0
-  m_MinValue: 0
-  m_MaxValue: 100
-  m_IndicatorComponent: {fileID: 0}
-  m_ShadowIndicatorComponent: {fileID: 0}
-  m_TextIndicatorComponent: {fileID: 645005247}
-  m_IsAnimate: 1
-  m_IsRenderInvert: 0
 --- !u!114 &814906792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1979,9 +1799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82a789c00fc94599ba6e88281ef17cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeroCD: {fileID: 814906790}
   SkillReady: {fileID: 31542480}
+  ActiveSkillCD: {fileID: 645005247}
   CanSkill: 0
+  Hero: {fileID: 0}
 --- !u!1 &928881880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,10 +2040,10 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 450.875
-        y: 441
+        x: 447.875
+        y: 443
         width: 135
-        height: 32
+        height: 48
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
@@ -2232,6 +2053,14 @@ MonoBehaviour:
           isSystemEvent: 0
           isGlobal: 0
         toState: Wait
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
+      - fsmEvent:
+          name: CastActiveSkill
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: WaitActiveSkill
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -2687,8 +2516,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 460
-        y: 514
+        x: 449
+        y: 519
         width: 143
         height: 32
       isBreakpoint: 0
@@ -3419,8 +3248,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 316
-        y: 482
+        x: 271
+        y: 474
         width: 100
         height: 32
       isBreakpoint: 0
@@ -3829,11 +3658,73 @@ MonoBehaviour:
         - everyFrame
         paramDataPos: 000000000000000000000000000000000100000000000000
         paramByteDataSize: 000000000000000000000000000000000000000001000000
+    - name: WaitActiveSkill
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 666
+        y: 474
+        width: 112
+        height: 32
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions:
+      - fsmEvent:
+          name: Done
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: WaitPlayerBattleEnd
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
+      actionData:
+        actionNames:
+        - HutongGames.PlayMaker.Actions.SetBoolValue
+        - HutongGames.PlayMaker.Actions.Wait
+        customNames:
+        - Set Bool Value - CanStrike
+        - 
+        actionEnabled: 0101
+        actionIsOpen: 0101
+        actionStartIndex: 0000000003000000
+        actionHashCodes: 29b4727b3708ec1a
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        byteData: 000143616e537472696b650000009a99993e0000
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 1100000011000000010000000f0000001700000001000000
+        paramName:
+        - boolVariable
+        - boolValue
+        - everyFrame
+        - time
+        - finishEvent
+        - realTime
+        paramDataPos: 000000000b0000000d0000000e0000001300000013000000
+        paramByteDataSize: 0b0000000200000001000000050000000000000001000000
     events:
     - name: FINISHED
       isSystemEvent: 1
       isGlobal: 0
     - name: BossWave
+      isSystemEvent: 0
+      isGlobal: 0
+    - name: CastActiveSkill
       isSystemEvent: 0
       isGlobal: 0
     - name: Done
@@ -3843,9 +3734,6 @@ MonoBehaviour:
       isSystemEvent: 0
       isGlobal: 0
     - name: GameOver
-      isSystemEvent: 0
-      isGlobal: 0
-    - name: NextRound
       isSystemEvent: 0
       isGlobal: 0
     - name: NextWave
@@ -3864,19 +3752,7 @@ MonoBehaviour:
     variables:
       floatVariables: []
       intVariables: []
-      boolVariables:
-      - useVariable: 1
-        name: HeroFriendlySkillReady
-        tooltip: 
-        showInInspector: 0
-        networkSync: 0
-        value: 0
-      - useVariable: 1
-        name: HerosIsStillness
-        tooltip: 
-        showInInspector: 0
-        networkSync: 0
-        value: 0
+      boolVariables: []
       stringVariables: []
       vector2Variables: []
       vector3Variables: []
@@ -4087,10 +3963,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 226948018}
-  - {fileID: 515426931}
-  - {fileID: 1626658902}
+  m_Children: []
   m_Father: {fileID: 1300595817}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -4115,7 +3988,6 @@ GameObject:
   - 222: {fileID: 1125332160}
   - 114: {fileID: 1125332159}
   - 114: {fileID: 1125332158}
-  - 114: {fileID: 1125332161}
   - 114: {fileID: 1125332163}
   m_Layer: 5
   m_Name: slot_4
@@ -4188,25 +4060,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1125332156}
---- !u!114 &1125332161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1125332156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e2f58dc1abcf44d69e933a05ed546dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CurrentValue: 0
-  m_MinValue: 0
-  m_MaxValue: 100
-  m_IndicatorComponent: {fileID: 0}
-  m_ShadowIndicatorComponent: {fileID: 0}
-  m_TextIndicatorComponent: {fileID: 583719234}
-  m_IsAnimate: 1
-  m_IsRenderInvert: 0
 --- !u!114 &1125332163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4218,9 +4071,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82a789c00fc94599ba6e88281ef17cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeroCD: {fileID: 1125332161}
   SkillReady: {fileID: 248571647}
+  ActiveSkillCD: {fileID: 583719234}
   CanSkill: 0
+  Hero: {fileID: 0}
 --- !u!1 &1189317581
 GameObject:
   m_ObjectHideFlags: 0
@@ -4835,97 +4689,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
   m_EffectDistance: {x: 1.35000002, y: -1}
   m_UseGraphicAlpha: 1
---- !u!1001 &1626658901
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1080257001}
-    m_Modifications:
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_Pivot.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_Pivot.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 191200, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 51fa768b6e3eb4170bf70c0dc74ade27, type: 2}
-  m_IsPrefabParent: 0
---- !u!224 &1626658902 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22498546, guid: 51fa768b6e3eb4170bf70c0dc74ade27,
-    type: 2}
-  m_PrefabInternal: {fileID: 1626658901}
 --- !u!1 &1675104113
 GameObject:
   m_ObjectHideFlags: 0
@@ -5160,7 +4923,6 @@ GameObject:
   - 222: {fileID: 1757233858}
   - 114: {fileID: 1757233857}
   - 114: {fileID: 1757233856}
-  - 114: {fileID: 1757233859}
   - 114: {fileID: 1757233861}
   m_Layer: 5
   m_Name: slot_3
@@ -5233,25 +4995,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1757233854}
---- !u!114 &1757233859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1757233854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e2f58dc1abcf44d69e933a05ed546dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CurrentValue: 0
-  m_MinValue: 0
-  m_MaxValue: 100
-  m_IndicatorComponent: {fileID: 0}
-  m_ShadowIndicatorComponent: {fileID: 0}
-  m_TextIndicatorComponent: {fileID: 788316495}
-  m_IsAnimate: 1
-  m_IsRenderInvert: 0
 --- !u!114 &1757233861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5263,9 +5006,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82a789c00fc94599ba6e88281ef17cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeroCD: {fileID: 1757233859}
   SkillReady: {fileID: 1713531267}
+  ActiveSkillCD: {fileID: 788316495}
   CanSkill: 0
+  Hero: {fileID: 0}
 --- !u!1 &1776908955
 GameObject:
   m_ObjectHideFlags: 0
@@ -5681,6 +5425,7 @@ GameObject:
   - 33: {fileID: 2131149457}
   - 23: {fileID: 2131149456}
   - 114: {fileID: 2131149455}
+  - 114: {fileID: 2131149458}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -5723,8 +5468,8 @@ MonoBehaviour:
   frontFacing: 0
   logErrors: 0
   disableRenderingOnOverride: 1
-  _animationName: atk
-  loop: 1
+  _animationName: 
+  loop: 0
   timeScale: 1
 --- !u!23 &2131149456
 MeshRenderer:
@@ -5757,6 +5502,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2131149453}
   m_Mesh: {fileID: 0}
+--- !u!114 &2131149458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2131149453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02959c9b782bc4eada6cb7d7db662437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2147065065
 GameObject:
   m_ObjectHideFlags: 0

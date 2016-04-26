@@ -5,26 +5,25 @@ using System.Collections;
 
 namespace StrikeMonster
 {
-    public class ActionSkillComponent : MonoBehaviour {
+    public class ActiveSkillComponent : MonoBehaviour {
 
-        public CDPropertyComponent HeroCD;
         public UnityEngine.UI.Text SkillReady;
+        public UnityEngine.UI.Text ActiveSkillCD;
         public bool CanSkill = false;
-
+        public HeroComponent Hero;
+ 
+        private CDPropertyComponent m_HeroCD;
         private RectTransform m_rectTransform;
-        private bool m_Touch = false;
 
     	// Use this for initialization
     	void Start () {
             m_rectTransform = this.gameObject.GetComponent<RectTransform>();
-
-
     	}
-    	
+
     	// Update is called once per frame
     	void Update () {
-            if (HeroCD && HeroCD.Value <= 0 && 
-                HeroCD.TextIndicatorComponent && HeroCD.TextIndicatorComponent.IsActive())
+            if (m_HeroCD && m_HeroCD.Value <= 0 && 
+                m_HeroCD.TextIndicatorComponent && m_HeroCD.TextIndicatorComponent.IsActive())
             {
                 if (SkillReady)
                 {
@@ -40,6 +39,31 @@ namespace StrikeMonster
 
 
     	}
+
+        public void Initialize(HeroComponent hero)
+        {
+            Hero = hero;
+            if (hero.ActiveSkill && hero.ActiveSkill.CDProperty.Max > 0)
+            {
+                m_HeroCD = hero.ActiveSkill.CDProperty;
+
+                if(ActiveSkillCD)
+                {
+                    ActiveSkillCD.gameObject.SetActive(true);
+                    m_HeroCD.TextIndicatorComponent = ActiveSkillCD;
+                    m_HeroCD.UpdateIndicator();
+                }
+
+            } else
+            {
+                if(ActiveSkillCD)
+                {
+                    ActiveSkillCD.gameObject.SetActive(false);
+                }
+            }
+
+        }
+
 
         private bool IsInsideTouchZone(Vector3 touchPos)
         {
@@ -71,9 +95,13 @@ namespace StrikeMonster
 
                 if(IsInsideTouchZone(Input.mousePosition))
                 {
-                    // TODO
-                    HeroCD.RecoveryCD();
-                    Debug.Log(".....");
+                    GameFlowComponent.Instance.GameFlowFSM.SendEvent(GameFlowComponent.Instance.CastActiveSkillEvent);
+                    
+                    SpineControlComponent.Instance.LoadSpineData(Hero.SpineData, delegate(){
+                        Hero.CastActiveSkill();
+                        GameFlowComponent.Instance.GameFlowFSM.SendEvent(GameFlowComponent.Instance.DoneEvent);
+                    });
+
                 }
                         
 

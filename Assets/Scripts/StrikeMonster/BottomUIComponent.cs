@@ -43,15 +43,13 @@ namespace StrikeMonster
 
             for(int i = 0; i < HeroSlotList.Count; i ++)
             {
-                var cd = HeroSlotList[i].GetComponent<CDPropertyComponent>();
-                if(cd)
+                var _as = HeroSlotList[i].GetComponent<ActiveSkillComponent>();
+                if(_as && _as.ActiveSkillCD)
                 {
-                    cd.EnableCDText(false);
+                    _as.ActiveSkillCD.gameObject.SetActive(false);
                 }
                 
             }
-
-
 
             for (int i = 0; i < TeamComponent.Instance.Team.Count; i ++)
             {
@@ -61,20 +59,14 @@ namespace StrikeMonster
                 var icon = HeroSlotList[i].GetComponent<UnityEngine.UI.Image>();
                 icon.sprite = hero.Icon.sprite;
 
-                // set active skill cd
-                var cd = HeroSlotList[i].GetComponent<CDPropertyComponent>();
-                if(cd)
+                var _as = HeroSlotList[i].GetComponent<ActiveSkillComponent>();
+                if(_as)
                 {
-                    if(hero.MaxActiveSkillCD > 0)
-                    {
-                        cd.Initialize(hero.MaxActiveSkillCD, 0, hero.MaxActiveSkillCD);
-                        cd.EnableCDText(true);
-                    }
-                    else
-                    {
-                        cd.EnableCDText(false);
-                    }
+                    _as.Initialize(hero);
                 }
+
+
+
             }
 
         }

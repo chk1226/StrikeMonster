@@ -12,13 +12,23 @@ namespace StrikeMonster
         public bool CanFriendlySkill;
 
         private BaseSkill m_friendlySkill;
+        private BaseSkill m_activeSkill;
+        public BaseSkill ActiveSkill
+        {
+            get
+            {
+                return m_activeSkill;
+            }
+        }
+
         private float m_Speed;
 
-        public int MaxActiveSkillCD
+        private string m_SpineData;
+        public string SpineData
         {
-            get;
-            set;
+            get{return m_SpineData;}
         }
+
 
        public override void Initialize (UnitInfo baseInfo)
         {
@@ -30,8 +40,8 @@ namespace StrikeMonster
                 // base attribute
                 m_Speed = heroInfo.Speed;
                 Name = heroInfo.Name;
-                MaxActiveSkillCD = heroInfo.ActiveSkillCD;
                 this.gameObject.name = Name;
+                m_SpineData = heroInfo.SpineData;
 
                 // friendly skill
                 if(heroInfo.FriendlySkill != null)
@@ -55,6 +65,27 @@ namespace StrikeMonster
 
                 }
 
+                // active skill
+                if(heroInfo.ActiveSkill != null)
+                {
+                    var prefab = Instantiate(Resources.Load<GameObject>(SKILL_PATH + heroInfo.ActiveSkill.SkillName));
+                    if(prefab)
+                    {
+                        prefab.transform.SetParent(SkillGroup.transform);
+                        prefab.transform.localPosition = Vector3.zero;
+                        prefab.transform.localScale = Vector3.one;
+                        
+                        var skillCmp = prefab.GetComponent<BaseSkill>();
+                        if(skillCmp)
+                        {
+                            skillCmp.Config(heroInfo.ActiveSkill);
+                            skillCmp.CDProperty.EnableCDText(false);
+                            m_activeSkill = skillCmp;                        
+                        }
+                        
+                    }
+                    
+                }
             }
 
         }
@@ -118,28 +149,69 @@ namespace StrikeMonster
                 }
                 else if(coll.GetComponent<HeroComponent>())
                 {
-                    if(m_friendlySkill != null)
-                    {
-                        var enemy_list = new List<UnitComponent>();
-                        
-                        foreach(var e in WaveComponent.Instance.CurrentEnemy)
-                        {
-                            enemy_list.Add( e as UnitComponent );
-                        }
-
-                        m_friendlySkill.Targets = enemy_list;
-                        if(m_friendlySkill.DoFire())
-                        {
-                            CanFriendlySkill = false;
-                        }
-
-                    }
+                    CastFriendSkill();
                 }
 
 
             }
 
-            Debug.Log("[OnTriggerEnter2D] Trigger!" + coll.gameObject.name);
+//            Debug.Log("[OnTriggerEnter2D] Trigger!" + coll.gameObject.name);
+            
+        }
+
+
+        private void CastFriendSkill()
+        {
+            if(m_friendlySkill != null)
+            {
+                var enemy_list = new List<UnitComponent>();
+                
+                foreach(var e in WaveComponent.Instance.CurrentEnemy)
+                {
+                    enemy_list.Add( e as UnitComponent );
+                }
+                
+                m_friendlySkill.Targets = enemy_list;
+                if(m_friendlySkill.DoFire())
+                {
+                    CanFriendlySkill = false;
+                }
+                
+            }
+        }
+
+        public void CastActiveSkill()
+        {
+            if(m_friendlySkill != null)
+            {
+                var enemy_list = new List<UnitComponent>();
+                
+                foreach(var e in WaveComponent.Instance.CurrentEnemy)
+                {
+                    enemy_list.Add( e as UnitComponent );
+                }
+                
+                m_activeSkill.Targets = enemy_list;
+                if(m_activeSkill.DoFire())
+                {
+//                    CanFriendlySkill = false;
+                }
+            }
+
+
+        }
+
+        public bool ActiveSkillsIsReady()
+        {
+            if (m_activeSkill)
+            {
+                return m_activeSkill.State == BaseSkill.SkillState.Ready;
+                
+            } else
+            {
+                return true;
+            }
+            
             
         }
 
@@ -153,7 +225,6 @@ namespace StrikeMonster
             {
                 return true;
             }
-
 
         }
 

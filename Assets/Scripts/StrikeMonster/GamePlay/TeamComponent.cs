@@ -158,6 +158,22 @@ namespace StrikeMonster
             }
         }
 
+        public bool HerosActiveSkillsReady()
+        {
+            foreach(var hero_obj in m_Team)
+            {
+                var hero = hero_obj as HeroComponent;
+                
+                if(!hero.ActiveSkillsIsReady())
+                {
+                    return false;
+                }
+                
+            }
+            
+            return true;
+        }
+
 
 
         public bool HerosFriendlySkillsReady()

@@ -17,7 +17,7 @@
         "NormalColorB": 0.0,
         "Size": 1
       },
-      "ActiveSkillCD": 3,
+      "SpineData": "SwordMantis_SkeletonData",
     },
     {
     	"pos_x": -196,
@@ -40,8 +40,17 @@
           "WaveNumber": 5,
           "Size": 1
       },
-      "ActiveSkillCD": 1,
-
+      "SpineData": "Lana_SkeletonData",
+      "ActiveSkill":{
+        "SkillName":"RaySkill",
+        "CDTime": 1,
+        "Damage": 100,
+        "LifeTime": 1,
+        "NormalColorR": 1.0,
+        "NormalColorG": 0.0,
+        "NormalColorB": 0.0,
+        "Size": 1
+      },
     }
   ]
 
