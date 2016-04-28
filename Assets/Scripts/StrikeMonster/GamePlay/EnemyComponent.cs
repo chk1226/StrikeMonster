@@ -70,6 +70,9 @@ namespace StrikeMonster
         {  
             HPProperty.Value -= damage;
             base.OnHurt(damage);
+
+            ComboComponent.Instance.EnableCombo(true);
+            ComboComponent.Instance.Increment(1);
         }
 
 

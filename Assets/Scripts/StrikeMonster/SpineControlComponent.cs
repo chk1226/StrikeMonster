@@ -37,7 +37,7 @@ namespace StrikeMonster
             if(m_skeletonAnimation)
             {
                 m_MeshRender = m_skeletonAnimation.GetComponent<MeshRenderer>();
-                m_MeshRender.sortingLayerName = GamePlaySettings.SortingLayer.UILayer.ToString();
+                m_MeshRender.sortingLayerName = GamePlaySettings.SortingLayer.FrontUILayer.ToString();
             }
 
 

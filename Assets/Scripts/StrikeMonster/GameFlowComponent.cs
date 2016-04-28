@@ -146,6 +146,10 @@ namespace StrikeMonster
         {
             WaveComponent.Instance.HandleDeadEnemies();
 
+            ComboComponent.Instance.Rest();
+            ComboComponent.Instance.EnableCombo(false);
+
+
             if(WaveComponent.Instance.CurrentEnemy.Count == 0)
             {
                 GameFlowFSM.SendEvent(NextWaveEvent);
@@ -157,6 +161,7 @@ namespace StrikeMonster
                 GameFlowFSM.SendEvent(GameOverEvent);
                 return;
             }
+           
         }
 
 

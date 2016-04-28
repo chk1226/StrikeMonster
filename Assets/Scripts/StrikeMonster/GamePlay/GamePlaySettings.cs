@@ -17,8 +17,8 @@ namespace StrikeMonster
             BackEffectLayer,
             BattleLayer,
             FrontEffectLayer,
-            UILayer,
-            DamageLayer,
+            BackUILayer,
+            FrontUILayer,
             TouchLayer
         }
 
