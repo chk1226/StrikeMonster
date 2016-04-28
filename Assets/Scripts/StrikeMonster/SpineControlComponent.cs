@@ -19,10 +19,11 @@ namespace StrikeMonster
         }
 
         private const string SPINE_PATH = "Spine/";
-
+        private readonly int MASK_FADEIN = Animator.StringToHash("MaskFadeIn");
 
         public delegate void SpineEvent();
         public event SpineEvent PlayComplete;
+        public Animator MaskAnimator;
 
         void Awake()
         {
@@ -37,8 +38,6 @@ namespace StrikeMonster
             {
                 m_MeshRender = m_skeletonAnimation.GetComponent<MeshRenderer>();
                 m_MeshRender.sortingLayerName = GamePlaySettings.SortingLayer.UILayer.ToString();
-
-
             }
 
 
@@ -62,20 +61,25 @@ namespace StrikeMonster
                 m_skeletonAnimation.AnimationName = "atk";
                 m_skeletonAnimation.loop = false;
 
+
+                // mask animator
+                if(MaskAnimator)
+                {
+                    MaskAnimator.Play(MASK_FADEIN, -1, 0f);
+                    MaskAnimator.SetBool("switch", false);
+                }
+
+                PlayComplete = completeEvent;
                 m_skeletonAnimation.state.Complete += delegate(Spine.AnimationState state, int trackIndex, int loopCount) {
                     
                     if(PlayComplete != null)
                     {
                         PlayComplete();
                     }
-                    
-                    Debug.Log("-----------");
-                    
+
+                    MaskAnimator.SetBool("switch", true);
                     m_MeshRender.enabled = false;
                 };
-
-                PlayComplete = completeEvent;
-
 
             } else
             {
