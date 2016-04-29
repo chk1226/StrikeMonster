@@ -101,6 +101,7 @@ namespace StrikeMonster
    
         public EnemyType Type;
         public List<SkillInfo> EnemySkill;
+        public List<Vector2> WeakPoint;
 
         public EnemyInfo(PrototypeSystem.PrototypeEnemyInfo enemyInfo) : base(enemyInfo)
         {
@@ -111,6 +112,14 @@ namespace StrikeMonster
             {
                 EnemySkill.Add(new SkillInfo(skill));
             }
+
+            WeakPoint = new List<Vector2>();
+            foreach(var locPos in enemyInfo.WeakPoint)
+            {
+                WeakPoint.Add(new Vector2(locPos.LocPosX, locPos.LocPosY));
+            }
+
+
         }
 
     }

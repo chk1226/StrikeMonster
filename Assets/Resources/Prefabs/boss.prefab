@@ -69,6 +69,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &181344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22423296}
+  m_Layer: 5
+  m_Name: weak_point_group
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!68 &6800376
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -140,6 +155,8 @@ MonoBehaviour:
   SkillGroup: {fileID: 105480}
   Type: 0
   HPProperty: {fileID: 11460340}
+  WeakPointGroup: {fileID: 181344}
+  WeakPointPrefab: {fileID: 146328, guid: 29d08b647097d4d099bf482feaafc475, type: 2}
 --- !u!114 &11460340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,7 +249,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22492916}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 172}
@@ -255,6 +272,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1.14440918e-05}
   m_SizeDelta: {x: 280, y: 238}
   m_Pivot: {x: .5, y: .5}
+--- !u!224 &22423296
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22492916}
+  m_RootOrder: 2
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22492916
 RectTransform:
   m_ObjectHideFlags: 1
@@ -267,6 +301,7 @@ RectTransform:
   m_Children:
   - {fileID: 22400580}
   - {fileID: 22416836}
+  - {fileID: 22423296}
   - {fileID: 22407658}
   m_Father: {fileID: 0}
   m_RootOrder: 0

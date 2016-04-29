@@ -100,7 +100,7 @@ namespace StrikeMonster
                 var arrowTransform = Arrow.GetComponent<RectTransform>();
                 var deltaVector = (m_mousePosition - m_touchPosition).normalized;
 
-                Debug.Log(deltaVector);
+//                Debug.Log(deltaVector);
                 float euler_z = Mathf.Acos(Vector3.Dot(deltaVector,Vector3.right)) * Mathf.Rad2Deg;
                 if(m_mousePosition.y < m_touchPosition.y)
                 {

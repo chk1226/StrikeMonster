@@ -8,8 +8,12 @@ namespace StrikeMonster
 
         public EnemyType Type;
         public HpPropertyComponent HPProperty;
+        public GameObject WeakPointGroup;
+        public GameObject WeakPointPrefab;
 
+        private List<WeakPointComponent> m_WeakPointList = new List<WeakPointComponent>();
         private List<BaseSkill> skills = new List<BaseSkill>();
+        private System.Random rnd = new System.Random();
 
         public override void Initialize (UnitInfo baseInfo)
         {
@@ -41,6 +45,26 @@ namespace StrikeMonster
                         }
 
                     }
+                }
+
+                // weak point
+                foreach(var weakPoint in enemyInfo.WeakPoint)
+                {
+                    var prefab = Instantiate(WeakPointPrefab);
+                    if(prefab)
+                    {
+                        prefab.transform.SetParent(WeakPointGroup.transform);
+                        prefab.transform.localPosition = new Vector3(weakPoint.x, weakPoint.y, 0);
+                        prefab.transform.localScale = Vector3.one;
+                        
+                        var wpCmp = prefab.GetComponent<WeakPointComponent>();
+                        if(wpCmp)
+                        {
+                            wpCmp.gameObject.SetActive(false);
+                            wpCmp.Self = this;
+                            m_WeakPointList.Add(wpCmp);
+                        }
+                    }
 
                 }
 
@@ -54,11 +78,33 @@ namespace StrikeMonster
 
         }
 
+        public void RandomWeakPoint()
+        {
+            if(m_WeakPointList.Count > 0)
+            {
+                var index = rnd.Next() % m_WeakPointList.Count;
+                for(int i = 0; i < m_WeakPointList.Count; i++)
+                {
+                    if(i == index)
+                    {
+                        m_WeakPointList[i].gameObject.SetActive(true); 
+                    }
+                    else
+                    {
+
+                        m_WeakPointList[i].gameObject.SetActive(false);
+                    }
+                }
+
+
+            }
+        }
+
 
         void OnCollisionEnter2D(Collision2D coll) {
 
             var hero = coll.gameObject.GetComponent<HeroComponent>();
-            if (hero == TeamComponent.Instance.CurrentHero)
+            if (hero == TeamComponent.Instance.CurrentHero && GamePlaySettings.Instance.IsPlayerRound)
             {
                 OnHurt(hero.Attack);
             }

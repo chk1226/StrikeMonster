@@ -33,6 +33,13 @@ namespace StrikeMonster
 			}
 		}
 
+
+        public struct VectorXY
+        {
+            public float LocPosX;
+            public float LocPosY;
+        }
+
 		public class PrototypeInfo
 		{
             public string ImgSrc;
@@ -77,6 +84,7 @@ namespace StrikeMonster
         public class PrototypeEnemyInfo : PrototypeInfo
         {
             public int EnemyType;
+            public List<VectorXY> WeakPoint;
             public List<PrototypeSkill> EnemySkill;
         }
 

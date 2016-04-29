@@ -134,7 +134,7 @@ namespace StrikeMonster
 
     	void OnCollisionEnter2D(Collision2D coll) {
 
-            Debug.Log("[OnCollisionEnter2D] hit!" + coll.gameObject.name);
+//            Debug.Log("[OnCollisionEnter2D] hit!" + coll.gameObject.name);
 
     	}
 

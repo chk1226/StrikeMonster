@@ -38,7 +38,6 @@ namespace StrikeMonster
             BottomUI.Initialize();
         }
 
-
         public void HandleWaveStart()
         {
             WaveComponent.Instance.InitializeCurrentEnemy();
@@ -55,6 +54,16 @@ namespace StrikeMonster
 
         }
 
+        public void HandleTurnStart()
+        {
+            for(int i = 0; i < WaveComponent.Instance.CurrentEnemy.Count; i++)
+            {
+                var enemy = WaveComponent.Instance.CurrentEnemy[i];
+                enemy.RandomWeakPoint();
+            }
+        }
+
+
         public void HandleEnemyRoundStart()
         {
             WaveComponent.Instance.EnemyLayer.BroadcastMessage(InterfaceMehodName.ReduceCD, SendMessageOptions.DontRequireReceiver);
@@ -63,12 +72,18 @@ namespace StrikeMonster
 
         IEnumerator LaunchEnemiesSkill()
         {
-            
+         
             for(int i = 0; i < WaveComponent.Instance.CurrentEnemy.Count; i++)
             {
                 var enemy = WaveComponent.Instance.CurrentEnemy[i];
                 if(enemy.LaunchEnemySkill())
                 {
+
+                    foreach(var e in WaveComponent.Instance.CurrentEnemy)
+                    {
+                        e.RandomWeakPoint();
+                    }
+
                     yield return new WaitForSeconds(EnemyAttackIntervalTime);
                 }
             }
