@@ -8,6 +8,20 @@
 		    	"pos_y": 200,
 	      	"ImgSrc": "ms_637",
 	      	"Hp": 1500000,
+          "WeakPoint":[
+            {
+              "LocPosX" : -85,
+              "LocPosY" : -160,
+            },
+            {
+              "LocPosX" : 186,
+              "LocPosY" : -63,
+            },
+            {
+              "LocPosX" : -182,
+              "LocPosY" : 67,
+            }
+          ],
 	      	"EnemySkill": [
 	      		{
                 "SkillName":"HomingSkill",
@@ -26,34 +40,7 @@
 	      		}
 
 	      	]
-  			},
-        {
-          "EnemyType": 0,
-            "pos_x": 41,
-            "pos_y": -74,
-              "ImgSrc": "ms_016",
-              "Hp": 10000,
-              "EnemySkill": [
-              {
-                "SkillName":"BarrageSkill",
-                "Damage": 1000,
-                "CDTime": 2,
-                "CDLocPosX": -45,
-                "CDLocPosY": 45,
-                "Speed": 8,
-                "LineNumber": 20,
-                "WaveNumber": 3,
-                "IntervalTime": 0.5,
-                "LifeTime": 2,
-                "NormalColorR": 1.0,
-                "NormalColorG": 0.0,
-                "NormalColorB": 0.0,
-
-              }
-
-            ]
-        },
-  			
+  			}
 
   		]
   	}
