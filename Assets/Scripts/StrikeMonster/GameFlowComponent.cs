@@ -8,7 +8,7 @@ namespace StrikeMonster
 
         public BottomUIComponent BottomUI;
         public WallComponent Wall;
-//        public TopUIComponent TopUI;
+        public ChangeTurnAnimationComponent ChangeTurnAnimation;
         public PlayMakerFSM GameFlowFSM;
 
         public int OurTurnCounter = 0;
@@ -61,6 +61,22 @@ namespace StrikeMonster
                 var enemy = WaveComponent.Instance.CurrentEnemy[i];
                 enemy.RandomWeakPoint();
             }
+
+            if (ChangeTurnAnimation)
+            {
+                if(GamePlaySettings.Instance.IsPlayerRound)
+                {
+                    ChangeTurnAnimation.Play("NEXT TURN", Color.blue);
+                    
+                }
+                else
+                {
+                    ChangeTurnAnimation.Play("ENEMY TURN", Color.red);
+                }
+
+
+            }
+
         }
 
 

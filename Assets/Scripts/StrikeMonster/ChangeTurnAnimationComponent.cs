@@ -32,7 +32,7 @@ namespace StrikeMonster
 
 
 
-            StartCoroutine(PlayAnimation());
+//            StartCoroutine(PlayAnimation());
         }
         
         // Update is called once per frame
