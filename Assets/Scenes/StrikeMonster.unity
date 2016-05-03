@@ -4785,7 +4785,7 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 244}
+  m_AnchoredPosition: {x: 0, y: 166.800003}
   m_SizeDelta: {x: 0, y: -798}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1472847082
@@ -4799,7 +4799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d37666242ad24b7085d2612451a0201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowText: NEXT TURN
+  PerCharTime: .0500000007
   PrefabText: {fileID: 153974, guid: 2260126fc4cdd4bf0ae5c24d95f80f38, type: 2}
 --- !u!222 &1472847083
 CanvasRenderer:
