@@ -6,9 +6,13 @@ namespace StrikeMonster
 {
     public class HeroComponent : UnitComponent, IRestFriendlySkill {
 
-        public string Name;
         public Rigidbody2D Rigidbody_2D;
         public CircleCollider2D CircleCollider_2D;
+        public ThrustComponent ThrustComponent;
+
+        [HideInInspector]
+        public string Name;
+        [HideInInspector]
         public bool CanFriendlySkill;
 
         private BaseSkill m_friendlySkill;
@@ -86,6 +90,33 @@ namespace StrikeMonster
                     }
                     
                 }
+
+
+
+                // thrust component set up
+                if(ThrustComponent)
+                {
+                    ThrustComponent.ThrustEvent += delegate(Collider2D coll) {
+
+                        if (TeamComponent.Instance.CurrentHero != this && CanFriendlySkill)
+                        {
+                            
+                            if(WaveComponent.Instance.CurrentEnemy.Count == 0)
+                            {
+                                m_friendlySkill.Targets = null;
+                            }
+                            else if(coll.GetComponent<HeroComponent>())
+                            {
+                                CastFriendSkill();
+                            }
+
+                        }
+
+                   };
+                }
+
+
+
             }
 
         }
@@ -132,32 +163,32 @@ namespace StrikeMonster
         }
 
 
-    	void OnCollisionEnter2D(Collision2D coll) {
-
+//    	void OnCollisionEnter2D(Collision2D coll) {
+//
 //            Debug.Log("[OnCollisionEnter2D] hit!" + coll.gameObject.name);
+//
+//    	}
 
-    	}
-
-        void OnTriggerEnter2D(Collider2D coll)
-        {
-            if (TeamComponent.Instance.CurrentHero != this && CanFriendlySkill)
-            {
-
-                if(WaveComponent.Instance.CurrentEnemy.Count == 0)
-                {
-                    m_friendlySkill.Targets = null;
-                }
-                else if(coll.GetComponent<HeroComponent>())
-                {
-                    CastFriendSkill();
-                }
-
-
-            }
+//        void OnTriggerEnter2D(Collider2D coll)
+//        {
+//            if (TeamComponent.Instance.CurrentHero != this && CanFriendlySkill)
+//            {
+//
+//                if(WaveComponent.Instance.CurrentEnemy.Count == 0)
+//                {
+//                    m_friendlySkill.Targets = null;
+//                }
+//                else if(coll.GetComponent<HeroComponent>())
+//                {
+//                    CastFriendSkill();
+//                }
+//
+//
+//            }
 
 //            Debug.Log("[OnTriggerEnter2D] Trigger!" + coll.gameObject.name);
             
-        }
+//        }
 
 
         private void CastFriendSkill()

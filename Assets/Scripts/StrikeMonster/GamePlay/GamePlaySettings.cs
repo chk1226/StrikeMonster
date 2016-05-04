@@ -10,6 +10,21 @@ namespace StrikeMonster
 	{
 		public static GamePlaySettings Instance = null;
 
+        private int m_HeroLayer;
+        public int HeroLayer
+        {
+            get{
+                return m_HeroLayer;
+            }
+        }
+
+        private int m_ActionLayer;
+        public int ActionLayer
+        {
+            get{
+                return m_ActionLayer;
+            }
+        }
 
         public enum SortingLayer
         {
@@ -108,6 +123,8 @@ namespace StrikeMonster
 			if (null == Instance)
 			{
 				Instance = this;
+                m_HeroLayer = LayerMask.NameToLayer("HeroLayer");
+                m_ActionLayer = LayerMask.NameToLayer("ActionLayer");
 			}
 		}
 

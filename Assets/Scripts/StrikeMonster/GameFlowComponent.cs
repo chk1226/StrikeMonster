@@ -136,7 +136,8 @@ namespace StrikeMonster
             OurTurnCounter++;
             BottomUI.UpdateOurActiveCounter();
 
-            TeamComponent.Instance.HandleHerosTrigger(true);
+//            TeamComponent.Instance.HandleHerosTrigger(true);
+            TeamComponent.Instance.HandleToActionLayer(TeamComponent.Instance.CurrentHero);
             TeamComponent.Instance.HeroLayer.BroadcastMessage(InterfaceMehodName.RestFriendlySkill, SendMessageOptions.DontRequireReceiver);
 
             Wall.DamageWallReduceTurn();
@@ -144,10 +145,6 @@ namespace StrikeMonster
             if(OurTurnCounter > 1)
             {
                 // reduce hero action skill cd
-//                for (int i = 0; i < BottomUI.HeroSlotList.Count; i ++)
-//                {
-//                    BottomUI.HeroSlotList[i].SendMessage(InterfaceMehodName.ReduceCD, SendMessageOptions.DontRequireReceiver);
-//                }
                 TeamComponent.Instance.HeroLayer.BroadcastMessage(InterfaceMehodName.ReduceCD, SendMessageOptions.DontRequireReceiver);
                 
 
@@ -166,7 +163,8 @@ namespace StrikeMonster
 
         public void HandlePlayerRoundEnd()
         {
-            TeamComponent.Instance.HandleHerosTrigger(false);
+//            TeamComponent.Instance.HandleHerosTrigger(false);
+            TeamComponent.Instance.HandleToActionLayer(null);
             TeamComponent.Instance.NextHero();
 
 

@@ -141,22 +141,50 @@ namespace StrikeMonster
         }
 
 
-        public void HandleHerosTrigger(bool status)
+        public void HandleToActionLayer(HeroComponent hero)
         {
             foreach(var hero_obj in m_Team)
             {
-                var hero = hero_obj as HeroComponent;
+                var heroCmp = hero_obj as HeroComponent;
 
-                if(hero != CurrentHero)
+                if(hero)
                 {
-                    if(hero.CircleCollider_2D)
+
+                    if(hero == heroCmp)
                     {
-                        hero.CircleCollider_2D.isTrigger = status;
+                        heroCmp.gameObject.layer = GamePlaySettings.Instance.ActionLayer;
                     }
+                    else
+                    {
+                        heroCmp.gameObject.layer = GamePlaySettings.Instance.HeroLayer;
+                    }
+
+                }else
+                {
+                    heroCmp.gameObject.layer = GamePlaySettings.Instance.HeroLayer;
                 }
 
             }
+
+
         }
+
+//        public void HandleHerosTrigger(bool status)
+//        {
+//            foreach(var hero_obj in m_Team)
+//            {
+//                var hero = hero_obj as HeroComponent;
+//
+//                if(hero != CurrentHero)
+//                {
+//                    if(hero.CircleCollider_2D)
+//                    {
+//                        hero.CircleCollider_2D.isTrigger = status;
+//                    }
+//                }
+//
+//            }
+//        }
 
         public bool HerosActiveSkillsReady()
         {
