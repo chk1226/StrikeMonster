@@ -24,19 +24,19 @@
           ],
 	      	"EnemySkill": [
 	      		{
-                "SkillName":"HomingSkill",
-                "CDTime": 1,
-                "CDLocPosX": -145,
-                "CDLocPosY": -148,
-                "WaveNumber": 1,
-                "NormalColorR": 1.0,
-                "NormalColorG": 0.0,
-                "NormalColorB": 0.0,
-                "Damage": 1,
-                "LineNumber": 5,
-                "WaveNumber": 4,
-                "IntervalTime": 0.5,
-                "LifeTime": 5,
+              "SkillName":"BarrageSkill",
+              "Damage": 1,
+              "CDTime": 2,
+              "CDLocPosX": -145,
+              "CDLocPosY": -148,
+              "Speed": 8,
+              "LineNumber": 20,
+              "WaveNumber": 3,
+              "IntervalTime": 0.5,
+              "LifeTime": 2,
+              "NormalColorR": 1.0,
+              "NormalColorG": 0.0,
+              "NormalColorB": 0.0,
 	      		}
 
 	      	]
@@ -135,6 +135,21 @@
                 "NormalColorB": 0.0,
                 "RotationDeg": 0,
                 "Size": 2
+              },
+              {
+                "SkillName":"HomingSkill",
+                "CDTime": 1,
+                "CDLocPosX": -145,
+                "CDLocPosY": -148,
+                "WaveNumber": 1,
+                "NormalColorR": 1.0,
+                "NormalColorG": 0.0,
+                "NormalColorB": 0.0,
+                "Damage": 1,
+                "LineNumber": 5,
+                "WaveNumber": 4,
+                "IntervalTime": 0.5,
+                "LifeTime": 5,
               }
 
             ]

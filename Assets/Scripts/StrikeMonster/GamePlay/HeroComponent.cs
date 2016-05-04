@@ -98,7 +98,8 @@ namespace StrikeMonster
                 {
                     ThrustComponent.ThrustEvent += delegate(Collider2D coll) {
 
-                        if (TeamComponent.Instance.CurrentHero != this && CanFriendlySkill)
+                        if (TeamComponent.Instance.CurrentHero != this && CanFriendlySkill
+                            && GamePlaySettings.Instance.IsActionStrike)
                         {
                             
                             if(WaveComponent.Instance.CurrentEnemy.Count == 0)
@@ -122,13 +123,13 @@ namespace StrikeMonster
         }
 
 
-        public void GiveVelocity(Vector2 velocity)
-        {
-            if (Rigidbody_2D)
-            {
-                Rigidbody_2D.velocity = velocity * m_Speed;
-            }
-        }
+//        public void GiveVelocity(Vector2 velocity)
+//        {
+//            if (Rigidbody_2D)
+//            {
+//                Rigidbody_2D.velocity = velocity * m_Speed;
+//            }
+//        }
 
         public void GiveForce(Vector2 f)
         {
@@ -171,21 +172,6 @@ namespace StrikeMonster
 
 //        void OnTriggerEnter2D(Collider2D coll)
 //        {
-//            if (TeamComponent.Instance.CurrentHero != this && CanFriendlySkill)
-//            {
-//
-//                if(WaveComponent.Instance.CurrentEnemy.Count == 0)
-//                {
-//                    m_friendlySkill.Targets = null;
-//                }
-//                else if(coll.GetComponent<HeroComponent>())
-//                {
-//                    CastFriendSkill();
-//                }
-//
-//
-//            }
-
 //            Debug.Log("[OnTriggerEnter2D] Trigger!" + coll.gameObject.name);
             
 //        }

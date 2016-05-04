@@ -32,11 +32,23 @@ namespace StrikeMonster
 
 
             //Thrust hero
-            var force = (this.transform.position - coll.transform.position).normalized;
-            m_Force.x = force.x;
-            m_Force.y = force.y;
+            var actionHero = coll.GetComponent<HeroComponent>();
+            if (actionHero && actionHero == TeamComponent.Instance.CurrentHero &&
+                GamePlaySettings.Instance.IsActionStrike)
+            {
 
-            Hero.Rigidbody_2D.AddForce(m_Force, ForceMode2D.Impulse);
+                var force = (this.transform.position - coll.transform.position).normalized;
+                m_Force.x = force.x;
+                m_Force.y = force.y;
+                
+                Hero.Rigidbody_2D.AddForce(m_Force, ForceMode2D.Impulse);
+
+                
+            }
+
+
+//            Debug.Log("[OnTriggerEnter2D] Trigger!" + Hero.name);
+            
         }
 
 

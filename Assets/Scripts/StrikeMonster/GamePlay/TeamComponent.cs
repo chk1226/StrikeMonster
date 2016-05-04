@@ -123,8 +123,9 @@ namespace StrikeMonster
 
         public bool HerosIsStillness()
         {
-            foreach(var hero in Team)
+            for(int i = 0; i < Team.Count; i++)
             {
+                var hero = Team[i];
                 var hero_cmp = hero as HeroComponent;
                 if(hero_cmp)
                 {
@@ -169,22 +170,6 @@ namespace StrikeMonster
 
         }
 
-//        public void HandleHerosTrigger(bool status)
-//        {
-//            foreach(var hero_obj in m_Team)
-//            {
-//                var hero = hero_obj as HeroComponent;
-//
-//                if(hero != CurrentHero)
-//                {
-//                    if(hero.CircleCollider_2D)
-//                    {
-//                        hero.CircleCollider_2D.isTrigger = status;
-//                    }
-//                }
-//
-//            }
-//        }
 
         public bool HerosActiveSkillsReady()
         {

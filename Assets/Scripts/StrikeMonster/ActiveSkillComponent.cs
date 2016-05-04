@@ -93,7 +93,7 @@ namespace StrikeMonster
             if (SkillReady && SkillReady.IsActive())
             {
 
-                if(IsInsideTouchZone(Input.mousePosition))
+                if(IsInsideTouchZone(Input.mousePosition) && GamePlaySettings.Instance.CanStrike && TeamComponent.Instance.CurrentHero == Hero)
                 {
                     GameFlowComponent.Instance.GameFlowFSM.SendEvent(GameFlowComponent.Instance.CastActiveSkillEvent);
                     

@@ -2132,15 +2132,17 @@ MonoBehaviour:
         actionNames:
         - HutongGames.PlayMaker.Actions.SetBoolValue
         - HutongGames.PlayMaker.Actions.SetBoolValue
+        - HutongGames.PlayMaker.Actions.SetBoolValue
         - HutongGames.PlayMaker.Actions.SendMessage
         customNames:
         - Set Bool Value - IsPlayerRound
         - Set Bool Value - CanStrike
+        - Set Bool Value - IsActionStrike
         - Initialize
-        actionEnabled: 010101
-        actionIsOpen: 010101
-        actionStartIndex: 000000000300000006000000
-        actionHashCodes: 29b4727b29b4727b6e5036b6
+        actionEnabled: 01010101
+        actionIsOpen: 01010101
+        actionStartIndex: 00000000030000000600000009000000
+        actionHashCodes: 29b4727b29b4727b29b4727b6e5036b6
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -2262,13 +2264,16 @@ MonoBehaviour:
         fsmStringParams: []
         fsmObjectParams: []
         fsmVarParams: []
-        byteData: 00014973506c61796572526f756e64010000000143616e537472696b650000000000000001000000
+        byteData: 00014973506c61796572526f756e64010000000143616e537472696b6500000000014973416374696f6e537472696b650000000000000001000000
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 11000000110000000100000011000000110000000100000014000000070000000700000015000000
+        paramDataType: 11000000110000000100000011000000110000000100000011000000110000000100000014000000070000000700000015000000
         paramName:
+        - boolVariable
+        - boolValue
+        - everyFrame
         - boolVariable
         - boolValue
         - everyFrame
@@ -2279,8 +2284,8 @@ MonoBehaviour:
         - delivery
         - options
         - functionCall
-        paramDataPos: 000000000f00000011000000120000001d0000001f00000000000000200000002400000000000000
-        paramByteDataSize: 0f00000002000000010000000b000000020000000100000000000000040000000400000000000000
+        paramDataPos: 000000000f00000011000000120000001d0000001f00000020000000300000003200000000000000330000003700000000000000
+        paramByteDataSize: 0f00000002000000010000000b000000020000000100000010000000020000000100000000000000040000000400000000000000
     - name: WaitStrike
       description: 
       colorIndex: 0
@@ -3308,12 +3313,14 @@ MonoBehaviour:
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.SendMessage
+        - HutongGames.PlayMaker.Actions.SetBoolValue
         customNames:
         - Handle Player Round End
-        actionEnabled: 01
-        actionIsOpen: 01
-        actionStartIndex: 00000000
-        actionHashCodes: 6e5036b6
+        - Set Bool Value - IsActionStrike
+        actionEnabled: 0101
+        actionIsOpen: 0101
+        actionStartIndex: 0000000004000000
+        actionHashCodes: 6e5036b629b4727b
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -3435,19 +3442,22 @@ MonoBehaviour:
         fsmStringParams: []
         fsmObjectParams: []
         fsmVarParams: []
-        byteData: 0000000001000000
+        byteData: 000000000100000000014973416374696f6e537472696b65000000
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 14000000070000000700000015000000
+        paramDataType: 14000000070000000700000015000000110000001100000001000000
         paramName:
         - gameObject
         - delivery
         - options
         - functionCall
-        paramDataPos: 00000000000000000400000000000000
-        paramByteDataSize: 00000000040000000400000000000000
+        - boolVariable
+        - boolValue
+        - everyFrame
+        paramDataPos: 0000000000000000040000000000000008000000180000001a000000
+        paramByteDataSize: 00000000040000000400000000000000100000000200000001000000
     - name: NextWave
       description: 
       colorIndex: 0

@@ -60,6 +60,7 @@ namespace StrikeMonster
                 
                 
                 GameFlowComponent.Instance.GameFlowFSM.SendEvent(GameFlowComponent.Instance.WaitHeroBattleEndEvent);
+                GamePlaySettings.Instance.IsActionStrike = true;
                 m_canStrike = false;
             }
 

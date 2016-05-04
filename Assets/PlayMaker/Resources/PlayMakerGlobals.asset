@@ -22,6 +22,12 @@ MonoBehaviour:
       networkSync: 0
       value: 0
     - useVariable: 1
+      name: IsActionStrike
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 0
+    - useVariable: 1
       name: IsBossWave
       tooltip: 
       showInInspector: 0

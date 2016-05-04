@@ -38,7 +38,6 @@ namespace StrikeMonster
         }
 
         readonly public float ThresholdVelocity = 0.3f;
-//        public PlayMakerFSM GameFlowFSM;
 
         public bool IsPlayerRound
         {
@@ -95,6 +94,31 @@ namespace StrikeMonster
                 }
             }
         }
+
+        public bool IsActionStrike
+        {
+            get{
+                var fsmValue = FsmVariables.GlobalVariables.GetFsmBool("IsActionStrike");
+                if(fsmValue == null)
+                {
+                    Debug.LogWarning("IsActionStrike bool value is null");
+                    return false;
+                }
+                else
+                {
+                    return fsmValue.Value;
+                }
+            }
+            set{
+                var fsmValue = FsmVariables.GlobalVariables.GetFsmBool("IsActionStrike");
+                if(fsmValue != null)
+                {
+                    fsmValue.Value = value;
+                }
+            }
+        }
+
+
 
 
 
