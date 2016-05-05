@@ -150,6 +150,19 @@
                 "WaveNumber": 4,
                 "IntervalTime": 0.5,
                 "LifeTime": 5,
+              },
+              {
+                "SkillName":"DirectionRaySkill",
+                "Damage": 100,
+                "CDLocPosX": -45,
+                "CDLocPosY": 45,
+                "LifeTime": 0.36,
+                "IntervalTime": 0.4,
+                "NormalColorR": 1.0,
+                "NormalColorG": 0.0,
+                "NormalColorB": 0.0,
+                "WaveNumber": 5,
+                "Size": 1
               }
 
             ]

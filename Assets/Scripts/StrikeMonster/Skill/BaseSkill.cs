@@ -44,6 +44,7 @@ namespace StrikeMonster
 //            Terminal
         }
 
+        [HideInInspector]
         public SkillState State = SkillState.Ready;
         public CDPropertyComponent CDProperty;
 

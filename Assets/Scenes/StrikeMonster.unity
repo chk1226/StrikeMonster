@@ -4251,6 +4251,60 @@ MonoBehaviour:
   ChangeTurnAnimation: {fileID: 1472847082}
   GameFlowFSM: {fileID: 928881883}
   OurTurnCounter: 0
+--- !u!1001 &969454630
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1080257001}
+    m_Modifications:
+    - target: {fileID: 416896, guid: 93cdf69dcd86c43d8a76205f27e57f5d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416896, guid: 93cdf69dcd86c43d8a76205f27e57f5d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416896, guid: 93cdf69dcd86c43d8a76205f27e57f5d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416896, guid: 93cdf69dcd86c43d8a76205f27e57f5d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416896, guid: 93cdf69dcd86c43d8a76205f27e57f5d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416896, guid: 93cdf69dcd86c43d8a76205f27e57f5d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416896, guid: 93cdf69dcd86c43d8a76205f27e57f5d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 416896, guid: 93cdf69dcd86c43d8a76205f27e57f5d, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19803258, guid: 93cdf69dcd86c43d8a76205f27e57f5d, type: 2}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19853772, guid: 93cdf69dcd86c43d8a76205f27e57f5d, type: 2}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 93cdf69dcd86c43d8a76205f27e57f5d, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &969454631 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 416896, guid: 93cdf69dcd86c43d8a76205f27e57f5d, type: 2}
+  m_PrefabInternal: {fileID: 969454630}
 --- !u!1 &993950207
 GameObject:
   m_ObjectHideFlags: 0
@@ -4391,6 +4445,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1117548857}
+  - {fileID: 969454631}
   m_Father: {fileID: 1300595817}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}

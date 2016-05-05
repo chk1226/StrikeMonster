@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace StrikeMonster
 {
+    // check ok
 	public class BarrageSkill : BaseSkill {
 
 		private List<Vector3> orginalPositions;

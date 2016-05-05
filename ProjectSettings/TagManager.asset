@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - HeroLayer
+  - ActionLayer
   - 
   - 
   - 
@@ -53,6 +53,12 @@ TagManager:
   - name: FrontEffectLayer
     uniqueID: 613350295
     locked: 0
-  - name: UILayer
+  - name: BackUILayer
     uniqueID: 3022173749
+    locked: 0
+  - name: FrontUILayer
+    uniqueID: 4110352467
+    locked: 0
+  - name: TouchLayer
+    uniqueID: 3588569869
     locked: 0
