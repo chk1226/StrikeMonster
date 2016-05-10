@@ -29,10 +29,10 @@ namespace StrikeMonster
                         return false; 
                     }
                     
-                    if(ClusterRay[i].BaseRay.particleCount != 0)
-                    {
-                        return false;
-                    }
+//					if(ClusterRay[i].BaseRay.enabled)
+//                    {
+//                        return false;
+//                    }
                     
                 }
                 

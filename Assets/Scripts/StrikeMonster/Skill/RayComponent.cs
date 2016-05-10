@@ -7,7 +7,7 @@ namespace StrikeMonster
 {
     public class RayComponent : MonoBehaviour {
 
-        public ParticleSystem BaseRay;
+		public UnityEngine.UI.Image BaseRay;
 
         private bool m_Emission = false;
         public bool Emission
@@ -18,32 +18,39 @@ namespace StrikeMonster
             }
             set
             {
-                if(!m_Emission && m_RayEmission == null)
+				if(!m_Emission && value)
                 {
+					RestHitTime();
                     m_Emission = value;
-                    RestHitTime();
-                    m_RayEmission = StartCoroutine(EnableEmission());
                 }
+				else if(m_Emission && !value)
+				{
+					BaseRay.enabled = value;
+					m_Emission = value;
+				}
             }
         }
 
 
-        public float Szie
+        public float Size
         {
-            get{return BaseRay.startSize;}
-            set{BaseRay.startSize = value;}
+			get{return BaseRay.transform.localScale.x;}
+			set{
+				var scale = BaseRay.transform.localScale;
+				scale.x = value;
+				BaseRay.transform.localScale = scale;}
         }
 
         public Color Color
         {
-            get{return BaseRay.startColor;}
-            set{BaseRay.startColor = value;}
+			get{return BaseRay.color;}
+			set{BaseRay.color = value;}
         }
 
         public delegate void CollisionCallback(UnitComponent unit);
         public CollisionCallback CollisionEvent;
 
-
+		private RectTransform m_RayRect;
         private float m_HitIntervalTime;
         private List<UnitComponent> m_Targets;
         public List<UnitComponent> Target
@@ -53,15 +60,42 @@ namespace StrikeMonster
         }
         private float m_LifeTime; 
         private List<float> m_HitTimeList = new List<float>();
-        private Coroutine m_RayEmission;
 
 
         public void Initialize(float hitIntervalTime, float lifeTime)
         {
             m_HitIntervalTime = hitIntervalTime;
-//            m_Targets = targets;  
             m_LifeTime = lifeTime;
         }
+
+
+		void Start()
+		{
+			m_RayRect = BaseRay.GetComponent<RectTransform>();
+		}
+
+		private float m_CurrentLifeTime = 0;
+		private float m_OffsetY = 10;
+		void Update()
+		{
+			if(Emission)
+			{
+				if(m_CurrentLifeTime >= m_LifeTime)
+				{
+					Emission = false;
+				}
+				else
+				{
+					var sizeDelta = m_RayRect.sizeDelta;
+					sizeDelta.y += m_OffsetY;
+					m_RayRect.sizeDelta = sizeDelta;
+					m_CurrentLifeTime += GamePlaySettings.Instance.GetDeltaTime();
+				}
+			}
+
+
+		}
+
 
         void FixedUpdate(){
             if(Emission)
@@ -101,68 +135,47 @@ namespace StrikeMonster
 
         private void DectionParticleCollision2D()
         {
-            if(m_Targets == null || BaseRay.particleCount == 0)
+			if(m_Targets == null || !BaseRay.enabled)
             {
                 return;
             }
-            
-            ParticleSystem.Particle[] particles = new ParticleSystem.Particle[BaseRay.particleCount];
-            BaseRay.GetParticles(particles);
-            Vector3 pSize = Vector3.zero;
+
+			var oriPos = new Vector2(m_RayRect.position.x, m_RayRect.position.y); 
+//			var gg = GameFlowComponent.Instance.BattleCanvasScaler;
+//			var GG = GameFlowComponent.Instance.BattleCanvasScaler.GetComponent<RectTransform>();
+////			Debug.Log(GameFlowComponent.Instance.BattleCanvasScaler.scaleFactor);
+//			Debug.Log(GameFlowComponent.Instance.BattleCanvasScaler.transform.localScale);
 
 
-            for(int j = 0; j < particles.Length; j++)
+			var hitAll = Physics2D.BoxCastAll(oriPos, m_RayRect.sizeDelta, m_RayRect.rotation.eulerAngles.z, Vector2.up, m_RayRect.sizeDelta.y);
+
+            for(int index = 0; index < m_Targets.Count; index++)
             {
-                for(int index = 0; index < m_Targets.Count; index++)
-                {
-                    var target = m_Targets[index];
-                    var collider2D = target.gameObject.GetComponent<Collider2D>();
-                    if(collider2D)
-                    {
-                        pSize.x = particles[j].size;
-                        pSize.y = particles[j].size;
-                        var pPos = particles[j].position;
-                        pPos.z = 0;
-                        Bounds pBounds = new Bounds(pPos, pSize);
+                var target = m_Targets[index];
 
-                        if(SMUtility.IntersectsRectToRect(collider2D.bounds, pBounds))
+				for(int i = 0; i < hitAll.Length; i++)
+				{
+					var hitUnit = hitAll[i].transform.gameObject.GetComponent<UnitComponent>();
+					if(hitUnit && hitUnit == target)
+					{
+                        if(m_HitTimeList[index] <= 0)
                         {
-                            if(m_HitTimeList[index] <= 0)
+                            if(CollisionEvent != null)
                             {
-                                if(CollisionEvent != null)
-                                {
-
-                                    CollisionEvent(target);
-                                }
-                                m_HitTimeList[index] = m_HitIntervalTime;
-                                continue;
-                                
+                                CollisionEvent(target);
                             }
-                            
+                            m_HitTimeList[index] = m_HitIntervalTime;
+                            continue;
                             
                         }
-                        
-                        
-                    }
-                    
-                }
+					}
+				}
 
+//                
             }
-            SubHitTime(Time.fixedTime);
-        }
 
-
-        IEnumerator EnableEmission()
-        {
-            yield return null;
             
-            BaseRay.enableEmission = true;
-
-            yield return new WaitForSeconds(m_LifeTime);
-
-            BaseRay.enableEmission = false;
-            m_Emission = false;
-            m_RayEmission = null;
+            SubHitTime(Time.fixedTime);
         }
 
 
