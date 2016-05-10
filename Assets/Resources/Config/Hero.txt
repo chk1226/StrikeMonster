@@ -11,11 +11,13 @@
       "FriendlySkill":{
         "SkillName":"RaySkill",
         "Damage": 100,
-        "LifeTime": 1,
-        "NormalColorR": 1.0,
-        "NormalColorG": 0.0,
+        "LifeTime": 0.5,
+        "NormalColorR": 0.0,
+        "NormalColorG": 1.0,
         "NormalColorB": 0.0,
-        "Size": 1
+        "Size": 2,
+        "WaveNumber": 2,
+        "IntervalTime": 0.1,
       },
       "SpineData": "SwordMantis_SkeletonData",
     },
@@ -30,22 +32,25 @@
     	"FriendlySkill":{
         "SkillName":"RaySkill",
         "Damage": 100,
-        "LifeTime": 1,
+        "LifeTime": 0.8,
         "NormalColorR": 1.0,
-        "NormalColorG": 0.0,
-        "NormalColorB": 0.0,
-        "Size": 1
+        "NormalColorG": 1.0,
+        "NormalColorB": 1.0,
+        "Size": 1,
+        "WaveNumber": 2,
+        "IntervalTime": 0.4,
       },
       "SpineData": "Lana_SkeletonData",
       "ActiveSkill":{
         "SkillName":"RaySkill",
-        "CDTime": 1,
         "Damage": 100,
-        "LifeTime": 1,
+        "LifeTime": 0.5,
         "NormalColorR": 1.0,
         "NormalColorG": 0.0,
         "NormalColorB": 0.0,
-        "Size": 1
+        "Size": 1,
+        "WaveNumber": 3,
+        "IntervalTime": 0.1,
       },
     }
   ]

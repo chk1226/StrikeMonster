@@ -175,7 +175,7 @@ namespace StrikeMonster
                             var pPos = particles[j].position;
                             pPos.z = 0;
                             Bounds pBounds = new Bounds(pPos, pSize);
-                            if(IntersectsRectToRect(collider2D.bounds, pBounds))
+                            if(SMUtility.IntersectsRectToRect(collider2D.bounds, pBounds))
                             {
                                 
                                 if(hitTime[i][index] <= 0)

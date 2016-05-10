@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hero: {fileID: 11478342}
+  ForceScale: 2.5
 --- !u!114 &11437204
 MonoBehaviour:
   m_ObjectHideFlags: 1

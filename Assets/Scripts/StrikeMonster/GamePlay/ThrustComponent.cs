@@ -6,6 +6,7 @@ namespace StrikeMonster
     public class ThrustComponent : MonoBehaviour {
 
         public HeroComponent Hero;
+        public float ForceScale = 1f;
         private Vector2 m_Force = Vector2.one; 
 
         public delegate void ThrustCallback(Collider2D coll);
@@ -38,8 +39,8 @@ namespace StrikeMonster
             {
 
                 var force = (this.transform.position - coll.transform.position).normalized;
-                m_Force.x = force.x;
-                m_Force.y = force.y;
+                m_Force.x = force.x * ForceScale;
+                m_Force.y = force.y * ForceScale;
                 
                 Hero.Rigidbody_2D.AddForce(m_Force, ForceMode2D.Impulse);
 

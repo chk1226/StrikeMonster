@@ -8,6 +8,7 @@ namespace StrikeMonster
     public class WaveComponent : MonoBehaviour {
 
         public GameObject EnemyLayer;
+        public GameObject SkillEffectLayer;
         public int CurrentWaveIndex;
 
         public GameObject MonsterPrefab;

@@ -78,7 +78,7 @@ namespace StrikeMonster
                     if (targetCollider)
                     {
                         Vector2 centerPos = new Vector2(this.transform.position.x, this.transform.position.y);
-                        if (IntersectsCircleToRect(centerPos, Radius, targetCollider.bounds))
+                        if (SMUtility.IntersectsCircleToRect(centerPos, Radius, targetCollider.bounds))
                         {
                             CollisionBehavior(Targets [i]);
 
