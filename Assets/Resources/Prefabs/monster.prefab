@@ -62,7 +62,7 @@ GameObject:
   - 61: {fileID: 6145852}
   - 114: {fileID: 11472416}
   - 114: {fileID: 11474508}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,6 +217,8 @@ MonoBehaviour:
   SkillGroup: {fileID: 156032}
   Type: 0
   HPProperty: {fileID: 11474508}
+  WeakPointGroup: {fileID: 0}
+  WeakPointPrefab: {fileID: 0}
 --- !u!114 &11474508
 MonoBehaviour:
   m_ObjectHideFlags: 1

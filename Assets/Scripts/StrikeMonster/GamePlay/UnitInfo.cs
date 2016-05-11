@@ -114,9 +114,13 @@ namespace StrikeMonster
             }
 
             WeakPoint = new List<Vector2>();
-            foreach(var locPos in enemyInfo.WeakPoint)
+            if(enemyInfo.WeakPoint != null)
             {
-                WeakPoint.Add(new Vector2(locPos.LocPosX, locPos.LocPosY));
+                foreach(var locPos in enemyInfo.WeakPoint)
+                {
+                    WeakPoint.Add(new Vector2(locPos.LocPosX, locPos.LocPosY));
+                }
+
             }
 
 

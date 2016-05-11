@@ -26,6 +26,14 @@ namespace StrikeMonster
             }
         }
 
+        private int m_EnemyLayer;
+        public int EnemyLayer
+        {
+            get{
+                return m_EnemyLayer;
+            }
+        }
+
         public enum SortingLayer
         {
             BackgroundLayer,
@@ -149,6 +157,7 @@ namespace StrikeMonster
 				Instance = this;
                 m_HeroLayer = LayerMask.NameToLayer("HeroLayer");
                 m_ActionLayer = LayerMask.NameToLayer("ActionLayer");
+                m_EnemyLayer = LayerMask.NameToLayer("EnemyLayer");
 			}
 		}
 

@@ -75,7 +75,7 @@ namespace StrikeMonster
 		}
 
 		private float m_CurrentLifeTime = 0;
-		private float m_OffsetY = 10;
+		private float m_OffsetY = 100;
 		void Update()
 		{
 			if(Emission)
@@ -89,6 +89,7 @@ namespace StrikeMonster
 					var sizeDelta = m_RayRect.sizeDelta;
 					sizeDelta.y += m_OffsetY;
 					m_RayRect.sizeDelta = sizeDelta;
+                    
 					m_CurrentLifeTime += GamePlaySettings.Instance.GetDeltaTime();
 				}
 			}
@@ -140,42 +141,56 @@ namespace StrikeMonster
                 return;
             }
 
-			var oriPos = new Vector2(m_RayRect.position.x, m_RayRect.position.y); 
-//			var gg = GameFlowComponent.Instance.BattleCanvasScaler;
-//			var GG = GameFlowComponent.Instance.BattleCanvasScaler.GetComponent<RectTransform>();
-////			Debug.Log(GameFlowComponent.Instance.BattleCanvasScaler.scaleFactor);
-//			Debug.Log(GameFlowComponent.Instance.BattleCanvasScaler.transform.localScale);
+            var sizeDeltaW = WaveComponent.Instance.SkillEffectLayer.transform.localToWorldMatrix.MultiplyVector( new Vector3(m_RayRect.sizeDelta.x * m_RayRect.transform.localScale.x, m_RayRect.sizeDelta.y, 0) );
+            var dir = this.transform.localRotation * Vector3.up;
 
-
-			var hitAll = Physics2D.BoxCastAll(oriPos, m_RayRect.sizeDelta, m_RayRect.rotation.eulerAngles.z, Vector2.up, m_RayRect.sizeDelta.y);
-
+            var oriPos = new Vector2(m_RayRect.position.x + sizeDeltaW.x, m_RayRect.position.y); 
+            var l_hitAll = Physics2D.RaycastAll(oriPos , dir, sizeDeltaW.y);
+            oriPos.x -= sizeDeltaW.x * 2;
+            var r_hitAll = Physics2D.RaycastAll(oriPos, dir, sizeDeltaW.y);
+            
             for(int index = 0; index < m_Targets.Count; index++)
             {
                 var target = m_Targets[index];
-
-				for(int i = 0; i < hitAll.Length; i++)
-				{
-					var hitUnit = hitAll[i].transform.gameObject.GetComponent<UnitComponent>();
-					if(hitUnit && hitUnit == target)
-					{
-                        if(m_HitTimeList[index] <= 0)
+                if(m_HitTimeList[index] <= 0)
+                {
+                    for(int i = 0; i < l_hitAll.Length; i++)
+                    {
+                        var hitUnit = l_hitAll[i].transform.gameObject.GetComponent<UnitComponent>();
+                        if(hitUnit && hitUnit == target)
                         {
+                         
                             if(CollisionEvent != null)
                             {
                                 CollisionEvent(target);
                             }
                             m_HitTimeList[index] = m_HitIntervalTime;
-                            continue;
-                            
+                            break;
                         }
-					}
-				}
+                    }
+                }
 
-//                
+                if(m_HitTimeList[index] <= 0)
+                {
+                    for(int i = 0; i < r_hitAll.Length; i++)
+                    {
+                        var hitUnit = r_hitAll[i].transform.gameObject.GetComponent<UnitComponent>();
+                        if(hitUnit && hitUnit == target)
+                        {
+                            
+                            if(CollisionEvent != null)
+                            {
+                                CollisionEvent(target);
+                            }
+                            m_HitTimeList[index] = m_HitIntervalTime;
+                            break;
+                        }
+                    }
+                }
             }
 
             
-            SubHitTime(Time.fixedTime);
+            SubHitTime(Time.fixedDeltaTime);
         }
 
 

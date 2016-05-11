@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace StrikeMonster
 {
-
+    // check ok
     public class RaySkill : BaseSkill {
 
         public GameObject ClusterRayPrefab;
@@ -16,7 +16,6 @@ namespace StrikeMonster
         public override void Config(SkillInfo skillInfo)
         {
             base.Config(skillInfo);
-
         }
 
         private void SettingRay(ClusterRayComponent clusterRay)
@@ -43,7 +42,7 @@ namespace StrikeMonster
                 var clusterRay = clone.GetComponent<ClusterRayComponent>();
                 if(clusterRay)
                 {
-                    clusterRay.Initialize(1, hitIntervalTime, lifeTime, CollisionBehavior);
+                    clusterRay.Initialize(4, hitIntervalTime, lifeTime, CollisionBehavior);
                     clusterRay.transform.SetParent(WaveComponent.Instance.SkillEffectLayer.transform);
                     clusterRay.transform.position = this.transform.position;
                     clusterRay.transform.localScale = Vector3.one;
