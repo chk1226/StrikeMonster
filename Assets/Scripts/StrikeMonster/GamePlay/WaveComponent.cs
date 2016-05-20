@@ -151,7 +151,30 @@ namespace StrikeMonster
             }
         }
 
+        public List<UnitComponent> GetTargets()
+        {
+            var targets = new List<UnitComponent>(); 
 
+            for(int i = 0; i < CurrentEnemy.Count; i++)
+            {
+                targets.Add(CurrentEnemy[i] as UnitComponent);
+
+
+                for(int j = 0; j < CurrentEnemy[i].WeakPointList.Count; j++)
+                {
+                    if(CurrentEnemy[i].WeakPointList[j].gameObject.activeSelf)
+                    {
+                        targets.Add(CurrentEnemy[i].WeakPointList[j] as UnitComponent);
+                    }
+
+                }
+
+            }
+
+
+
+            return targets;
+        }
 
 
     }

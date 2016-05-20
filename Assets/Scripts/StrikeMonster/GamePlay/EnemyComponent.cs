@@ -12,6 +12,12 @@ namespace StrikeMonster
         public GameObject WeakPointPrefab;
 
         private List<WeakPointComponent> m_WeakPointList = new List<WeakPointComponent>();
+        public List<WeakPointComponent> WeakPointList
+        {
+            get{return m_WeakPointList;}
+        }
+
+
         private List<BaseSkill> skills = new List<BaseSkill>();
         private System.Random rnd = new System.Random();
 

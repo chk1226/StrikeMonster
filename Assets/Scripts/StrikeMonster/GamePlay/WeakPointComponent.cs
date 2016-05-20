@@ -4,20 +4,10 @@ using System.Collections;
 namespace StrikeMonster
 {
 
-    public class WeakPointComponent : MonoBehaviour {
+    public class WeakPointComponent : UnitComponent {
 
         public EnemyComponent Self;
 
-
-    	// Use this for initialization
-    	void Start () {
-    	
-    	}
-    	
-    	// Update is called once per frame
-    	void Update () {
-    	
-    	}
 
         void OnCollisionEnter2D(Collision2D coll) {
 
@@ -36,10 +26,17 @@ namespace StrikeMonster
 
         void OnTriggerEnter2D(Collider2D coll)
         {
-            
+//            Debug.Log("[OnTriggerEnter2D] WeakPointComponent!");
+        }
+
+
+        public override void OnHurt(float damage)
+        {
+            Self.OnHurt(damage);
             Debug.Log("[OnTriggerEnter2D] WeakPointComponent!");
             
         }
+
     }
 
 

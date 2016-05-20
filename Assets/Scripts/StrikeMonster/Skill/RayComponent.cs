@@ -148,7 +148,8 @@ namespace StrikeMonster
             var l_hitAll = Physics2D.RaycastAll(oriPos , dir, sizeDeltaW.y);
             oriPos.x -= sizeDeltaW.x * 2;
             var r_hitAll = Physics2D.RaycastAll(oriPos, dir, sizeDeltaW.y);
-            
+            //TODO need adjust
+
             for(int index = 0; index < m_Targets.Count; index++)
             {
                 var target = m_Targets[index];
