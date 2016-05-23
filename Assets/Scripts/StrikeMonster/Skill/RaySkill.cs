@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 namespace StrikeMonster
 {
-    // check ok
     public class RaySkill : BaseSkill {
 
         public GameObject ClusterRayPrefab;

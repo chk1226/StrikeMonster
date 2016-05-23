@@ -7,201 +7,96 @@ namespace StrikeMonster
 {
     public class DirectionRaySkill : BaseSkill {
 
+        public GameObject ClusterRayPrefab;
 
-
-        private List<List<float>> hitTime;
         private System.Random rnd = new System.Random();
-        private bool waitFire = false;
+        private List<ClusterRayComponent> m_ClusterRayList = new List<ClusterRayComponent>(); 
 
         public override void Config(SkillInfo skillInfo)
         {
             base.Config(skillInfo);
-
-            if(rayEmitter != null && rayEmitter.Count != 0)
-            {
-                hitTime = new List<List<float>>();
-              
-                Quaternion rotation = Quaternion.Euler(90, 0, 0);
-                rayEmitter[0].transform.rotation = rotation;
-                rayEmitter[0].startSize = size;
-
-                for( int i = 0; i < waveNumber - 1; i++)
-                {
-                    GameObject clone = GameObject.Instantiate(rayEmitter[0].gameObject);
-                    clone.transform.SetParent(this.transform, false);
-
-                    var particle = clone.GetComponent<ParticleSystem>();
-                    rayEmitter.Add(particle);
-                }
-
-
-                
-            }
-
-
         }
 
-
-        IEnumerator EnableEmission()
+        private void SettingRay(ClusterRayComponent clusterRay)
         {
-
-            if(waveNumber == CurrentWaveNumber)
-            {
-                waitFire = true;
-            }
-
-            var ray = rayEmitter [CurrentWaveNumber - 1];
 
             if(Targets != null && Targets.Count > 0)
             {
-                var t = Targets[rnd.Next() % Targets.Count];
-                float delta = Mathf.Acos(Vector3.Dot(Vector3.Normalize(t.transform.position - this.transform.position), ray.transform.forward)) * Mathf.Rad2Deg;
-                ray.transform.rotation = Quaternion.Euler(0, 0, delta) * ray.transform.rotation;
 
-            }
-
-            ray.enableEmission = true;
-            
-            yield return new WaitForSeconds(lifeTime);
-            ray.enableEmission = false;
-
-            if(CurrentWaveNumber == 0)
-            {
-                waitFire = false;
-            }
-        }
-
-
-
-        private void RestHitTime()
-        {
-            hitTime.Clear();
-            
-            if (Targets != null)
-            {
-                for(int i = 0; i < rayEmitter.Count; i++)
+                if(clusterRay)
                 {
-                    hitTime.Add(new List<float>());
-                    for(int j = 0; j < Targets.Count; j++)
+
+                    var ray = clusterRay.ClusterRay [0];
+  
+
+                    var target = Targets[rnd.Next() % Targets.Count];
+                    float delta = Mathf.Acos(Vector3.Dot(Vector3.Normalize(target.transform.position - clusterRay.transform.position), Vector3.up)) * Mathf.Rad2Deg;
+
+                    if(target.transform.position.x > clusterRay.transform.position.x)
                     {
-                        hitTime[i].Add(0);
+                        delta *= -1;
                     }
+
+                    ray.transform.rotation = Quaternion.Euler(0, 0, delta);
+                    ray.Size = size;
+                    ray.Color = normalColor;
+
+                    Debug.Log(delta);
                 }
-                
             }
-            
+
         }
 
-        private void SubHitTime(float f)
+
+        private void CastSkill()
         {
-            for (int i = 0; i < hitTime.Count; i++)
+            var clone = Instantiate<GameObject>(ClusterRayPrefab);
+            if (clone)
             {
-                var list = hitTime[i];
-                for(int j = 0; j < list.Count; j++)
+                var clusterRay = clone.GetComponent<ClusterRayComponent>();
+                if(clusterRay)
                 {
-                    list[j] -= f;
+                    clusterRay.Initialize(1, hitIntervalTime, lifeTime, CollisionBehavior);
+                    clusterRay.transform.SetParent(WaveComponent.Instance.SkillEffectLayer.transform);
+                    clusterRay.transform.position = this.transform.position;
+                    clusterRay.transform.localScale = Vector3.one;
+                    SettingRay(clusterRay);
+
+                    clusterRay.CastRay(Targets);
+                    m_ClusterRayList.Add(clusterRay);
                 }
-                
-                
+
             }
+
         }
+
 
         protected override void AttackBehavior()
         {
-
-
-            if (CurrentWaveNumber == waveNumber)
-            {
-                RestHitTime();
-            }
-
-
-            StartCoroutine(EnableEmission());
+            CastSkill();
         }
 
 
         protected override void RecoveryReady()
         {
 
-            if(waitFire)
+            for(int i = 0; i < m_ClusterRayList.Count; i++)
             {
-                return;
-            }
 
-            for(int i = 0; i < rayEmitter.Count; i++)
-            {
-                var ray = rayEmitter[i];
-                if(ray.particleCount != 0)
+                if(m_ClusterRayList[i].DoDestory())
                 {
-                    return;
+                    m_ClusterRayList.RemoveAt(i);
                 }
             }
 
-            base.RecoveryReady();
+
+            if(m_ClusterRayList.Count == 0)
+            {
+                base.RecoveryReady();
+
+            }
         }
 
-
-        protected override void DectionParticleCollision2D()
-        {
-            if(Targets == null)
-            {
-                return;
-            }
-            
-            ParticleSystem.Particle[] particles;
-            Vector3 pSize = Vector3.zero;
-            
-            for(int i = 0; i < rayEmitter.Count; i++)
-            {
-
-                if(rayEmitter[i].particleCount == 0)
-                {
-                    continue;
-                }
-
-                particles = new ParticleSystem.Particle[rayEmitter[i].particleCount];
-                rayEmitter[i].GetParticles(particles);
-                
-                for(int j = 0; j < particles.Length; j++)
-                {
-                    for(int index = 0; index < Targets.Count; index++)
-                    {
-                        var target = Targets[index];
-                        var collider2D = target.gameObject.GetComponent<Collider2D>();
-                        if(collider2D)
-                        {
-                            pSize.x = particles[j].size;
-                            pSize.y = particles[j].size;
-                            var pPos = particles[j].position;
-                            pPos.z = 0;
-                            Bounds pBounds = new Bounds(pPos, pSize);
-                            if(SMUtility.IntersectsRectToRect(collider2D.bounds, pBounds))
-                            {
-                                
-                                if(hitTime[i][index] <= 0)
-                                {
-                                    CollisionBehavior(target);
-                                    hitTime[i][index] = hitIntervalTime;
-                                    continue;
-                                    
-                                }
-                                
-                                
-                            }
-                            
-                            
-                        }
-                        
-                    }
-                }
-                
-                
-            }
-            
-            SubHitTime(Time.fixedTime);
-
-        
-        }
     }
 
 

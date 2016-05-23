@@ -20,8 +20,6 @@ namespace StrikeMonster
         protected float rotationDeg;
         [SerializeField]
         protected ParticleSystem emitter;
-        [SerializeField]
-        protected List<ParticleSystem> rayEmitter;
 
         protected List<UnitComponent> m_targets;
         public List<UnitComponent> Targets

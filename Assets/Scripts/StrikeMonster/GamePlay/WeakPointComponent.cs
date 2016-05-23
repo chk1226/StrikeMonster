@@ -33,7 +33,7 @@ namespace StrikeMonster
         public override void OnHurt(float damage)
         {
             Self.OnHurt(damage);
-            Debug.Log("[OnTriggerEnter2D] WeakPointComponent!");
+//            Debug.Log("[OnTriggerEnter2D] WeakPointComponent!");
             
         }
 

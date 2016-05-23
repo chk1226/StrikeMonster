@@ -4,8 +4,8 @@
   		"EnemyList" :[
       {
           "EnemyType": 1,
-          "pos_x": 61,
-          "pos_y": 200,
+          "pos_x": -56,
+          "pos_y": -105,
           "ImgSrc": "ms_637",
           "Hp": 1500000,
           "WeakPoint":[
@@ -133,15 +133,17 @@
               },
               {
                 "SkillName":"RaySkill",
-                "Damage": 100,
+                "Damage": 1,
                 "CDLocPosX": -45,
                 "CDLocPosY": 45,
                 "LifeTime": 1,
                 "NormalColorR": 1.0,
-                "NormalColorG": 0.0,
-                "NormalColorB": 0.0,
+                "NormalColorG": 1.0,
+                "NormalColorB": 1.0,
+                "Size": 3,
+                "WaveNumber": 3,
+                "IntervalTime": 0.2,
                 "RotationDeg": 0,
-                "Size": 2
               },
               {
                 "SkillName":"HomingSkill",

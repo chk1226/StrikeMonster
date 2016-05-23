@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace StrikeMonster
 {
-
+    // check ok
     public class DamageWallComponent : MonoBehaviour, IReduceCD {
 
         private int m_turn;

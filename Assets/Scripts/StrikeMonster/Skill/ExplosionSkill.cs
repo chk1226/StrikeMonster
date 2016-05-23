@@ -4,7 +4,6 @@ using System.Collections;
 
 namespace StrikeMonster
 {
-
     public class ExplosionSkill : BaseSkill {
 
         public Detonator detonator;

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 namespace StrikeMonster
 {
-
     public class HomingSkill : BaseSkill {
 
         public GameObject MissilePrefab;
