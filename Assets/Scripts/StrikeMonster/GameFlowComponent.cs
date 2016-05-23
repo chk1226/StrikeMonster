@@ -7,7 +7,6 @@ namespace StrikeMonster
     public class GameFlowComponent : MonoBehaviour {
 
         public BottomUIComponent BottomUI;
-        public WallComponent Wall;
         public ChangeTurnAnimationComponent ChangeTurnAnimation;
         public PlayMakerFSM GameFlowFSM;
 
@@ -140,7 +139,7 @@ namespace StrikeMonster
             TeamComponent.Instance.HandleToActionLayer(TeamComponent.Instance.CurrentHero);
             TeamComponent.Instance.HeroLayer.BroadcastMessage(InterfaceMehodName.RestFriendlySkill, SendMessageOptions.DontRequireReceiver);
 
-            Wall.DamageWallReduceTurn();
+            WallComponent.Instance.DamageWallReduceTurn();
 
             if(OurTurnCounter > 1)
             {

@@ -20,7 +20,6 @@ namespace StrikeMonster
         private void SettingRay(ClusterRayComponent clusterRay)
         {
             float angle = 360 / clusterRay.ClusterRay.Count;
-//            Quaternion rotation = Quaternion.Euler(90, 0, 0);
             if(clusterRay)
             {
                 for( int i = 0; i < clusterRay.ClusterRay.Count; i++)

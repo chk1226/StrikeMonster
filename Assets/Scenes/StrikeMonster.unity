@@ -913,7 +913,7 @@ GameObject:
   - 114: {fileID: 467314729}
   - 61: {fileID: 467314728}
   - 252: {fileID: 467314731}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: top_wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1045,7 +1045,7 @@ GameObject:
   - 114: {fileID: 528938573}
   - 61: {fileID: 528938572}
   - 252: {fileID: 528938575}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: bottom_wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1920,7 +1920,7 @@ GameObject:
   - 114: {fileID: 732314967}
   - 61: {fileID: 732314966}
   - 252: {fileID: 732314970}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: right_wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4398,7 +4398,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BottomUI: {fileID: 1479645621}
-  Wall: {fileID: 2052909742}
   ChangeTurnAnimation: {fileID: 1472847082}
   GameFlowFSM: {fileID: 928881883}
   OurTurnCounter: 0
@@ -6577,7 +6576,7 @@ GameObject:
   - 114: {fileID: 2147065067}
   - 61: {fileID: 2147065069}
   - 252: {fileID: 2147065070}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: left_wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
