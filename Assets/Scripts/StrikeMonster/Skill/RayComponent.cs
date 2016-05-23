@@ -8,6 +8,7 @@ namespace StrikeMonster
     public class RayComponent : MonoBehaviour {
 
 		public UnityEngine.UI.Image BaseRay;
+//        [HideInInspector]
 
         private bool m_Emission = false;
         public bool Emission
@@ -18,38 +19,39 @@ namespace StrikeMonster
             }
             set
             {
-				if(!m_Emission && value)
+                if(!m_Emission && value)
                 {
-					RestHitTime();
+                    RestHitTime();
                     m_Emission = value;
                 }
-				else if(m_Emission && !value)
-				{
-					BaseRay.enabled = value;
-					m_Emission = value;
-				}
+                else if(m_Emission && !value)
+                {
+                    BaseRay.enabled = value;
+                    m_Emission = value;
+                }
             }
         }
 
 
         public float Size
         {
-			get{return BaseRay.transform.localScale.x;}
-			set{
-				var scale = BaseRay.transform.localScale;
-				scale.x = value;
-				BaseRay.transform.localScale = scale;}
+            get{return BaseRay.transform.localScale.x;}
+            set{
+                var scale = BaseRay.transform.localScale;
+                scale.x = value;
+                BaseRay.transform.localScale = scale;}
         }
 
         public Color Color
         {
-			get{return BaseRay.color;}
-			set{BaseRay.color = value;}
+            get{return BaseRay.color;}
+            set{BaseRay.color = value;}
         }
 
         public delegate void CollisionCallback(UnitComponent unit);
         public CollisionCallback CollisionEvent;
 
+        private float m_RaycastWidth;
 		private RectTransform m_RayRect;
         private float m_HitIntervalTime;
         private List<UnitComponent> m_Targets;
@@ -60,7 +62,7 @@ namespace StrikeMonster
         }
         private float m_LifeTime; 
         private List<float> m_HitTimeList = new List<float>();
-
+        private List<RaycastHit2D[]> m_RaycastHitList = new List<RaycastHit2D[]>();
 
         public void Initialize(float hitIntervalTime, float lifeTime)
         {
@@ -72,6 +74,7 @@ namespace StrikeMonster
 		void Start()
 		{
 			m_RayRect = BaseRay.GetComponent<RectTransform>();
+            m_RaycastWidth = WaveComponent.Instance.SkillEffectLayer.transform.localToWorldMatrix.MultiplyVector(new Vector3(m_RayRect.sizeDelta.x, 0f, 0f)).x / Size;
 		}
 
 		private float m_CurrentLifeTime = 0;
@@ -141,44 +144,34 @@ namespace StrikeMonster
                 return;
             }
 
-            var sizeDeltaW = WaveComponent.Instance.SkillEffectLayer.transform.localToWorldMatrix.MultiplyVector( new Vector3(m_RayRect.sizeDelta.x * m_RayRect.transform.localScale.x, m_RayRect.sizeDelta.y, 0) );
+
+            m_RaycastHitList.Clear();
+
             var dir = this.transform.localRotation * Vector3.up;
+            var rayOriPos = new Vector2(m_RayRect.position.x, m_RayRect.position.y); 
 
-            var oriPos = new Vector2(m_RayRect.position.x + sizeDeltaW.x, m_RayRect.position.y); 
-            var l_hitAll = Physics2D.RaycastAll(oriPos , dir, sizeDeltaW.y);
-            oriPos.x -= sizeDeltaW.x * 2;
-            var r_hitAll = Physics2D.RaycastAll(oriPos, dir, sizeDeltaW.y);
-            //TODO need adjust
+            int size = (int)Size;
+            for(int i = 1; i <= size; i++)
+            {
+                rayOriPos.x += i * m_RaycastWidth;
+                m_RaycastHitList.Add( Physics2D.RaycastAll(rayOriPos, dir) );
 
+                rayOriPos.x -= i * m_RaycastWidth * 2;
+                m_RaycastHitList.Add( Physics2D.RaycastAll(rayOriPos, dir) );
+
+            }
+          
             for(int index = 0; index < m_Targets.Count; index++)
             {
                 var target = m_Targets[index];
-                if(m_HitTimeList[index] <= 0)
-                {
-                    for(int i = 0; i < l_hitAll.Length; i++)
-                    {
-                        var hitUnit = l_hitAll[i].transform.gameObject.GetComponent<UnitComponent>();
-                        if(hitUnit && hitUnit == target)
-                        {
-                         
-                            if(CollisionEvent != null)
-                            {
-                                CollisionEvent(target);
-                            }
-                            m_HitTimeList[index] = m_HitIntervalTime;
-                            break;
-                        }
-                    }
-                }
 
                 if(m_HitTimeList[index] <= 0)
                 {
-                    for(int i = 0; i < r_hitAll.Length; i++)
+                    
+                    for(int i = 0; i < m_RaycastHitList.Count; i++)
                     {
-                        var hitUnit = r_hitAll[i].transform.gameObject.GetComponent<UnitComponent>();
-                        if(hitUnit && hitUnit == target)
+                        if(FindTargetInHitRay(target, m_RaycastHitList[i]))
                         {
-                            
                             if(CollisionEvent != null)
                             {
                                 CollisionEvent(target);
@@ -187,11 +180,29 @@ namespace StrikeMonster
                             break;
                         }
                     }
+
                 }
+                    
             }
 
             
             SubHitTime(Time.fixedDeltaTime);
+        }
+
+
+        private bool FindTargetInHitRay(UnitComponent target, RaycastHit2D[] hits)
+        {
+         
+            foreach(var hit in hits)
+            {
+                var hitUnit = hit.transform.gameObject.GetComponent<UnitComponent>();
+                if(hitUnit && hitUnit == target)
+                {
+                    return true;
+                }
+            }
+            return false;
+
         }
 
 
