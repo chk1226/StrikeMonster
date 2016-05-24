@@ -32,6 +32,7 @@ namespace StrikeMonster
             }
         }
 
+        public ArrayList Parameter = new ArrayList();
 
         public enum SkillState
         {

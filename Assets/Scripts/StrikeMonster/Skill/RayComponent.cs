@@ -51,6 +51,9 @@ namespace StrikeMonster
         public delegate void CollisionCallback(UnitComponent unit);
         public CollisionCallback CollisionEvent;
 
+        public delegate void IntersectCallback(GameObject unit);
+        public IntersectCallback IntersectEventTrigger;
+
         private float m_RaycastWidth;
 		private RectTransform m_RayRect;
         private float m_HitIntervalTime;
@@ -60,6 +63,17 @@ namespace StrikeMonster
             get{return m_Targets;}
             set{m_Targets = value;}
         }
+        private List<GameObject> m_IntersectTarget;
+        public List<GameObject> IntersectTarget
+        {
+            get{ return m_IntersectTarget;}
+            set{ m_IntersectTarget = value;}
+        }
+
+        private float m_IntersectDistance;  // world space
+        private float m_IntersectDistanceLocal; 
+        private bool m_HasIntersect = false;
+
         private float m_LifeTime; 
         private List<float> m_HitTimeList = new List<float>();
         private List<RaycastHit2D[]> m_RaycastHitList = new List<RaycastHit2D[]>();
@@ -90,8 +104,15 @@ namespace StrikeMonster
 				else
 				{
 					var sizeDelta = m_RayRect.sizeDelta;
-					sizeDelta.y += m_OffsetY;
-					m_RayRect.sizeDelta = sizeDelta;
+
+                    if (!m_HasIntersect)
+                    {
+                        sizeDelta.y += m_OffsetY;
+                    } else
+                    {
+                        sizeDelta.y = m_IntersectDistanceLocal;
+                    }
+                    m_RayRect.sizeDelta = sizeDelta;
                     
 					m_CurrentLifeTime += GamePlaySettings.Instance.GetDeltaTime();
 				}
@@ -160,6 +181,42 @@ namespace StrikeMonster
                 m_RaycastHitList.Add( Physics2D.RaycastAll(rayOriPos, dir) );
 
             }
+                
+            RaycastHit2D rayHit = new RaycastHit2D();
+
+            if(!m_HasIntersect && m_IntersectTarget != null)
+            {
+                for(int i = 0; i < m_IntersectTarget.Count; i++)
+                {
+                    var target = m_IntersectTarget[i];
+
+                    for(int j = 0; j < m_RaycastHitList.Count; j++)
+                    {
+                        if(FindTargetInHitRay(target, m_RaycastHitList[j], ref rayHit))
+                        {
+                            if(IntersectEventTrigger != null)
+                            {
+                                IntersectEventTrigger(target);
+                            }
+
+                            m_IntersectDistance = rayHit.distance;
+                            m_IntersectDistanceLocal = this.transform.worldToLocalMatrix.MultiplyPoint(new Vector3(rayHit.point.x, rayHit.point.y, 0)).magnitude;
+                            m_HasIntersect = true;
+
+
+//                            Debug.Log(m_IntersectDistanceLocal);
+                            break;
+                        }
+                    }
+                    
+                    if (m_HasIntersect)
+                    {
+                        break;
+                    }
+                    
+                }
+                
+            }
           
             for(int index = 0; index < m_Targets.Count; index++)
             {
@@ -167,10 +224,9 @@ namespace StrikeMonster
 
                 if(m_HitTimeList[index] <= 0)
                 {
-                    
                     for(int i = 0; i < m_RaycastHitList.Count; i++)
                     {
-                        if(FindTargetInHitRay(target, m_RaycastHitList[i]))
+                        if(FindTargetInHitRay(target, m_RaycastHitList [i], ref rayHit) && rayHit.distance < m_IntersectDistance)
                         {
                             if(CollisionEvent != null)
                             {
@@ -190,7 +246,7 @@ namespace StrikeMonster
         }
 
 
-        private bool FindTargetInHitRay(UnitComponent target, RaycastHit2D[] hits)
+        private bool FindTargetInHitRay(UnitComponent target, RaycastHit2D[] hits, ref RaycastHit2D rayHit)
         {
          
             foreach(var hit in hits)
@@ -198,6 +254,7 @@ namespace StrikeMonster
                 var hitUnit = hit.transform.gameObject.GetComponent<UnitComponent>();
                 if(hitUnit && hitUnit == target)
                 {
+                    rayHit = hit;
                     return true;
                 }
             }
@@ -205,7 +262,20 @@ namespace StrikeMonster
 
         }
 
+        private bool FindTargetInHitRay(GameObject target, RaycastHit2D[] hits, ref RaycastHit2D rayHit)
+        {
 
+            foreach(var hit in hits)
+            {
+                if(hit.transform.gameObject == target)
+                {
+                    rayHit = hit;
+                    return true;
+                }
+            }
+            return false;
+
+        }
     }
 
 

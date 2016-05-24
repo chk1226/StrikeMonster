@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace StrikeMonster
 {
@@ -70,6 +71,17 @@ namespace StrikeMonster
             
         }
 
+
+        public List<GameObject> GetAllWall()
+        {
+            var all = new List<GameObject>();
+
+            all.Add(LeftWall);
+            all.Add(RightWall);
+            all.Add(TopWall);
+            all.Add(BottomWall);
+            return all;
+        }
 
 //        public void EnableDamageWall(int turn)
 //        {

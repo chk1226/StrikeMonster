@@ -9,12 +9,10 @@ namespace StrikeMonster
     public class ClusterRayComponent : MonoBehaviour {
 
         public GameObject RayPrefab;
+        [HideInInspector]
         public List<RayComponent> ClusterRay = new List<RayComponent>();
-        private bool hasCast = false; 
 
-        void Update()
-        {
-        }
+        protected bool hasCast = false; 
 
         public bool DoDestory()
         {
@@ -28,12 +26,6 @@ namespace StrikeMonster
                     {
                         return false; 
                     }
-                    
-//					if(ClusterRay[i].BaseRay.enabled)
-//                    {
-//                        return false;
-//                    }
-                    
                 }
                 
                 
@@ -74,18 +66,18 @@ namespace StrikeMonster
         }
 
 
-        public void CastRay(List<UnitComponent> targets)
+        public virtual void CastRay(List<UnitComponent> targets, List<GameObject> intersectObjs = null)
         {
             for(int i = 0; i < ClusterRay.Count; i ++)
             {
                 ClusterRay[i].Target = targets;
+                ClusterRay [i].IntersectTarget = intersectObjs;
                 ClusterRay[i].Emission = true;
             }
 
             hasCast = true;
         }
-
-
+            
 
 
     }
