@@ -31,7 +31,7 @@
     	"Speed": 1000,
     	"FriendlySkill":{
         "SkillName":"ReflectionRaySkill",
-        "Damage": 1,
+        "Damage": 100,
         "LifeTime": 0.9,
         "IntervalTime": 0.3,
         "NormalColorR": 1.0,

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 
 namespace StrikeMonster
@@ -16,12 +17,23 @@ namespace StrikeMonster
         public override void Config(SkillInfo skillInfo)
         {
             base.Config(skillInfo);
+
+//			hitIntervalTime = 5;
         }
 
 
         private void SettingRay(ClusterRayComponent clusterRay)
         {
-            var vec = (Vector2)Parameter [0];
+			Vector2 vec = Vector2.one;
+			try
+			{
+				vec = (Vector2)Parameter [0];
+			}
+			catch(ArgumentOutOfRangeException e)
+			{
+				Debug.LogWarning(e.Message);
+			}
+
             var delta = Vector2.Dot(vec.normalized, Vector2.up);
             delta = Mathf.Acos(delta) * Mathf.Rad2Deg;
             if (vec.x > 0)

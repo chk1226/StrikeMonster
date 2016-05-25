@@ -45,6 +45,8 @@ GameObject:
   - 224: {fileID: 22407658}
   - 222: {fileID: 22234814}
   - 114: {fileID: 11418354}
+  - 114: {fileID: 11498672}
+  - 223: {fileID: 22376138}
   m_Layer: 5
   m_Name: hurt_value
   m_TagString: Untagged
@@ -211,6 +213,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11498672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9f6543962f9461ca0254310cddf7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OverrideCanvas: 1
+  m_LayerName: 4
 --- !u!222 &22204012
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -235,6 +250,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117356}
+--- !u!223 &22376138
+Canvas:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126786}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_SortingLayerID: -1272793547
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!224 &22400580
 RectTransform:
   m_ObjectHideFlags: 1

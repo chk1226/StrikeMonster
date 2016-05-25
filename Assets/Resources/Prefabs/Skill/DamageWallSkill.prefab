@@ -121,7 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emitter: {fileID: 0}
-  rayEmitter: []
   State: 0
   CDProperty: {fileID: 11413556}
   DamaeRay: {fileID: 12050100}
@@ -137,7 +136,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .0546064079, g: .628764391, b: .742647052, a: 1}
+  m_Color: {r: 0.054606408, g: 0.6287644, b: 0.74264705, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 24
@@ -146,6 +151,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -169,8 +175,10 @@ LineRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 613350295
@@ -179,8 +187,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 1, y: 1, z: 0}
   m_Parameters:
-    startWidth: .100000001
-    endWidth: .100000001
+    startWidth: 0.1
+    endWidth: 0.1
     m_StartColor:
       serializedVersion: 2
       rgba: 4294967295
@@ -206,11 +214,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 403282}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 24.3999996, y: 30}
-  m_Pivot: {x: .5, y: .5}
+  m_SizeDelta: {x: 24.4, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

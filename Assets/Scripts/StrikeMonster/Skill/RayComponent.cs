@@ -232,14 +232,24 @@ namespace StrikeMonster
                 {
                     for(int i = 0; i < m_RaycastHitList.Count; i++)
                     {
-                        if(FindTargetInHitRay(target, m_RaycastHitList [i], ref rayHit) && rayHit.distance < m_IntersectDistance)
+						if(FindTargetInHitRay(target, m_RaycastHitList [i], ref rayHit) )// && rayHit.distance < m_IntersectDistance)
                         {
-                            if(CollisionEvent != null)
-                            {
-                                CollisionEvent(target);
-                            }
-                            m_HitTimeList[index] = m_HitIntervalTime;
-                            break;
+							bool callCollision = true;
+							if(m_HasIntersect && rayHit.distance > m_IntersectDistance)
+							{
+								callCollision = false;
+							}
+
+							if(callCollision)
+							{
+								if(CollisionEvent != null)
+								{
+									CollisionEvent(target);
+								}
+								m_HitTimeList[index] = m_HitIntervalTime;
+								break;
+								
+							}
                         }
                     }
 
