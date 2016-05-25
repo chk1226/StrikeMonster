@@ -22,8 +22,6 @@ namespace StrikeMonster
         private void SettingRay(ClusterRayComponent clusterRay)
         {
             clusterRay.ClusterRay[0].transform.rotation = Quaternion.Euler(0, 0, -45);
-            clusterRay.ClusterRay[0].Size = size;
-            clusterRay.ClusterRay[0].Color = normalColor;
         }
 
 
@@ -35,7 +33,7 @@ namespace StrikeMonster
                 var clusterRay = clone.GetComponent<ClusterRayComponent>();
                 if(clusterRay)
                 {
-                    clusterRay.Initialize(1, hitIntervalTime, lifeTime, CollisionBehavior);
+                    clusterRay.Initialize(1, hitIntervalTime, lifeTime, size, normalColor, CollisionBehavior);
                     clusterRay.transform.SetParent(WaveComponent.Instance.SkillEffectLayer.transform);
                     clusterRay.transform.position = this.transform.position;
                     clusterRay.transform.localScale = Vector3.one;

@@ -38,10 +38,7 @@ namespace StrikeMonster
                     }
 
                     ray.transform.rotation = Quaternion.Euler(0, 0, delta);
-                    ray.Size = size;
-                    ray.Color = normalColor;
-
-                    Debug.Log(delta);
+//                    Debug.Log(delta);
                 }
             }
 
@@ -56,7 +53,7 @@ namespace StrikeMonster
                 var clusterRay = clone.GetComponent<ClusterRayComponent>();
                 if(clusterRay)
                 {
-                    clusterRay.Initialize(1, hitIntervalTime, lifeTime, CollisionBehavior);
+                    clusterRay.Initialize(1, hitIntervalTime, lifeTime, size, normalColor, CollisionBehavior);
                     clusterRay.transform.SetParent(WaveComponent.Instance.SkillEffectLayer.transform);
                     clusterRay.transform.position = this.transform.position;
                     clusterRay.transform.localScale = Vector3.one;

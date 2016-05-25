@@ -51,7 +51,7 @@ namespace StrikeMonster
         public delegate void CollisionCallback(UnitComponent unit);
         public CollisionCallback CollisionEvent;
 
-        public delegate void IntersectCallback(GameObject unit);
+        public delegate void IntersectCallback(Vector2 point, Vector3 inputDir, Vector3 normal, GameObject Intersect);
         public IntersectCallback IntersectEventTrigger;
 
         private float m_RaycastWidth;
@@ -194,17 +194,21 @@ namespace StrikeMonster
                     {
                         if(FindTargetInHitRay(target, m_RaycastHitList[j], ref rayHit))
                         {
+                            m_IntersectDistance = rayHit.distance;
+                            var locPoint = this.transform.worldToLocalMatrix.MultiplyPoint(new Vector3(rayHit.point.x, rayHit.point.y, 0));
+                            var rayDir = locPoint - this.transform.localPosition;
+                            m_IntersectDistanceLocal = rayDir.magnitude;
+
                             if(IntersectEventTrigger != null)
                             {
-                                IntersectEventTrigger(target);
+                                var regDir = new Vector3(rayHit.point.x, rayHit.point.y, 0);
+                                regDir = regDir - this.transform.position;
+                                IntersectEventTrigger(rayHit.point, regDir, 
+                                    WallComponent.Instance.GetNormal(rayHit.transform.gameObject), rayHit.transform.gameObject);
                             }
 
-                            m_IntersectDistance = rayHit.distance;
-                            m_IntersectDistanceLocal = this.transform.worldToLocalMatrix.MultiplyPoint(new Vector3(rayHit.point.x, rayHit.point.y, 0)).magnitude;
                             m_HasIntersect = true;
 
-
-//                            Debug.Log(m_IntersectDistanceLocal);
                             break;
                         }
                     }

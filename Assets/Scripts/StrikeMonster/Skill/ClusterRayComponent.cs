@@ -12,7 +12,14 @@ namespace StrikeMonster
         [HideInInspector]
         public List<RayComponent> ClusterRay = new List<RayComponent>();
 
-        protected bool hasCast = false; 
+        protected bool hasCast = false;
+        protected float m_HitIntervalTime;
+        protected float m_LifeTime;
+        protected float m_Size;
+        protected Color m_Color;
+        protected RayComponent.CollisionCallback m_CollisionEvent;
+        protected List<UnitComponent> m_Target;
+        protected List<GameObject> m_Intersect;
 
         public bool DoDestory()
         {
@@ -36,9 +43,15 @@ namespace StrikeMonster
             return false;
         }
     	
-        public void Initialize(uint rayNum, float hitIntervalTime, float lifeTime, RayComponent.CollisionCallback collisionEvent)
+        public virtual void Initialize(uint rayNum, float hitIntervalTime, float lifeTime, float size, Color color, RayComponent.CollisionCallback collisionEvent)
         {
- 
+            m_HitIntervalTime = hitIntervalTime;
+            m_LifeTime = lifeTime;
+            m_CollisionEvent = collisionEvent;
+            m_Color = color;
+            m_Size = size;
+            m_Color = color;
+
             for (int i = 0; i < rayNum; i ++)
             {
 
@@ -53,8 +66,10 @@ namespace StrikeMonster
                         rayClone.transform.localPosition = Vector3.zero;
                         rayClone.transform.localScale = Vector3.one;
                         
-                        rayClone.Initialize(hitIntervalTime, lifeTime);
-                        rayClone.CollisionEvent = collisionEvent;
+                        rayClone.Initialize(m_HitIntervalTime, m_LifeTime);
+                        rayClone.Size = m_Size;
+                        rayClone.Color = m_Color;
+                        rayClone.CollisionEvent = m_CollisionEvent;
                         
                         ClusterRay.Add(rayClone);
                     }
@@ -66,12 +81,14 @@ namespace StrikeMonster
         }
 
 
-        public virtual void CastRay(List<UnitComponent> targets, List<GameObject> intersectObjs = null)
+        public void CastRay(List<UnitComponent> targets, List<GameObject> intersectObjs = null)
         {
+            m_Target = targets;
+            m_Intersect = intersectObjs;
             for(int i = 0; i < ClusterRay.Count; i ++)
             {
-                ClusterRay[i].Target = targets;
-                ClusterRay [i].IntersectTarget = intersectObjs;
+                ClusterRay[i].Target = m_Target;
+                ClusterRay [i].IntersectTarget = m_Intersect;
                 ClusterRay[i].Emission = true;
             }
 

@@ -32,13 +32,13 @@
     	"FriendlySkill":{
         "SkillName":"ReflectionRaySkill",
         "Damage": 1,
-        "LifeTime": 3,
+        "LifeTime": 0.8,
         "IntervalTime": 0.2,
         "NormalColorR": 1.0,
         "NormalColorG": 1.0,
         "NormalColorB": 1.0,
         "WaveNumber": 1,
-        "Size": 4
+        "Size": 1
       },
       "SpineData": "Lana_SkeletonData",
       "ActiveSkill":{

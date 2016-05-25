@@ -63,7 +63,7 @@ MonoBehaviour:
   emitter: {fileID: 0}
   State: 0
   CDProperty: {fileID: 11464530}
-  ClusterRayPrefab: {fileID: 106758, guid: cb1812eb228fd44a598f76f1a3a608d8, type: 2}
+  ClusterRayPrefab: {fileID: 164560, guid: 6f7f2e2a299f74505af6a4afaae634b2, type: 2}
 --- !u!114 &11453314
 MonoBehaviour:
   m_ObjectHideFlags: 1

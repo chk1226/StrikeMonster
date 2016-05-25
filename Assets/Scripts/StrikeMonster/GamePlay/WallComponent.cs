@@ -22,17 +22,12 @@ namespace StrikeMonster
                 {
                     case 0:
                         return LeftWall;
-//                        break;
                     case 1:
                         return RightWall;
-//                        break;
                     case 2:
                         return TopWall;
-//                        break;
                     case 3:
                         return BottomWall;
-//                        break;
-
                     default:
                         return LeftWall;
                 }
@@ -83,11 +78,31 @@ namespace StrikeMonster
             return all;
         }
 
-//        public void EnableDamageWall(int turn)
-//        {
-//
-//        }
 
+
+        public Vector3 GetNormal(GameObject wall)
+        {
+
+            if (wall == LeftWall)
+            {
+                return Vector3.right;
+            } else if (wall == RightWall)
+            {
+                return Vector3.left;
+            } else if (wall == TopWall)
+            {
+                return Vector3.down;
+            }
+            else if(wall == BottomWall)
+            {
+                return Vector3.up;
+            }
+
+            Debug.LogWarning("GetNormal is not found");
+            return Vector3.up;
+
+        }
+            
 
 
     }

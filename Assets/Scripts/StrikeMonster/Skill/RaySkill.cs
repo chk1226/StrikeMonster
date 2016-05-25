@@ -9,7 +9,6 @@ namespace StrikeMonster
 
         public GameObject ClusterRayPrefab;
 
-
         private List<ClusterRayComponent> m_ClusterRayList = new List<ClusterRayComponent>(); 
 
         public override void Config(SkillInfo skillInfo)
@@ -26,8 +25,6 @@ namespace StrikeMonster
                 {
                     
                     clusterRay.ClusterRay[i].transform.rotation = Quaternion.Euler(0, 0, i * angle + rotationDeg);
-					clusterRay.ClusterRay[i].Size = size;
-                    clusterRay.ClusterRay[i].Color = normalColor;
                 }
             }
         }
@@ -40,7 +37,7 @@ namespace StrikeMonster
                 var clusterRay = clone.GetComponent<ClusterRayComponent>();
                 if(clusterRay)
                 {
-                    clusterRay.Initialize(4, hitIntervalTime, lifeTime, CollisionBehavior);
+                    clusterRay.Initialize(4, hitIntervalTime, lifeTime, size, normalColor, CollisionBehavior);
                     clusterRay.transform.SetParent(WaveComponent.Instance.SkillEffectLayer.transform);
                     clusterRay.transform.position = this.transform.position;
                     clusterRay.transform.localScale = Vector3.one;
