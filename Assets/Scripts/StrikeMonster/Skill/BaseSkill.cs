@@ -31,8 +31,10 @@ namespace StrikeMonster
                 m_targets = value;
             }
         }
-
-        public ArrayList Parameter = new ArrayList();
+        /// <summary>
+        /// parameter[0] is Thrust direction.
+        /// </summary>
+        public ArrayList Parameter = new ArrayList(5);
 
         public enum SkillState
         {

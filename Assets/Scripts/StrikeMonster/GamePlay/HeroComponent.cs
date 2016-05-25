@@ -96,7 +96,7 @@ namespace StrikeMonster
                 // thrust component set up
                 if(ThrustComponent)
                 {
-                    ThrustComponent.ThrustEvent += delegate(Collider2D coll) {
+                    ThrustComponent.ThrustEvent += delegate(Collider2D coll, Vector2 thrustDir) {
 
                         if (TeamComponent.Instance.CurrentHero != this && CanFriendlySkill
                             && GamePlaySettings.Instance.IsActionStrike)
@@ -108,7 +108,7 @@ namespace StrikeMonster
                             }
                             else if(coll.GetComponent<HeroComponent>())
                             {
-                                CastFriendSkill();
+                                CastFriendSkill(thrustDir);
                             }
 
                         }
@@ -177,12 +177,13 @@ namespace StrikeMonster
 //        }
 
 
-        private void CastFriendSkill()
+        private void CastFriendSkill(Vector2 thrustDir)
         {
             if(m_friendlySkill != null)
             {
-                
                 m_friendlySkill.Targets = WaveComponent.Instance.GetTargets();
+                m_friendlySkill.Parameter.Clear();
+                m_friendlySkill.Parameter.Add(thrustDir);
                 if(m_friendlySkill.DoFire())
                 {
                     CanFriendlySkill = false;

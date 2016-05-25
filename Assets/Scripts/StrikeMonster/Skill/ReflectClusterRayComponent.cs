@@ -6,9 +6,7 @@ namespace StrikeMonster
 {
 
     public class ReflectClusterRayComponent : ClusterRayComponent {
-        private int m_ReflectNum = 3;
-
-
+        private int m_ReflectNum = 5;
 
         public override void Initialize(uint rayNum, float hitIntervalTime, float lifeTime, float size, Color color, RayComponent.CollisionCallback collisionEvent)
         {
@@ -32,12 +30,16 @@ namespace StrikeMonster
                 if (rayClone)
                 {
 
-                    rayClone.transform.SetParent(this.transform);
+                    rayClone.transform.SetParent(this.transform,false);
                     rayClone.transform.localPosition = locPosition;
                     rayClone.transform.localScale = Vector3.one;
 
-                    float delta = Vector3.Dot(dir.normalized, Vector3.up);
+                    float delta = Vector3.Dot(dir, Vector3.up);
                     delta = Mathf.Acos(delta) * Mathf.Rad2Deg;
+                    if(dir.x > 0)
+                    {
+                        delta *= -1;
+                    }
                     rayClone.transform.rotation = Quaternion.Euler(0, 0, delta);
 
                     rayClone.Initialize(m_HitIntervalTime, m_LifeTime);
@@ -64,6 +66,8 @@ namespace StrikeMonster
         private void ReflectionBehavior(Vector2 point, Vector3 inputVec, Vector3 normal, GameObject Intersect)
         {
             var reflect = Vector3.Reflect(inputVec, normal).normalized;
+            Debug.Log("reflect " + reflect.ToString());
+
             var locPos = this.transform.worldToLocalMatrix.MultiplyPoint(new Vector3(point.x, point.y, 0));
 
             m_ReflectNum -= 1;

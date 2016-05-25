@@ -195,9 +195,11 @@ namespace StrikeMonster
                         if(FindTargetInHitRay(target, m_RaycastHitList[j], ref rayHit))
                         {
                             m_IntersectDistance = rayHit.distance;
-                            var locPoint = this.transform.worldToLocalMatrix.MultiplyPoint(new Vector3(rayHit.point.x, rayHit.point.y, 0));
+                            var locPoint = this.transform.parent.worldToLocalMatrix.MultiplyPoint(new Vector3(rayHit.point.x, rayHit.point.y, 0));
                             var rayDir = locPoint - this.transform.localPosition;
                             m_IntersectDistanceLocal = rayDir.magnitude;
+
+//                            Debug.Log("m_IntersectDistanceLocal " + m_IntersectDistanceLocal.ToString());
 
                             if(IntersectEventTrigger != null)
                             {
