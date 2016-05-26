@@ -76,7 +76,7 @@ namespace StrikeMonster
             public float Damage;
             public float RotationDeg;
             public float Size;
-
+			public float Radius;
 
         }
 

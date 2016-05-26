@@ -55,6 +55,7 @@ namespace StrikeMonster
             iTween.Stop(this.gameObject);
             Circle.EnableCircle = false; 
             Circle.IsKinematic = false;
+			Circle.Radius = 0;
         }
 
 

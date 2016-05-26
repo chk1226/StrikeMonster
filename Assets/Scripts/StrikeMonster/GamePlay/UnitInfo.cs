@@ -20,6 +20,7 @@ namespace StrikeMonster
         public float Damage;
         public float Size;
         public float RotationDeg;
+		public float Radius;
 
         public SkillInfo(PrototypeSystem.PrototypeSkill skill)
         {
@@ -35,7 +36,7 @@ namespace StrikeMonster
             Damage = skill.Damage;
             Size = skill.Size;
             RotationDeg = skill.RotationDeg;
-
+			Radius = skill.Radius;
         }
     }
 

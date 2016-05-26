@@ -6,8 +6,9 @@ namespace StrikeMonster
 {
     public class ExplosionSkill : BaseSkill {
 
+		public DrawCircle VisiableRange;
         public Detonator detonator;
-        public float Radius;
+//        public float Radius;
         
         private float hitTime;
         private bool waitTime = false;
@@ -25,6 +26,11 @@ namespace StrikeMonster
             {
                 detonator.duration = lifeTime;
             }
+
+			if(VisiableRange)
+			{
+				VisiableRange.Radius = radius;
+			}
 
         }
 
@@ -55,7 +61,7 @@ namespace StrikeMonster
 
         protected override void AttackBehavior()
         {
-            detonator.size = Radius + 0.2f;
+			detonator.size = radius + 0.2f;
             detonator.Explode();
             StartCoroutine(WaitTime());
 
@@ -77,7 +83,7 @@ namespace StrikeMonster
                     if (targetCollider)
                     {
                         Vector2 centerPos = new Vector2(this.transform.position.x, this.transform.position.y);
-                        if (SMUtility.IntersectsCircleToRect(centerPos, Radius, targetCollider.bounds))
+						if (SMUtility.IntersectsCircleToRect(centerPos, radius, targetCollider.bounds))
                         {
                             CollisionBehavior(Targets [i]);
 

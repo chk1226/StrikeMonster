@@ -18,6 +18,7 @@ namespace StrikeMonster
         protected Color normalColor;
         protected float size;
         protected float rotationDeg;
+		protected float radius;
         [SerializeField]
         protected ParticleSystem emitter;
 
@@ -61,7 +62,7 @@ namespace StrikeMonster
             intervalTime = skillInfo.IntervalTime;
             size = skillInfo.Size;
             rotationDeg = skillInfo.RotationDeg;
-
+			radius = skillInfo.Radius;
 
             if(CDProperty)
             {

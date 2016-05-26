@@ -2,42 +2,51 @@
   "WaveInfoList": [
   	{
   		"EnemyList" :[
-      {
-          "EnemyType": 1,
-          "pos_x": -56,
-          "pos_y": -105,
-          "ImgSrc": "ms_637",
-          "Hp": 1500000,
-          "WeakPoint":[
+      	{
+			"EnemyType": 0,
+	    	"pos_x": 107,
+	    	"pos_y": 208,
+	      	"ImgSrc": "ms_016",
+	      	"Hp": 10000,
+          	"EnemySkill": [
             {
-              "LocPosX" : -85,
-              "LocPosY" : -160,
-            },
-          ],
-          "EnemySkill": [
-            {
-              "SkillName":"BarrageSkill",
-              "Damage": 1,
-              "CDTime": 2,
-              "CDLocPosX": -145,
-              "CDLocPosY": -148,
-              "Speed": 8,
-              "LineNumber": 20,
-              "WaveNumber": 3,
-              "IntervalTime": 0.5,
-              "LifeTime": 2,
-              "NormalColorR": 1.0,
-              "NormalColorG": 0.0,
-              "NormalColorB": 0.0,
-            }
-
-          ]
-        },
-
-  		]
-  	}
-
-  ],
+	              "SkillName":"BarrageSkill",
+	              "Damage": 10,
+	              "CDTime": 1,
+	              "CDLocPosX": 64,
+	              "CDLocPosY": 30,
+	              "Speed": 8,
+	              "LineNumber": 10,
+	              "WaveNumber": 3,
+	              "IntervalTime": 0.5,
+	              "LifeTime": 2,
+	              "NormalColorR": 1.0,
+	              "NormalColorG": 0.0,
+	              "NormalColorB": 0.0,
+            }]
+		},
+		{
+			"EnemyType": 0,
+	    	"pos_x": -125,
+	    	"pos_y": 330,
+	      	"ImgSrc": "ms_038",
+	      	"Hp": 10000,
+	      	"EnemySkill": [
+      		{
+	            "SkillName":"DirectionRaySkill",
+	            "Damage": 100,
+              	"CDTime": 2,
+	            "CDLocPosX": 64,
+	            "CDLocPosY": 30,
+	            "LifeTime": 0.5,
+                "WaveNumber": 1,
+	            "NormalColorR": 1.0,
+	            "NormalColorG": 1.0,
+	            "NormalColorB": 1.0,
+	            "Size": 3
+      		}]
+		},]
+  	}],
 
 
 
@@ -172,8 +181,18 @@
                 "NormalColorB": 0.0,
                 "WaveNumber": 5,
                 "Size": 1
-              }
-
+              },
+              {
+	            "SkillName":"ReflectionRaySkill",
+		        "Damage": 1000,
+		        "LifeTime": 0.9,
+		        "IntervalTime": 0.3,
+		        "NormalColorR": 1.0,
+		        "NormalColorG": 1.0,
+		        "NormalColorB": 1.0,
+		        "WaveNumber": 1,
+		        "Size": 4
+        		}
             ]
         }
       ]
