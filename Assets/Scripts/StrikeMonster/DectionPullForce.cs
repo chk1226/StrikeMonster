@@ -58,7 +58,9 @@ namespace StrikeMonster
                 currentHero.GiveForce(dir_v2);
                 DisableArrow();
                 
-                
+                var readyAni = TeamComponent.Instance.CurrentHero.GetComponentInChildren<HeroReadyAnimation>();
+                readyAni.StopAnimation();
+
                 GameFlowComponent.Instance.GameFlowFSM.SendEvent(GameFlowComponent.Instance.WaitHeroBattleEndEvent);
                 GamePlaySettings.Instance.IsActionStrike = true;
                 m_canStrike = false;

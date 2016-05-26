@@ -10,6 +10,7 @@ namespace StrikeMonster
         public GameObject SkillGroup;
         
         private float totalHurtValue = 0;
+        private Vector3 m_ShakeAmount = new Vector3(0.125f, 0.0625f, 0);
 
         protected float m_HP;
         public float HP
@@ -107,6 +108,9 @@ namespace StrikeMonster
 
                 totalHurtValue += damage;
 //                Debug.Log(totalHurtValue);
+
+
+                iTween.ShakePosition(Icon.gameObject, m_ShakeAmount, 0.5f);
 
             }
 

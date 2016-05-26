@@ -139,6 +139,10 @@ namespace StrikeMonster
             TeamComponent.Instance.HandleToActionLayer(TeamComponent.Instance.CurrentHero);
             TeamComponent.Instance.HeroLayer.BroadcastMessage(InterfaceMehodName.RestFriendlySkill, SendMessageOptions.DontRequireReceiver);
 
+            var readyAni = TeamComponent.Instance.CurrentHero.GetComponentInChildren<HeroReadyAnimation>();
+            readyAni.StartAnimation();
+
+
             WallComponent.Instance.DamageWallReduceTurn();
 
             if(OurTurnCounter > 1)

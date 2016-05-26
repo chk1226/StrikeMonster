@@ -95,6 +95,9 @@ namespace StrikeMonster
 
                 if(IsInsideTouchZone(Input.mousePosition) && GamePlaySettings.Instance.CanStrike && TeamComponent.Instance.CurrentHero == Hero)
                 {
+                    var readyAni = TeamComponent.Instance.CurrentHero.GetComponentInChildren<HeroReadyAnimation>();
+                    readyAni.StopAnimation();
+
                     GameFlowComponent.Instance.GameFlowFSM.SendEvent(GameFlowComponent.Instance.CastActiveSkillEvent);
                     
                     SpineControlComponent.Instance.LoadSpineData(Hero.SpineData, delegate(){
