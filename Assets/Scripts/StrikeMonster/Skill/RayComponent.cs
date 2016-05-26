@@ -88,7 +88,7 @@ namespace StrikeMonster
 		void Start()
 		{
 			m_RayRect = BaseRay.GetComponent<RectTransform>();
-            m_RaycastWidth = WaveComponent.Instance.SkillEffectLayer.transform.localToWorldMatrix.MultiplyVector(new Vector3(m_RayRect.sizeDelta.x, 0f, 0f)).x / Size;
+            m_RaycastWidth = WaveComponent.Instance.SkillEffectLayer.transform.localToWorldMatrix.MultiplyVector(new Vector3(m_RayRect.sizeDelta.x, 0f, 0f)).x;
 		}
 
 		private float m_CurrentLifeTime = 0;
@@ -174,10 +174,10 @@ namespace StrikeMonster
             int size = (int)Size;
             for(int i = 1; i <= size; i++)
             {
-                rayOriPos.x += i * m_RaycastWidth;
+                rayOriPos.x += i * ( m_RaycastWidth * 0.5f);
                 m_RaycastHitList.Add( Physics2D.RaycastAll(rayOriPos, dir) );
 
-                rayOriPos.x -= i * m_RaycastWidth * 2;
+                rayOriPos.x -= i * m_RaycastWidth;
                 m_RaycastHitList.Add( Physics2D.RaycastAll(rayOriPos, dir) );
 
             }

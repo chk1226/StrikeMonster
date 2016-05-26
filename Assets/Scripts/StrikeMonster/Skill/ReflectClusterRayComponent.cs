@@ -6,7 +6,7 @@ namespace StrikeMonster
 {
 
     public class ReflectClusterRayComponent : ClusterRayComponent {
-        private int m_ReflectNum = 5;
+        private int m_ReflectNum = 4;
 
         public override void Initialize(uint rayNum, float hitIntervalTime, float lifeTime, float size, Color color, RayComponent.CollisionCallback collisionEvent)
         {
@@ -16,7 +16,6 @@ namespace StrikeMonster
             {
                 ClusterRay[i].IntersectEventTrigger = ReflectionBehavior;
             }
-
 
         }
 
