@@ -29,17 +29,17 @@ namespace StrikeMonster
 
 
         private int m_CurrentHeroIndex = 0;
+        private HeroComponent m_CurrentHero;
         public HeroComponent CurrentHero
         {
             get{
-                if(m_Team.Count > m_CurrentHeroIndex)
+                if(!m_CurrentHero)
                 {
-                    return m_Team[m_CurrentHeroIndex] as HeroComponent;
+                    m_CurrentHero = m_Team [m_CurrentHeroIndex] as HeroComponent;
+
                 }
-                else
-                {
-                    return null;
-                }
+
+                return m_CurrentHero;
             }
         }
 
@@ -47,6 +47,7 @@ namespace StrikeMonster
         public void NextHero()
         {
             m_CurrentHeroIndex = (m_CurrentHeroIndex + 1) % m_Team.Count;
+            m_CurrentHero = m_Team [m_CurrentHeroIndex] as HeroComponent;
         }
 
 

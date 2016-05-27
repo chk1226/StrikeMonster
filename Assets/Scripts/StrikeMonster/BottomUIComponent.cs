@@ -11,12 +11,12 @@ namespace StrikeMonster
         public UnityEngine.UI.Text OurTurnCounterText;
 
         private string m_OurTurnCounterFormat = string.Empty;
-
+//        private List<ActiveSkillComponent> ActiveSkillUI = new List<ActiveSkillComponent>();
     	
-    	// Update is called once per frame
-    	void Update () {
-    	
-    	}
+//    	// Update is called once per frame
+//    	void Update () {
+//    	
+//    	}
 
         public void Initialize()
         {
@@ -46,6 +46,7 @@ namespace StrikeMonster
                 var _as = HeroSlotList[i].GetComponent<ActiveSkillComponent>();
                 if(_as && _as.ActiveSkillCD)
                 {
+//                    ActiveSkillUI.Add(_as);
                     _as.ActiveSkillCD.gameObject.SetActive(false);
                 }
                 
@@ -80,6 +81,15 @@ namespace StrikeMonster
             }
         }
 
+//
+//        public void AdjustSkillReadyUI()
+//        {
+//            for (int i = 0; i < ActiveSkillUI.Count; i++)
+//            {
+//                ActiveSkillUI [i].AdjustSkillReadyUI();
+//            }
+//        }
+//
 
     }
 

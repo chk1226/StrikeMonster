@@ -23,6 +23,12 @@ namespace StrikeMonster
         {
             Value -= 1;
 
+            if(m_TextIndicatorComponent)
+            {
+                iTween.ScaleFrom(m_TextIndicatorComponent.gameObject, m_TextIndicatorComponent.transform.localScale * 5, 1f);
+
+            }
+
         }
 
         public void RecoveryCD()

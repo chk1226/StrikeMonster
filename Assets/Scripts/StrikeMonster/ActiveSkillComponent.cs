@@ -14,6 +14,12 @@ namespace StrikeMonster
  
         private CDPropertyComponent m_HeroCD;
         private RectTransform m_rectTransform;
+        private static readonly Color m_ReadyRoundYouColor = new Color(1f, 0.8f, 0f); 
+        private static readonly Color m_ReadyColor = Color.white; 
+        private static readonly Vector3 OriScale = Vector3.one;
+        private static readonly Vector3 RoundYouScale = Vector3.one * 1.5f;
+
+
 
     	// Use this for initialization
     	void Start () {
@@ -28,6 +34,7 @@ namespace StrikeMonster
                 if (SkillReady)
                 {
                     SkillReady.gameObject.SetActive(true);
+                    AdjustSkillReadyUI();
                 }
             } else
             {
@@ -111,6 +118,25 @@ namespace StrikeMonster
             } 
  
             
+        }
+
+
+        public void AdjustSkillReadyUI()
+        {
+            if (SkillReady && SkillReady.IsActive())
+            {
+                if (GamePlaySettings.Instance.CanStrike && TeamComponent.Instance.CurrentHero == Hero)
+                {
+                    SkillReady.color = m_ReadyRoundYouColor;
+                    SkillReady.transform.localScale = RoundYouScale;
+                } else
+                {
+                    SkillReady.color = m_ReadyColor;
+                    SkillReady.transform.localScale = OriScale;
+                }
+            }
+
+
         }
 
 
